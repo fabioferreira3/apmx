@@ -1,0 +1,169 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/product/list.phtml - Combines both list and grid views into one view, switchable via jquery
+ */
+?>
+
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+
+<?php // Get the default product layout
+        $configData = Mage::getStoreConfig('category_view');
+	$defaultlayout = $configData['general']['defaultlayout'];
+if($defaultlayout == 'grid'){ echo '<script type="text/javascript">var $j = jQuery.noConflict(); $j(document).ready(function(){$j("ul.display").addClass("thumb_view");$j("span.switch_thumb").addClass("swap");});</script>';};
+?>
+
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j(document).ready(function(){
+
+        $j(".sorter .view-mode").css("display", "none");
+        $j("span.switch_thumb").css("display", "none");
+
+        $j("span.switch_thumb").click(function () {
+            $j("span.switch_thumb").toggleClass("swap");
+            $j("ul.display").animate({opacity: 0},"fast", function() {
+                $j(this).animate({opacity: 1},"fast").toggleClass("thumb_view").toggleClass("list");
+                // Undo equalized heights for list
+                $j('ul.list div.product-container').css("height","auto");
+                // Equalize all thumb heights on switch if list view default
+                var maxHeight = 0;
+                $j('ul.thumb_view div.product-container').each(function() { 
+					maxHeight = Math.max(maxHeight, $j(this).height()) + 1; 
+					}).height(maxHeight);
+            });
+            $j.cookie('view_State', $j('ul.display').is('.thumb_view') ? 'list' : 'thumbs' );
+        });
+
+        // COOKIES
+        // view state
+        var view_State = $j.cookie('view_State');
+        // Set the user's selection for the viewState
+        if (view_State == 'thumbs') {
+            $j("ul.display").addClass("thumb_view");
+            $j("span.switch_thumb").addClass("swap");
+        };
+        if (view_State == 'list') {
+            $j("ul.display").removeClass("thumb_view");
+            $j("span.switch_thumb").removeClass("swap");
+        };
+    });
+
+</script>
+
+<?php // Get List Image Height
+        $configData = Mage::getStoreConfig('category_view');
+	$listimageheight = $configData['imagesettings']['listimageheight'];
+// Get List Image Width
+        $configData = Mage::getStoreConfig('category_view');
+	$listimagewidth = $configData['imagesettings']['listimagewidth'];
+// Check if Truncate is ON
+        $configData = Mage::getStoreConfig('category_view');
+	$truncate = $configData['general']['truncate'];
+// Get Truncate Title Length
+        $configData = Mage::getStoreConfig('category_view');
+	$titlelength = $configData['general']['truncate_titlelength'];
+// Get Truncate Description Length
+        $configData = Mage::getStoreConfig('category_view');
+	$desclength = $configData['general']['truncate_desclength'];
+?>
+
+<script type="text/javascript">
+ var $j = jQuery.noConflict();
+// Truncate
+$j(function() {
+      $j('.truncate_title').truncate({max_length: <?php echo $titlelength ?>});
+      $j('.truncate_list_desc').truncate({max_length: <?php echo $desclength ?>});
+ });
+ $j(document).ready(function(){
+        // Remove list class if thumbview
+        if ( $j("ul#products-list").hasClass("thumb_view") ) {
+        $j("ul#products-list").removeClass("list") };
+        // Equalize all thumb heights on switch if list view default
+        var maxHeight = 0;
+        $j('ul.thumb_view div.product-container').each(function() { maxHeight = Math.max(maxHeight, $j(this).height()) + 1; }).height(maxHeight);
+        // Undo equalized heights for list
+        $j('ul.list div.product-container').css("height","auto");
+});
+</script>
+
+<?php if($truncate == 'truncate') { $truncatetitle = 'truncate_title' ; $truncatedesc = 'truncate_list_desc'; } else { $truncatetitle = '' ; $truncatedesc = '';}; ?>
+
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <?php // Mixed mode ?>
+<div class="category-products">
+    <div class="toolbar-wrapper">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+    <span id="switch_thumb" class="switch_thumb"><?php echo $this->__('Switch View') ?></span>
+        <?php $_iterator = 0; ?>
+    <ul class="display list" id="products-list">
+            <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">         
+            <div class="product-container">
+                <div class="product-image-col">
+                    <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image', null, true)) ?>">
+                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($listimagewidth, $listimageheight); ?>" width="<?php echo $listimagewidth ?>" height="<?php echo $listimageheight ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image', null, true)) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image', null, true)) ?>" /></a>
+                            <?php if($_product->isSaleable()): ?>
+                    <button class="button" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php else: ?>
+                    <div class="availability"><span class="out-of-stock"><?php echo $this->__('Out of stock') ?></span></div>
+                            <?php endif; ?>
+                </div>  
+                <div class="product-info-col">
+				<?php $_productNameStripped = trim($this->stripTags($_product->getName(), null, true)); ?>
+                    <h2 class="product-name <?php echo $truncatetitle ?>"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>      
+                            <?php if($_product->getRatingSummary()): ?>
+                            <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                            <?php endif; ?>
+                            <?php echo $this->getPriceHtml($_product, true) ?>
+                    <p class="product-desc <?php echo $truncatedesc ?>"><?php echo $_product->getShortDescription() ?></p>
+                    <span class="addto"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>"><?php echo $this->__('Learn More') ?></a></span><span class="spacer-hide"> | </span>
+                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                    <span class="addto"><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"><?php echo $this->__('Add to Wishlist') ?></a></span><span class="spacer-hide"> | </span>
+                            <?php endif; ?>
+                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                    <span class="addto"><a href="<?php echo $_compareUrl ?>"><?php echo $this->__('Add to Compare') ?></a></span>
+                            <?php endif; ?>
+                </div>
+				<div class="clearfloat"></div>
+            </div>
+        </li>
+            <?php endforeach; ?>
+    </ul>
+    <div class="toolbar-wrapper"><?php echo $this->getToolbarHtml() ?></div>
+    <div id="switch_thumb_bottom"><span class="switch_thumb"><?php echo $this->__('Switch View') ?></span></div>
+</div>
+
+<?php endif; ?>
+
+<?php // Check if reviews enabled in extension
+$configData = Mage::getStoreConfig('product_view');
+$reviews = $configData['info_settings']['reviews'];
+if ($reviews == 1): ?>
+<script type="text/javascript">
+var $j = jQuery.noConflict();
+    $j(document).ready(function(){
+        $j(".product-info-col").each(function(){
+            var link = $j("a:eq(0)", this).attr('href');
+            $j(".rating-links a:first", this).attr("href", link + "#reviews");
+            $j(".rating-links a:last", this).attr("href", link + "#review-form");
+    });
+});
+</script>
+<?php endif; ?>

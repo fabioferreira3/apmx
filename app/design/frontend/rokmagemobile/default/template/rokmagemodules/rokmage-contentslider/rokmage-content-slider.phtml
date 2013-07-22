@@ -1,0 +1,65 @@
+<?php
+/**
+ * @version   $Id: rokmage-content-slider.phtml 47705 2012-01-18 21:55:02Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php
+  // Get Slide Contents
+  $configData = Mage::getStoreConfig('rokmage_mobile');
+  // Enable Touch
+  $enabletouch = $configData['slider_settings']['enabletouch'];
+  // Duration
+  $duration = $configData['slider_settings']['duration'] * 1000;
+  // Slide One
+  $slide_one_image = $configData['slider_settings']['slide_one_image'];
+  $slide_one_url = $configData['slider_settings']['slide_one_url'];
+  // Slide Two
+  $slide_two_image = $configData['slider_settings']['slide_two_image'];
+  $slide_two_url = $configData['slider_settings']['slide_two_url'];
+  // Slide Three
+  $slide_three_image = $configData['slider_settings']['slide_three_image'];
+  $slide_three_url = $configData['slider_settings']['slide_three_url'];
+?>
+
+<div class="slider">
+    <ul class="slidercontent">
+        <li class="slideone"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slide_one_url; ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmagemobile-slider-images/' . $slide_one_image; ?>" alt="Slider Image" /></a></li>
+        <li class="slidetwo"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slide_two_url; ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmagemobile-slider-images/' . $slide_two_image; ?>" alt="Slider Image" /></a></li>
+        <li class="slidethree"><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slide_three_url; ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmagemobile-slider-images/' . $slide_three_image; ?>" alt="Slider Image" /></a></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+<?php if($enabletouch == 1): ?>
+// Add our own jquery mobile swipe controls
+var $j = jQuery.noConflict();
+jQuery(function($j){
+  $j.extend($j.fn.moodular.controls, {
+    rokmagemobileTouch: function(moodular){
+      $j('ul.slidercontent').bind('swipeleft', function(event) {
+        moodular.next();
+      });
+      $j('ul.slidercontent').bind('swiperight', function(event) {
+        moodular.prev();
+      });
+      return false;
+    }
+  });
+});
+<?php endif; ?>
+// Set up our Moodular slider
+$j(window).load( function() {
+    $j('.slider ul.slidercontent').moodular({
+    auto: true,
+    dispTimeout: <?php echo $duration; ?>,
+    scroll: 1,
+    <?php if($enabletouch == 1): ?>controls: 'rokmagemobileTouch',<?php endif; ?>
+    speed: 400
+    });
+});
+</script>
+

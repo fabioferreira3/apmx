@@ -1,0 +1,166 @@
+<?php
+/**
+ * @version   1.7.0.1 May 8, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php
+// Get Menu Title
+        $configData = Mage::getStoreConfig('mage_menus');
+        $righttitle = $configData['settings_sideright']['blocktitle'];
+// Get CMS Menu Items
+        // Slot #1
+	$menuslot1 = $configData['settings_sideright']['first_menu_item'];
+	$menuslot1 = explode('|', $menuslot1);
+	$menuslot1 = $menuslot1[0];
+	$menuslot1subs = $configData['settings_sideright']['first_menu_item_subitems'];
+        // Slot #2
+	$menuslot2 = $configData['settings_sideright']['second_menu_item'];
+	$menuslot2 = explode('|', $menuslot2);
+	$menuslot2 = $menuslot2[0];
+	$menuslot2subs = $configData['settings_sideright']['second_menu_item_subitems'];
+        // Slot #3
+	$menuslot3 = $configData['settings_sideright']['third_menu_item'];
+	$menuslot3 = explode('|', $menuslot3);
+	$menuslot3 = $menuslot3[0];
+	$menuslot3subs = $configData['settings_sideright']['third_menu_item_subitems'];
+        // Slot #4
+	$menuslot4 = $configData['settings_sideright']['fourth_menu_item'];
+	$menuslot4 = explode('|', $menuslot4);
+	$menuslot4 = $menuslot4[0];
+	$menuslot4subs = $configData['settings_sideright']['fourth_menu_item_subitems'];
+        // Slot #5
+	$menuslot5 = $configData['settings_sideright']['fifth_menu_item'];
+	$menuslot5 = explode('|', $menuslot5);
+	$menuslot5 = $menuslot5[0];
+	$menuslot5subs = $configData['settings_sideright']['fifth_menu_item_subitems'];
+        // Slot #6
+	$menuslot6 = $configData['settings_sideright']['sixth_menu_item'];
+	$menuslot6 = explode('|', $menuslot6);
+	$menuslot6 = $menuslot6[0];
+	$menuslot6subs = $configData['settings_sideright']['sixth_menu_item_subitems'];
+    // Put slots in array
+    $slots_array = array($menuslot1, $menuslot2, $menuslot3, $menuslot4, $menuslot5, $menuslot6);
+    $slots_subs = array($menuslot1subs, $menuslot2subs, $menuslot3subs, $menuslot4subs, $menuslot5subs, $menuslot6subs);
+// Visibility
+	$visibility = array(
+            Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
+            Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
+	);
+// ** AW Blog (http://ecommerce.aheadworks.com/free-stuff/blog.html) *//**
+	$bloginstalled = 'No'; // Set to NO until we check
+        $modules = Mage::getConfig()->getNode('modules')->children();
+        $modulesArray = (array)$modules;
+        if(isset($modulesArray['AW_Blog'])) { $bloginstalled = 'Yes'; }; // Check if AW Blog is installed
+        $blogcatlist = (0); // Set the blogcatlist to empty array incase we're not using AW Blog
+        if($bloginstalled == 'Yes' && $modulesArray['AW_Blog']->is('active')) {
+            $blogcatcollection= Mage::getModel('blog/cat')->getCollection(); // Get list of blog categories
+            $id= array(); foreach ($blogcatcollection as $blogcat) { $id[]= $blogcat->getIdentifier();}; $blogcatlist = implode(',', $id); // Put blog category collection in comma separated list
+            $blogtitle = Mage::getStoreConfig('blog/blog/title'); $blogurl = Mage::getUrl(Mage::helper('blog')->getRoute()); // Get blog title and url from admin settings
+        };
+    // Get page title prefix/suffix
+    $configData = Mage::getStoreConfig('design');
+    $prefix = str_replace(" ", "", $configData['head']['title_prefix']);
+    $suffix = str_replace(" ", "", $configData['head']['title_suffix']);
+?>
+
+<div class="block mageside-menu">
+    <div class="block-title">
+        <strong><span><?php echo $righttitle ?></span></strong>
+    </div>
+
+    <div class="block-content">
+    <?php	// Check if 'Catalog Categories' link to be shown
+    $configData = Mage::getStoreConfig('mage_menus');
+    $catcats = $configData['settings_sideright']['catalog_cats'];
+	// Check if item count to be shown
+	$itemcount = $configData['settings_sideright']['itemcount'];
+    // Check if collapse 1st level enabled
+	$collapse = $configData['settings_sideright']['collapse'];
+	// Check if open accordion state default
+	$opendefault = $configData['settings_sideright']['opendefault'];
+    ?>
+    <?php if ($catcats == 'tree'): // Show 'Catalog Categories' link ?>
+			 <?php $rootCategoryId = Mage::app()->getStore()->getRootCategoryId();
+				$_category = Mage::getModel('catalog/category')->load($rootCategoryId)->getName();
+				$_currentcat = Mage::app()->getStore()->getCurrentCategory();
+				?>
+				<script type="text/javascript">
+				var $j = jQuery.noConflict();
+				$j(document).ready(function(){
+					<?php if($opendefault == 1): ?>
+					$j("div.mageside-menu-toggle-container.tree").show();
+					$j("div.mageside-menu-heading.tree").addClass("active");
+					$j("div.mageside-menu-toggle-button.tree").hide();
+					<?php endif; ?>
+				    <?php if($collapse == 1): ?>
+					$j("ul#tree-menu > li > ul").hide();
+					$j("ul#tree-menu > li > a").click(function(e){
+						e.preventDefault();
+				    	$j(this).toggleClass("current")<?php if($itemcount == 1): ?>.next("span")<?php endif; ?>.next("ul").slideToggle("normal");
+                    });
+                    <?php endif; ?>
+                    $j("ul#tree-menu > li a.activecurrent")<?php if($itemcount == 1): ?>.next("span")<?php endif; ?>.next("ul").show();
+					var elem = $j("ul#tree-menu li a");
+					if (elem.hasClass ("activecurrent")) {
+					    $j("div.mageside-menu-toggle-container.tree").show();
+						$j("div.mageside-menu-heading.tree").addClass("active");
+						$j("div.mageside-menu-toggle-button.tree").hide();
+					}
+				});
+				</script>
+				<div class="mageside-menu-heading tree"><span class="parent"><?php echo $_category; ?></span></div>
+				<div class="mageside-menu-toggle-button tree"></div>
+				<div class="mageside-menu-toggle-container tree">
+					<ul id="tree-menu">
+		        		<?php $_categories = $this->getStoreCategories() ?>
+						<?php foreach ($_categories as $category): ?>
+					        <?php echo $this->showCategoryTree($category, $this) ?>
+					    <?php endforeach ?>
+					</ul>
+				</div>
+	<?php elseif($catcats == 'normal'): ?>
+        <?php $_categories = $this->getStoreCategories() ?>
+        <?php foreach ($_categories as $category): ?>
+            <?php echo $this->showAccordionMenu($category, $this) ?>
+        <?php endforeach ?>
+    <?php endif; ?>
+
+        <?php foreach (array_map(null, $slots_array, $slots_subs) as $slots): list($menuslot1, $menuslot1subs) = $slots; // Get our tab contents   ?>
+            <?php if ($menuslot1 != 'disabled'): // Slot #1 ?>
+                <?php 
+                if($menuslot1 == 'blog') { $menuslot1title = $blogtitle; $menuslot1url = $blogurl; $id1 = str_replace (" ", "", $menuslot1title); }
+                else { $menuslot1title = Mage::getModel('cms/page')->setStoreId(Mage::app()->getStore()->getId())->load($menuslot1, 'identifier')->getTitle(); $id1 = str_replace (" ", "", $menuslot1title); $id1 = $prefix.$id1.$suffix; $menuslot1url = $this->getUrl($menuslot1); };
+                ?>
+                    <a href="<?php echo $menuslot1url ?>" id="clone-<?php echo $id1 ?>" class="mageside-menu-heading slot1"><span class="<?php if ($menuslot1subs != ''): ?>parent<?php endif; ?>"><?php echo $menuslot1title ?></span></a>
+                <?php if ($menuslot1subs != ''): ?>
+                        <div class="mageside-menu-toggle-button"></div>
+                        <div class="mageside-menu-toggle-container">
+                        <ul>
+                            <?php $array = explode(',', $menuslot1subs); foreach($array as $item): // Slot #1 ?>
+                            <?php 
+                            if(stristr($blogcatlist, $item)) { $subitem = Mage::getModel('blog/cat')->load($item, 'identifier')->getTitle(); $idfull = str_replace (" ", "", $subitem); $id = Mage::getStoreConfig('blog/blog/title').'-'.$idfull; $url = Mage::getUrl(Mage::helper('blog')->getRoute().'/cat/'.$item); }
+                            else { $subitem = Mage::getModel('cms/page')->setStoreId(Mage::app()->getStore()->getId())->load($item, 'identifier')->getTitle(); $id = str_replace (" ", "", $subitem); $id = $prefix.$id.$suffix; $url = $this->getUrl($item); };
+                                ?>
+                                <li id="clone-<?php echo $id ?>" >
+                                    <a href="<?php echo $url  ?>"><?php echo $subitem ?></a>
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+            <?php	// Check if 'Contact' link to be shown
+            $configData = Mage::getStoreConfig('mage_menus');
+            $contactlink = $configData['settings_sideright']['contact_link'];
+            if ($contactlink == 1): // Show 'Contact' link ?>
+            <a href="<?php echo $this->getUrl('contacts') ?>" class="mageside-menu-heading" id="clone-Contact"><span><?php echo $this->__('Contact') ?></span></a>
+            <?php endif; ?>
+
+            </div>
+    </div>

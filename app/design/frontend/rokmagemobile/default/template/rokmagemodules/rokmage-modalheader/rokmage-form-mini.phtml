@@ -1,0 +1,15 @@
+<?php
+/**
+ * @version   $Id: rokmage-form-mini.phtml 47705 2012-01-18 21:55:02Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalogsearch/form.mini.phtml
+ */
+?>
+
+<div class="searchbar first-time">
+    <form data-ajax="false" name="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+        <input id="search" type="search" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText() ?>" />
+    </form>
+</div>

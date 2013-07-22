@@ -1,0 +1,36 @@
+<?php
+/**
+ * @version   1.5.1.1 September 1, 2011
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2011 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/callouts/left_col.phtml - Adds ability to specify content from admin panel
+ */
+?>
+
+<?php
+// Check if Left CmsCallout  is ON or OFF
+    $configData = Mage::getStoreConfig('cms_callouts');
+	$leftpower = $configData['general']['enableleft'];
+// Get Callout Title
+    $configData = Mage::getStoreConfig('cms_callouts');
+	$lefttitle = $configData['settings']['leftcallouttitle'];
+// Get Callout Text
+    $configData = Mage::getStoreConfig('cms_callouts');
+	$leftcontent = $configData['settings']['leftcallouttext'];
+// Get CMS Block
+	$configData = Mage::getStoreConfig('cms_callouts');
+	$leftcalloutblock = $configData['settings']['leftcalloutblock'];
+?>
+
+<?php if($leftpower == 1) : ?>
+<div class="block callout">
+    <div class="block-title">
+        <strong><span><?php echo $lefttitle ?></span></strong>
+    </div>
+    <div class="block-content">
+	<?php echo $leftcontent ?>
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($leftcalloutblock)->toHtml(); ?>
+    </div>
+</div>
+<?php endif; ?>

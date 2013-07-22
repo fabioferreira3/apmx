@@ -1,0 +1,17 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* IE 8 fixes */
+
+/* Top Menu */
+ul#magemenu-top li ul li a { background-position: 0 97%;}
+
+/* Breadcrumbs */
+.rok-breadcrumbs ul li span { filter:alpha(opacity=0); }
+
+/* Footer */
+.footer .top-link { z-index: 99999999; position: static; }

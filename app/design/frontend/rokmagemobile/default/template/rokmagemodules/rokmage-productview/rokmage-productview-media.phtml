@@ -1,0 +1,33 @@
+<?php
+/**
+ * @version   $Id: rokmage-productview-media.phtml 47705 2012-01-18 21:55:02Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/product/view/media.phtml - removes default zoom and replaces with jquery version
+ */
+?>
+
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();
+(function(window, $j, PhotoSwipe){    
+    $j(document).ready(function(){    
+        var options = {};
+        $j("#gallery a").photoSwipe(options);
+    });
+}(window, window.jQuery, window.Code.PhotoSwipe));    
+</script>
+
+<div id="gallery">
+    <ul class="gallery">
+        <li><a href="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(768); ?>" rel="external"><img id="productImgDefault" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(82); ?>" alt="<?php echo $_productNameStripped ?>" title="<?php echo $_productNameStripped ?>" /></a></li>
+    <?php if (count($this->getGalleryImages()) > 0): foreach ($this->getGalleryImages() as $_image): ?>
+        <li><a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(768); ?>" rel="external"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(82); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a></li>
+    <?php endforeach; endif; ?>
+    </ul>
+</div>

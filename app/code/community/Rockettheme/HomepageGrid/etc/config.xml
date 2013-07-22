@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_HomepageGrid>
+            <version>1.0.0</version>
+        </Rockettheme_HomepageGrid>
+    </modules>
+	<default>
+        <homepage_grid>
+            <general>
+                <enabled>1</enabled>
+            </general>
+			<settings>
+				<productlist>null</productlist>
+                <no_of_products>6</no_of_products>
+				<filter_by>all</filter_by>
+				<grid_title>A selection of our products!</grid_title>
+				<grid_text>Check out a selection of our items currently for sale:</grid_text>
+				<truncate>truncate</truncate>
+				<truncate_titlelength>50</truncate_titlelength>
+				<truncate_desclength>110</truncate_desclength>
+				<listimageheight>90</listimageheight>
+				<listimagewidth>90</listimagewidth>
+				<defaultlayout>list</defaultlayout>
+				<filterbyroot>0</filterbyroot>
+            </settings>
+        </homepage_grid>  
+    </default>
+    <global>
+        <helpers>
+            <homepagegrid>
+                <class>Rockettheme_HomepageGrid_Helper</class>
+            </homepagegrid>
+        </helpers>
+        <models>
+            <homepagegridmodel>
+                <class>Rockettheme_HomepageGrid_Model</class>
+            </homepagegridmodel>
+		</models>
+    </global>		
+    <frontend>
+        <layout>
+            <updates>
+                <homepagegrid>
+                    <file>rokmage-homepagegrid/rokmagehomepagegrid.xml</file>
+                </homepagegrid>
+            </updates>
+        </layout>
+    </frontend>
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <homepage_grid translate="title" module="homepagegrid">
+                                            <title>HomepageGrid Section</title>
+                                            <sort_order>60</sort_order>
+                                        </homepage_grid>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

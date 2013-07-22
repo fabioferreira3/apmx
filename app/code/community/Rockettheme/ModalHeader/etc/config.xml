@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_ModalHeader>
+            <version>1.0.0</version>
+        </Rockettheme_ModalHeader>
+    </modules>
+	<default>
+        <modal_header>
+            <general>
+                <enabled>1</enabled>
+				<enablecustomformelements>1</enablecustomformelements>
+				<enablebreadcrumbs>1</enablebreadcrumbs>
+				<disablemodallogin>0</disablemodallogin>
+            </general>
+			<settings_modalanimation>
+                <animation>overlayopacity: 0.2,overlayinspeed: 300,modalpreposition: {"top":"43%"},modalpauseb4entry: 200,modalentryanimation: {"top": "50%", "opacity": "1"},modalentryspeed: 550,modalexitanimation: {"top": "55%", "opacity": "0"},modalexitspeed: 350,pauseb4overlayfadeout: 500,overlayoutspeed: 200</animation>
+            </settings_modalanimation>
+			<settings>
+				<ie6support>1</ie6support>
+                <iefix>ul.menu li, ul.menu li a, ul.menu li ul, .hover, .active, ul.menu li ul li a span, ul.menu .bg-top, ul.menu .bg-top-curves, ul.menu-single .bg-top-curves, .logo, .smallFont, .largeFont, .header ul li a, #rokmage-login-content, .header-container, .header .rokmage-cart-box-L img, #rocketlogo, .rating-box, .rating-box .rating, .rok-breadcrumbs, .rok-breadcrumbs ul li.first a, .round-m, .rounded_m, .round-s, .rounded_s, .round-l, .rounded_l, .round-xl, .rounded_xl, a.backward, a.forward, .images, #dynatip, div.scrollable-container, .thumbswrapper, .thumbsbutton, .mageside-menu-toggle-button, .mageside-menu-toggle-button-current</iefix>
+            </settings>
+        </modal_header>  
+    </default>
+    <global>
+        <helpers>
+            <modalheader>
+                <class>Rockettheme_ModalHeader_Helper</class>
+            </modalheader>
+        </helpers>
+    </global>		
+    <frontend>
+        <layout>
+            <updates>
+                <modalheader>
+                    <file>rokmage-modalheader/rokmagemodalheader.xml</file>
+                </modalheader>
+            </updates>
+        </layout>
+    </frontend>
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <modal_header translate="title" module="modalheader">
+                                            <title>ModalHeader Section</title>
+                                            <sort_order>60</sort_order>
+                                        </modal_header>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

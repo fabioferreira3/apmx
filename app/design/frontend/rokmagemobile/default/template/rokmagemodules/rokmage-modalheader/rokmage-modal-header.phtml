@@ -1,0 +1,47 @@
+<?php
+/**
+ * @version   $Id: rokmage-modal-header.phtml 47705 2012-01-18 21:55:02Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/html/header.phtml - adds backbutton, required data-role attributes etc, combines top links
+ */
+?>
+
+<?php
+  // Get Logo
+  $configData = Mage::getStoreConfig('rokmage_mobile');
+  $store_logo = $configData['header_settings']['store_logo'];
+  if($store_logo == '')
+  { $store_logo = $this->getLogoSrc(); }
+  else 
+  { $store_logo = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'rokmagemobile-logos/'. $store_logo; };
+?>
+
+<div class="topbannerbar" data-role="header" data-position="inline">
+    <a class="backbutton first-time" href="<?php echo Mage::getUrl(); ?>" data-rel="back" data-role="button" data-icon="arrow-l">Back</a>
+    <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/search.js') ?>"></script>
+    <?php echo $this->getChildHtml('topSearch') ?>
+</div>
+
+<div class="header-top" data-role="header">
+    <div class="col2-alt-set">
+        <div class="col-1">
+            <h1 id="logo"><a href="<?php echo $this->getUrl('') ?>"><img src="<?php echo $store_logo; ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        </div>
+        <div class="col-2">
+            <div class="switch-language">
+                <?php echo $this->getChildHtml('store_language') ?>
+            </div>
+            <div class="clear"></div>          
+            <p class="welcome"><?php echo $this->getWelcome()?></p>   
+        </div>
+    </div>
+</div>
+<div class="ui-body-a" data-role="navbar">
+    <ul>
+        <?php echo $this->getChildHtml('accountLinks') ?>
+        <?php echo $this->getChildHtml('topLinks') ?>
+    </ul>
+</div>
+

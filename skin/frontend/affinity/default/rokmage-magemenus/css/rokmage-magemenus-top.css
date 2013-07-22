@@ -1,0 +1,56 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* 1st Level */
+ul#magemenu-top { font:14px Arial,sans-serif; height:28px; padding:10px 0 10px 14px; position:relative; }
+ul#magemenu-top li { float: left; height: 34px; white-space:nowrap; position: relative; }
+ul#magemenu-top a { display: block; padding:5px 8px 0 21px; text-decoration: none;  }
+/* 2nd Level */
+ul#magemenu-top li ul {  z-index: 9999; display: none; position:absolute; top:34px; left:6px; text-align: left;  padding:5px 6px 5px 12px; }
+ul.menu-single li ul { padding-left:11px; left: 4px; }
+ul.menu li ul { width: 360px; } /* Double Only */
+ul.menu-single li ul { width: 180px; } /* Single Only */
+ul#magemenu-top li ul li { width: 170px; }
+ul#magemenu-top li ul li a span { display: block; padding: 1px 0 10px 2px; }
+ul#magemenu-top li ul li a { font-size: 12px; }
+/* 3rd Level */
+ul#magemenu-top li ul li ul { top: 12px; padding-top: 0; margin-top: 0px; }
+ul#magemenu-top li ul li ul li a { font-size: 12px; }
+/* Active States */
+ul#magemenu-top li a:hover, ul#magemenu-top li.active a { text-decoration: none; }
+/* Misc */
+ul#magemenu-top li.li-spacer, ul#magemenu-top li.hover.li-spacer { background: none; }
+ul#magemenu-top .show { display: block; }
+ul#magemenu-top .bg-top-curves { display: none; z-index: 99999; height: 7px; position:absolute; top:32px; left:6px; }
+ul#magemenu-top .bg-top { display: none; height: 10px; position:absolute; top:2px; left:160px; z-index: 99999999; }
+ul.menu .bg-top-curves { width: 365px; } /* Double Only */
+ul.menu .bg-top { width: 365px; } /* Double Only */
+ul.menu-single .bg-top-curves { width: 190px; } /* Single Only */
+ul.menu-single .bg-top { width: 365px; } /* Single Only */
+
+/* MegaMenu */
+ul#magemenu-top li ul.popup { padding: 0 15px 6px 0; height: auto; width: auto; cursor: default; left: 0 !important; }
+ul#magemenu-top li ul.popup > li { float: none !important; height: auto; width: auto; background: none; }
+ul#magemenu-top li ul.popup li { padding: 0 0 12px 5px !important; }
+ul#magemenu-top li ul.popup div.column { padding: 0 4px; margin-top: -1px; float:left; width:200px; }
+ul#magemenu-top li ul.popup li a.level1 { padding: 9px 10px 4px 2px !important; font-weight: bold; }
+ul#magemenu-top li ul.popup li a.level1 span { display: block; padding: 2px 0 5px 16px !important; }
+ul#magemenu-top li ul.popup div.itemSubMenu { font-size: 80%; margin-left: 0; }
+ul#magemenu-top li ul.popup div.itemSubMenu.level2 { margin-left: 0; }
+ul#magemenu-top li ul.popup div.itemSubMenu.level2 a span { margin-left: 12px;}
+ul#magemenu-top li ul.popup div.itemSubMenu.level1 { padding: 0 0 10px; }
+ul#magemenu-top li ul.popup div.itemSubMenu a { padding: 0 5px 0 5px !important; line-height: 16px; font-size: 12px !important; }
+.clearBoth { clear:both; }
+ul#magemenu-top .popup a.itemMenuName { }
+ul#magemenu-top .popup a:hover, ul#magemenu-top .popup a.active { }
+ul#magemenu-top li ul.popup div.itemSubMenu a.itemMenuName span { padding: 6px 0 5px 2px; }
+ul#magemenu-top li ul.popup div.itemSubMenu a.level1 span { padding: 6px 0 5px 12px; }
+/* Custom Block */
+ul#magemenu-top li ul.popup div.block-custom { margin: 0 -6px; padding: 14px 5px 2px; }
+ul#magemenu-top li ul.popup div.block-custom p { padding: 0; }
+/* bg top */
+ul#magemenu-top li ul.popup .bg-top { display: block; left: 0; top: -2px; }

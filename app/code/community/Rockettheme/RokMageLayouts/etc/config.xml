@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_RokMageLayouts>
+            <version>1.0.0</version>
+        </Rockettheme_RokMageLayouts>
+    </modules>
+    <default>
+        <rokmage_layouts>
+            <general>
+                <enable>1</enable>
+                <localoverride>0</localoverride>
+            </general>
+        </rokmage_layouts>  
+    </default>
+
+    <global>
+        <helpers>
+            <rokmagelayouts>
+                <class>Rockettheme_RokMageLayouts_Helper</class>
+            </rokmagelayouts>
+        </helpers>
+        <cms>
+            <layouts>
+                <rokmage_layout_1column>
+                    <label>RokMage 1 column layout</label>
+                    <template>rokmagelayouts/rokmage1column.phtml</template>
+                </rokmage_layout_1column>
+                <rokmage_layout_2columnleft>
+                    <label>RokMage 2 columns left layout</label>
+                    <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+                </rokmage_layout_2columnleft>
+                <rokmage_layout_2columnright>
+                    <label>RokMage 2 columns right layout</label>
+                    <template>rokmagelayouts/rokmage2columns-right.phtml</template>
+                </rokmage_layout_2columnright>
+                <rokmage_layout_3column>
+                    <label>RokMage 3 column layout</label>
+                    <template>rokmagelayouts/rokmage3column.phtml</template>
+                </rokmage_layout_3column>
+            </layouts>
+        </cms>
+        <models>
+            <rokmagelayouts>
+                <class>Rockettheme_RokMageLayouts_Model</class>
+            </rokmagelayouts>
+            <core>
+                <rewrite>
+                    <layout_update>Rockettheme_RokMageLayouts_Model_Update</layout_update>
+                </rewrite>
+            </core>
+        <!-- START ALAN STORMS UNREMOVE
+        Copyright (c) 2011 Alan Storm
+
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+
+        The above copyright notice and this permission notice shall be included in
+        all copies or substantial portions of the Software.
+
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+        THE SOFTWARE.
+        -->
+            <alanstormdotcomunremove>
+                <class>
+                    Rockettheme_RokMageLayouts_Model
+                </class>
+            </alanstormdotcomunremove>
+        </models>       
+        <events>            
+            <controller_action_layout_generate_xml_before>
+                <observers>
+                    <alanstormdotcom_unremoveblock_observer>
+                        <type>singleton</type>
+                        <class>alanstormdotcomunremove/observer</class>
+                        <method>unremoveUpdate</method>
+                    </alanstormdotcom_unremoveblock_observer>
+                </observers>
+            </controller_action_layout_generate_xml_before>
+        </events>
+        <!-- END ALAN STORMS UNREMOVE -->
+        
+    </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <rokmage_layouts translate="title" module="rokmagelayouts">
+                                            <title>RokMage Layouts Section</title>
+                                            <sort_order>60</sort_order>
+                                        </rokmage_layouts>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

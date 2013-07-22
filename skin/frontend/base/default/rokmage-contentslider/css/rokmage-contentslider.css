@@ -1,0 +1,85 @@
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* Main container widths */
+#homepage-contentslider-container { width:660px; position: relative; float:right; padding-right: 15px;  }
+#contentslider-container { margin: 0 auto; width:694px; height:230px; position: relative;  z-index: 0; }
+
+/* Homepage container for slides */
+.cms-index-index .homepage-spacer { height:280px; width: 1px; } /* Make space for HomepageSlider in Header section */
+#homepage-contentslider-container { border: 1px solid #CCC; }
+#homepage-contentslider-container .images { position:relative; height:250px; margin:15px 15px 0 16px; }
+#homepage-contentslider-container .images img { float:left; height : auto; overflow: hidden; width: 210px; }
+#homepage-contentslider-container .images > div { display:none; position:absolute; top:0; left:0; margin:0; padding: 0; height:245px;  }
+#homepage-contentslider-container .images div.slider-productinfo { margin-left: 245px; width:350px; }
+#homepage-contentslider-container .images h3 { font-size:1.8em; font-weight:normal; margin:0 0 10px; }
+#homepage-contentslider-container .tabs { bottom:5px; clear:both; left:50%; margin-left:-240px; position:absolute; }
+#homepage-contentslider-container .price-box .price { font-weight: normal; font-size: 1.2em; }
+
+/* Category container for slides */
+#contentslider-container { margin-left: 25px !important; }
+#contentslider-container .images { position:relative; height:230px; width:694px; float:left; margin-left:-25px !important; padding: 0 0 0 10px; }
+#contentslider-container .images img { float:left; height : auto; overflow: hidden; width: 150px; }
+#contentslider-container .images > div { display:none; position:absolute; top:0; left:0; margin:12px; padding:15px 30px 15px 15px; height:150px; }
+#contentslider-container .images div.slider-productinfo { margin-left: 185px; width: 460px; padding-top:5px; }
+#contentslider-container .images h3 { font-size:1.7em; font-weight:normal; margin:0 0 10px 0; line-height: 1.1em; }
+#contentslider-container .images h3 a { text-decoration: none; }
+#contentslider-container .tabs { bottom: 25px; margin-left: -295px; }
+
+/* Text */
+.images p { padding-top: 5px; }
+#contentslider-container .images p { line-height: 1.2em; }
+.images .slider-productinfo .regular-price { font-size:1.4em; }
+.images .slider-productinfo .price-box { font-size:1.2em; line-height:1.2em; padding: 2px 0 0; }
+.images .slider-productinfo .price-to, .images .slider-productinfo .price-from { padding: 0; }
+.images .slider-productinfo .price-from .price-label, .images .slider-productinfo .price-to .price-label { font-weight: normal;}
+/* read more button */
+.slider-productinfo button.button span { background-position:0 -180px; }
+.slider-productinfo button.button span span { background-position:100% -180px; }
+.slider-productinfo button.button.hover span { background-position:0 -210px; }
+.slider-productinfo button.button.hover span span { background-position:100% -210px; }
+#contentslider-container .slider-productinfo button.button span { background-position:0 0px; }
+#contentslider-container .slider-productinfo button.button span span { background-position:100% 0px; }
+#contentslider-container .slider-productinfo button.button.hover span { background-position:0 -30px; }
+#contentslider-container .slider-productinfo button.button.hover span span { background-position:100% -30px; }
+/* tabs */
+.tabs { clear:both; position: absolute; bottom: 5px; left: 50%; margin-left: -46px; }
+.tabs a { width:8px; height:8px; float:left; margin:3px; display:block; font-size:1px; background-image: url(../images/navigator.png); }
+.tabs a:hover { background-position:0 -8px; }
+.tabs a.current { background-position:0 -16px; }
+/* prev and next buttons */
+#homepage-contentslider-container .backward {  z-index: 999; left: 20px; top:130px;  }
+#homepage-contentslider-container .forward {  z-index: 999; right: 20px; top:130px;  }
+#contentslider-container .backward {  z-index: 999; left: -15px; top:95px;  }
+#contentslider-container .forward {  z-index: 999; right: 10px; top:95px;  }
+.backward, .forward { position: absolute; float:left; display:block; width:30px; height:30px; cursor:pointer; font-size:1px; text-indent:-9999em; }
+/* next */
+.forward { background: url(../images/right.png); }
+/* prev */
+.backward { background: url(../images/left.png); }
+/* disabled navigational button. is not needed when tabs are configured with rotate: true */
+.disabled { visibility:hidden !important; }
+/* Ribbons */
+#contentslider-container span.ribbon, #homepage-contentslider-container span.ribbon { display: none; position: absolute; width: 149px; height: 94px; left: -29px; top: -4px; }
+#homepage-contentslider-container span.ribbon { left: -3px;} 
+#contentslider-container.bestselling span.ribbon, #homepage-contentslider-container.bestselling span.ribbon { display: block; background: url(../images/bestselling.png); }
+#contentslider-container.featured span.ribbon, #homepage-contentslider-container.featured span.ribbon { display: block; background: url(../images/featured.png); }
+#contentslider-container.recent span.ribbon, #homepage-contentslider-container.recent span.ribbon { display: block; background: url(../images/new.png); }
+#contentslider-container.viewed span.ribbon, #homepage-contentslider-container.viewed span.ribbon { display: block; background: url(../images/popular.png); }
+#contentslider-container.rated span.ribbon, #homepage-contentslider-container.rated span.ribbon { display: block; background: url(../images/highestrated.png); }
+#contentslider-container.specialprice span.ribbon, #homepage-contentslider-container.specialprice span.ribbon { display: block; background: url(../images/sale.png); }
+/* Custom Images and Full size link */
+#homepage-contentslider-container .images .slide { height: 272px; margin: 5px 0 5px -20px; padding: 0; width: 980px; }
+#homepage-contentslider-container .images .slide .slider-productinfo { margin: 80px 0 0 100px; }
+.slide-full-link { position: absolute; top: 0; left: 0; width: 980px; height: 272px; display: block; }
+
+/* 3col width fixes */
+.col3-layout #contentslider-container { width: 460px; }
+.col3-layout #contentslider-container .images { width: 455px; }
+.col3-layout #contentslider-container .images div.slider-productinfo { width: 250px; }
+.col3-layout #contentslider-container .tabs { left: auto; right: 50%; margin-right: 115px; }
+.col3-layout #contentslider-container .images h3 { font-size:1.5em; }

@@ -1,0 +1,61 @@
+<?php
+/**
+ * @version   1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/template/links.phtml - Adds modal header cart and spacer for text-resizer
+ * Specific to Moxy
+ */
+?>
+
+<?php
+	// Get modal animation settings from admin
+	$configData = Mage::getStoreConfig('modal_header');
+	$animation = $configData['settings_modalanimation']['animation'];
+	// Check if modal cart disabled
+	$modalcart = $configData['general']['disablemodalcart'];
+?>
+
+<?php if($modalcart == 0): ?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('a.modal, .summary .amount a').rokmagemodal({ rokmagemodalcontainer: "#rokmage-header-cart", <?php echo $animation ?> });
+    });
+</script>
+<?php endif; ?>
+
+<?php
+/**
+ * @see Mage_Page_Block_Template_Links
+ */
+?>
+
+<?php $_links = $this->getLinks(); ?>
+<?php if(count($_links)>0): ?>
+
+<div class="links-container">
+                <div class="rokmage-cart-box-container">
+                    <?php $_cartQty = Mage::getSingleton('checkout/cart')->getSummaryQty(); ?>
+                                        <?php if ($_cartQty==0): ?>
+                                    <?php echo $this->__('Cart') ?> (<span class="big">0</span><span class="items-checkout"> <?php echo $this->__('items') ?>)</span>
+                                        <?php else: ?>
+                                            <?php if ($_cartQty==1): ?>
+                                    <a href="<?php echo $this->getUrl('checkout/cart') ?>" class="modal"><?php echo $this->__('Cart') ?> (<span class="big"><?php echo $_cartQty ?></span><span class="items-checkout"> <?php echo $this->__('item') ?></span>)</a>
+                                            <?php else: ?>
+                                    <a href="<?php echo $this->getUrl('checkout/cart') ?>" class="modal"><?php echo $this->__('Cart') ?> (<span class="big"><?php echo $_cartQty ?></span><span class="items-checkout"> <?php echo $this->__('items') ?></span>)</a>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                </div>
+                <ul class="links"<?php if($this->getName()): ?> id="<?php echo $this->getName() ?>"<?php endif;?>>
+            		<?php foreach($_links as $_link): ?>
+						<?php if ($_link instanceof Mage_Core_Block_Abstract):?>
+				            <?php echo $_link->toHtml() ?>
+				        <?php else: ?>
+			    <li<?php if($_link->getIsFirst()): ?> class="<?php if($_link->getIsFirst()): ?>first<?php endif; ?>"<?php endif; ?> <?php echo $_link->getLiParams() ?>><?php echo $_link->getBeforeText() ?><a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?></li>
+						<?php endif;?>
+			        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php endif; ?>

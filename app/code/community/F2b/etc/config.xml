@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Kleber Vieira
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL).
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Payment Gateway
+ * @package    F2b
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <f2b>
+            <version>1.0</version>          
+        </f2b>
+    </modules>
+    <global>
+        <models>
+            <f2b>
+                <class>F2b_Model</class>
+                <resourceModel>f2b_mysql4</resourceModel>
+            </f2b>
+            <f2b_mysql4>
+                <class>F2b_Model_Mysql4</class>
+                <entities>
+                    <api_debug><table>f2b_api_debug</table></api_debug>
+                </entities>
+            </f2b_mysql4>
+			<f2b_mysql4>
+                <class>F2b_Model_Mysql4</class>
+                <entities>
+                    <f2b_return><table>f2b</table></f2b_return>
+                </entities>
+            </f2b_mysql4>
+        </models>
+        <resources>
+            <f2b_setup>
+                <setup>
+                    <module>F2b</module>
+                    <class>F2b_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </f2b_setup>
+            <f2b_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </f2b_write>
+            <f2b_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </f2b_read>
+        </resources>
+        <blocks>
+            <f2b><class>F2b_Block</class></f2b>
+        </blocks>
+    </global>
+    <frontend>      
+        <routers>
+            <f2b>
+                <use>standard</use>
+                <args>
+                    <module>F2b</module>
+                    <frontName>F2b</frontName>
+                </args>
+            </f2b>
+        </routers>
+        <translate>
+            <modules>
+                <f2b>
+                    <files>
+                        <default>f2b.csv</default>
+                    </files>
+                </f2b>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <f2b>
+                    <file>f2b.xml</file>
+                </f2b>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <f2b>
+                    <files>
+                        <default>f2b.csv</default>
+                    </files>
+                </f2b>
+            </modules>
+        </translate>        
+    </adminhtml>
+
+    <default>
+         <payment>
+             <f2b_standard>
+                  <model>F2b_Model_Standard</model>
+                  <title>F2b</title>
+                  <allowspecific>1</allowspecific>                  
+            </f2b_standard>
+        </payment>
+    </default>
+</config>

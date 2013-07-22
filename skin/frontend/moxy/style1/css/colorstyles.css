@@ -1,0 +1,42 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ * Moxy Style 1
+ */
+
+a, .link-cart { color:#5B0A79; }
+
+.page { background:#10051D url(../images/header-bg.jpg) no-repeat 50% 0; }
+.header { background: url(../images/menu-bg.png) repeat-x 0 -53px; }
+.quick-access2 { background: #FFEFFC url(../images/welcome-bar-bg.png) repeat-x 0 100%; border-top:1px solid #FFF; }
+
+/* Modal Windows */
+p.rokmage-forgot-pass a, #rokmage-header-cart span.button a:hover, #rokmage-header-cart h4 a { color: #5B0A79; }
+
+/* Moxy Lavalamp Effect */
+.inner-header-container #box { background:url(../images/menutab-r.png) no-repeat 100% 0; }
+.inner-header-container #box .head { background:url(../images/menutab-l.png) no-repeat 0 0; }
+
+/* First Word Spans */
+span.color { color: #5B0A79; }
+
+
+/* Product Scroller Tooltip */
+.tooltip { color: #5B0A79; }
+.tooltip span.price { color: #333; }
+
+/* Category View */
+span:hover.switch_thumb { color: #5B0A79; }
+/* Filter */
+#rokmage-layered-nav ol li a:hover, #rokmage-layered-nav dt:hover, #rokmage-layered-nav .active { color:#5B0A79; }
+
+/* Product View */
+ul.tabs li a:hover, ul.tabs li.active a { color: #5B0A79; }
+
+/* OPC */
+.opc .active .step-title h2 { color: #5B0A79; }
+
+/* Footer */
+.footer-wrapper { background-color: #FFF; }

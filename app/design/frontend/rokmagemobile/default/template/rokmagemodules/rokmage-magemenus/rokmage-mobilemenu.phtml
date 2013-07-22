@@ -1,0 +1,29 @@
+<?php
+/**
+ * @version   $Id: rokmage-mobilemenu.phtml 53679 2012-06-13 19:17:42Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php    // Check if collapse 1st level enabled
+	$configData = Mage::getStoreConfig('rokmage_mobile');
+	$collapse = $configData['menu_settings']['collapse'];
+?>
+
+<?php if($collapse == "0"): ?>
+<ul id="mobile-menu" data-role="listview">
+<?php $_categories = $this->getStoreCategories() ?>
+<?php foreach ($_categories as $category): ?>
+    <?php echo $this->showMobileTree($category, $this) ?>
+<?php endforeach ?>
+</ul>
+<?php else: ?>
+<ul id="mobile-menu" class="accordion">
+<?php $_categories = $this->getStoreCategories() ?>
+<?php foreach ($_categories as $category): ?>
+    <?php echo $this->showMobileTreeCollapsed($category, $this) ?>
+<?php endforeach ?>
+</ul>
+<?php endif; ?>

@@ -1,0 +1,35 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+.footer-wrapper { width:100%; }
+.footer { margin:0 auto; padding:5px 30px; width:940px; text-align: left; }
+.clearfloat { clear: both; }
+
+/* Top Link */
+.footer .top-link { float: right; margin:20px 10px -30px 0; position: relative; text-decoration: none; line-height: 10px; padding-left: 12px; }
+
+/* Footer lists */
+.rokmage-footer-inner-panel  { width: 180px; float:left; font-size: 12px; padding: 18px 10px 0 10px;}
+.footer .rokmage-footer-inner-panel ul li a { display:block; padding-bottom:5px; padding-left:20px; }
+.footer .rokmage-footer-inner-panel ul li a:hover { }
+.rokmage-footer-inner-panel h3 { font-size:120%; font-weight:bold; padding-bottom: 18px;}
+#rokmage-footer-text { float: right; width: 310px; padding: 18px 10px 15px 20px; }
+#rokmage-footer-text p, .rokmage-footer-inner-panel p {  text-align: left; }
+#rokmage-footer-text h3 { font-size:120%; font-weight:bold; padding-bottom: 18px;}
+
+/* Footer Menu */
+#footer-bottom { line-height: 45px; height: 30px; text-align: center; }
+#footer-bottom ul li { display: inline }
+#footer-bottom ul li a { font-size:120%; font-weight:bold; padding:0 17px 0 13px; }
+#footer-bottom ul li span { font-size:120%; font-weight:bold; padding:0 17px 0 13px; }
+#footer-bottom ul li.last a { background:none; }
+#footer-bottom ul li a:hover { text-decoration:none; }
+.footer ul.footermenu { float:none;margin:0 auto;padding:0; }
+.footer .store-switcher { left: 50%; line-height: 23px; margin-left: -250px; position: absolute; top: 5px; }
+#rocketlogo { margin: 0 auto 10px; height: 15px; width: 111px; padding: 10px 0; }
+#rocketlogo a { display: block;height: 15px; width: 111px; }
+#copyright { text-align: center; }

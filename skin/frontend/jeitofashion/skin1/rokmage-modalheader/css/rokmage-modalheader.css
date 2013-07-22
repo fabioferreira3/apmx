@@ -1,0 +1,135 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* Header ================================================================================ */
+.header-container { margin:0 auto;  }
+.header-container.z2{}
+.header { padding: 0; border: 0;  }
+.inner-header-container { margin:0 auto; width: 100%; position: relative; }
+.header h1.logo { margin:0; padding:0; width:100%;}
+.header .logo { position:absolute; text-decoration:none !important; padding: 32px 0 15px 20px; z-index:99999999; }
+.header .logo img{ width:78%; }
+.header .logo strong { position:absolute; top:-999em; left:-999em; width:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
+.quick-access { height: 46px; }
+.quick-access2 { height: 36px; line-height:3em; }
+.top-links { float: right; }
+
+/* Welcome */
+.header-container .welcome-msg { padding-left:20px; float:left; color: #fff; font-size:2em; text-shadow: 1px 1px #666; font-family:'fashion',  'arial';}
+
+/* Search*/
+#search_mini_form input { border: 0; width: 230px; text-align: left; font-size:14px; color: #333; font-family:'fashion','arial'}
+.form-search { width: 270px; background: url(../images/search-bg.png) no-repeat 0 50%; padding:14px 0 15px 10px; text-align:left; position: absolute; right: 124px; }
+#search_autocomplete { margin: 4px 0 0 2px; background: #fff; padding: 5px; border: 1px solid #ccc; border-top: 0; box-shadow: 3px 3px 3px #666; -moz-box-shadow: 3px 3px 3px #666; -webkit-box-shadow: 3px 3px 3px #666; color: #666; }
+#search_autocomplete ul li.even { background-color:#f6f6f6; }
+.form-search .search-autocomplete { z-index:999; }
+.form-search .search-autocomplete ul { border: 0; }
+.form-search .search-autocomplete li { padding:3px; border-bottom:1px solid #ddd; cursor:pointer; }
+.form-search .search-autocomplete li .amount { float:right; font-weight:bold; }
+.form-search .search-autocomplete li.selected {}
+
+/* Language & Date */
+.form-language { float:left; color:#fff; padding: 0 30px 0 20px; }
+.form-language label { text-shadow: 1px 1px #666; }
+.form-language select { padding: 1px; border: 0px solid #3E3832; color:#666;}
+.header-container .date { position: absolute; left: 10px; color:#000; font-size: 1.2em; line-height:46px; font-family:'fashion-bold',  'arial';}
+.header-container .date strong { font-size: 1.4em; padding: 0 0 0 10px; }
+
+/* Header Cart */
+.rokmage-cart-box-container { float:left; padding-right:18px; }
+.rokmage-cart-box-container span.big { font-weight: bold; }
+
+/* Top Links */
+.top-links .links { float:right; margin: 0 10px 0 0; }
+.top-links .links li {  display: inline; padding: 0 10px; font-size:1.5em; }
+.top-links .links li a { text-decoration: none; color: #FFF; text-shadow: 1px 1px #666; font-family:'fashion',  'arial'; }
+.top-links .links li a:hover { text-decoration: none; }
+.top-links ul li.first a { padding: 2px 5px 2px 17px; }
+.top-links ul li.first a.logout {  }
+
+/* Font Resizer */
+.fontResizer { width: 105px; position: absolute; right: 10px; top:15px;}
+.fontResizer a { display: block; float: left; width: 15px; height: 15px; text-align: center; line-height: 15px; text-decoration: none; margin: 0 0 0 4px; color: #333; }
+.smallFont { font-size: 12px; font-family: Arial, sans-serif; text-shadow: 1px 1px #fff;}
+.largeFont { font-size: 16px; font-family: Arial, sans-serif; text-shadow: 1px 1px #fff;}
+.rokmage-text-resize { font-size: 12px; font-weight:bold; float:left; padding-right: 5px; }
+
+
+/* ----- Modal Windows ----- */
+/* Defaults */
+.modal-close { position: absolute; top: 27px; right: 22px; padding: 11px; cursor: pointer;}
+#overlay { background:#000; display: none; opacity: 0; height:100%; left:0; position:fixed; top:0; width:100%; z-index:9999; cursor:pointer; }
+div.modalcontent { display: none; position: fixed; left: 50%; z-index: 999999; }
+
+/* Cart Modal*/
+#rokmage-header-cart {  width: 240px; margin-left: -150px; height: 290px; margin-top: -165px; padding: 30px; }
+#rokmage-header-cart h6 { padding: 10px 0 15px 5px; font-size: 135%; font-weight: normal; }
+#rokmage-header-cart h4 a { text-decoration: none; }
+#rokmage-header-cart .modalcart-btn-remove { text-decoration: none; }
+#rokmage-header-cart .modalcart-btn-remove img { padding: 1px 3px 0 0;}
+#cart-buttons { margin: 8px 0 0 7px; }
+#rokmage-header-cart span.button { float:left; font-size:13px; line-height:22px; padding:0 12px 0 0; text-align:center; white-space:nowrap;}
+#rokmage-header-cart span.button a { border:0 none; cursor:pointer; overflow:visible; padding:4px 0 4px 12px; width:auto; text-decoration: none; margin-left:-6px; }
+/* Details */
+#rokmage-header-cart .bundle-details { cursor:pointer; text-decoration: underline; }
+/* Login Modal*/
+#rokmage-login-content { width: 240px; margin-left: -150px; height: 290px; margin-top: -165px; padding: 30px; }
+#rokmage-login-content fieldset { padding: 10px;}
+#rokmage-login-content h2 { padding: 0 0 15px 0; font-size: 155%; font-weight: normal; }
+.rokmage-email-login-block { width: 115px; }
+.rokmage-password-login-block { width: 115px; }
+#rokmage-login-content #send2 { margin: 10px 0 ;}
+#rokmage-login-content p.required { position: absolute; top: 195px; left: 185px; }
+#rokmage-login-content input.input-text { margin:5px 0; padding:5px; width:210px; }
+p.rokmage-forgot-pass a { text-decoration: none; }
+
+
+/* Custom Form Elements */
+span.select { position: absolute; width: 79px; height: 26px; padding: 0 24px 0 8px; top:5px; font: 12px/26px arial,sans-serif; background: url(../images/select.png) no-repeat 100% 50%; overflow: hidden; text-align: left; color:#333; }
+
+
+
+/* ----- Cart Scroller ----- */
+div.cart-scrollable-container { margin:0 auto; }
+div.cart-scrollable { position:relative; overflow:hidden; width: 200px; height:200px; float:left; }
+div.cart-scrollable div.items { width:20000em; position:absolute; clear:both; text-align:center; }
+/* single scrollable item */
+div.cart-scrollable div.items ul.scroll-item { border:0 none; padding:0; float:left; width:200px; }
+div.cart-scrollable div.items .product-name a { display:block; font-weight:bold; margin-bottom:10px; padding:0 15px; text-decoration: none; font-size: 12px; line-height: 15px; height: 26px; }
+.cart-scrollable-container .product-image img { padding:5px 6px 6px; }
+div.cart-scrollable div.items .productPrice { display:block; font-size:11px; font-weight:bold; margin:5px 0; white-space:nowrap; }
+/* prev, next buttons */
+.cart-scrollable-container a.prev, .cart-scrollable-container a.next { opacity: 1; display:block; width:20px; height:170px; float:left; margin:0px; cursor:pointer; font-size:1px;}
+.cart-scrollable-container a.disabled { visibility:hidden !important;}
+.cart-scrollable-container a.next { clear:right; opacity: 1; }
+/* read more button */
+div.cart-scrollable div.items span.button a { overflow:visible; width:auto; border:0; padding:4px 0 4px 12px; cursor:pointer; -webkit-border-fit:lines; /* <- Safari & Google Chrome Fix */ }
+div.cart-scrollable div.items span.button  {  margin: 0 0 0 52px; float:left; padding:0 12px 0 0; font:12px/21px Helvetica,Arial,sans-serif; text-align:center; white-space:nowrap; }
+div.cart-scrollable div.items span.button a, div.cart-scrollable div.items span.button a:hover { text-decoration: none; }
+/* Misc for sidebar cart */
+.block-cart .subtotal { text-align: left; }
+
+/* BreadCrumbs */
+.breadcrumbs { display: none; }
+.rok-breadcrumbs { border: 0; margin:0 auto; display: block; height: 21px; overflow: hidden; width: 100%; padding: 7px 0; }
+.rok-breadcrumbs ul { margin: 0; padding: 0; height: 21px; display: block; }
+.rok-breadcrumbs ul li { display: block; float: left; position: relative; height: 22px; overflow: hidden; line-height: 21px; margin: 0px 6px 0px 0; padding: 0px 16px 0px 0; font-size: 1.1em; }
+.rok-breadcrumbs ul li div.chevronOverlay { position: absolute; right: 0; top: 0; z-index: 2; }
+.rok-breadcrumbs ul li span { display: block; overflow: hidden; margin-right: -3px; }
+.rok-breadcrumbs ul li a { display: block; position: relative; height: 21px; line-height: 21px; overflow: hidden; float: left; text-decoration: none; }
+.rok-breadcrumbs ul li strong { }
+.rok-breadcrumbs ul li.first a { height: 22px !important; text-indent:-1000em; width:22px; overflow: hidden; }
+.rok-breadcrumbs ul li.first { padding-top:1px; }
+.rok-breadcrumbs ul li.first a:hover { background-position: 0 -22px; }
+.rok-breadcrumbs ul li.last { background: none; margin-right: 0; padding-right: 0; }
+.chevronOverlay { display: none; width: 22px; height: 22px; }
+/* Misc Fixes */
+.catalog-product-view .rok-breadcrumbs, .cms-page-view .rok-breadcrumbs, .checkout-onepage-index .rok-breadcrumbs { width:683px; }
+
+/* Misc */
+.clearfloat { clear:both; }
+.block .actions { float: left; }

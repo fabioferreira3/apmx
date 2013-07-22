@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_ImageBorders>
+            <version>1.0.0</version>
+        </Rockettheme_ImageBorders>
+    </modules>
+	<default>
+        <image_borders>
+            <general>
+                <enableimageborders>1</enableimageborders>
+            </general>
+        </image_borders>  
+    </default>
+    <global>
+        <helpers>
+            <imageborders>
+                <class>Rockettheme_ImageBorders_Helper</class>
+            </imageborders>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <imageborders>
+                    <file>rokmage-imageborders/rokmageimageborders.xml</file>
+                </imageborders>
+            </updates>
+        </layout>
+    </frontend>		
+	<adminhtml>
+        <acl>
+            <resources>
+				 <all>
+	                    <title>Allow everything</title>
+	                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <image_borders translate="title" module="imageborders">
+                                            <title>ImageBorders Section</title>
+                                            <sort_order>60</sort_order>
+                                        </image_borders>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

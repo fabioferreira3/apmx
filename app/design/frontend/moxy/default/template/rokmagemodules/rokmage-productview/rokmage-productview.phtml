@@ -1,0 +1,255 @@
+<?php
+/**
+ * @version   1.6.2.1 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<?php
+// Get Quick Info attribute and content
+$configData = Mage::getStoreConfig('product_view');
+$quick_info_slot = $configData['info_settings']['quick_info_slot'];
+$quick_info_content = $configData['info_settings']['quick_info_content'];
+if ($quick_info_slot == 'disabled') {
+    $quick_info_title = 'disabled';
+    $quick_info_content = 'disabled';
+} elseif (substr($quick_info_slot, 0, 4) == 'ATT_') {
+    $quick_info_slot = substr($quick_info_slot, 4);
+    $quick_info_title = $_product->getResource()->getAttribute($quick_info_slot)->getFrontendLabel();
+    if($quick_info_slot == 'short_description'){
+        $quick_value = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+    }
+    elseif($quick_info_slot == 'description'){
+        $quick_value = $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description'); 
+    }
+    else{
+        $quick_value = $_product->getResource()->getAttribute($quick_value)->getFrontend()->getValue($_product);
+    };
+    $quick_info_content = str_replace('{{value}}', $quick_value, $quick_info_content);
+} elseif (substr($quick_info_slot, 0, 4) != 'ATT_') {
+    $staticBlock = Mage::getModel('cms/block')->load($quick_info_slot);
+    $quick_info_title = $staticBlock->getTitle();
+    $quick_value = $staticBlock->getContent();
+    $quick_info_content = str_replace('{{value}}', $quick_value, $quick_info_content);
+};
+// Get tab#1 attribute and content
+$first_attribute_slot = $configData['info_settings']['first_attribute_slot'];
+$first_attribute_content = $configData['info_settings']['first_attribute_content'];
+// Get tab#2 attribute and content
+$second_attribute_slot = $configData['info_settings']['second_attribute_slot'];
+$second_attribute_content = $configData['info_settings']['second_attribute_content'];
+// Get tab#3 attribute and content
+$third_attribute_slot = $configData['info_settings']['third_attribute_slot'];
+$third_attribute_content = $configData['info_settings']['third_attribute_content'];
+// Get tab#4 attribute and content
+$fourth_attribute_slot = $configData['info_settings']['fourth_attribute_slot'];
+$fourth_attribute_content = $configData['info_settings']['fourth_attribute_content'];
+// Get tab#5 attribute and content
+$fifth_attribute_slot = $configData['info_settings']['fifth_attribute_slot'];
+$fifth_attribute_content = $configData['info_settings']['fifth_attribute_content'];
+// Put tabs in array
+$tabs_array = array($first_attribute_slot, $second_attribute_slot, $third_attribute_slot, $fourth_attribute_slot, $fifth_attribute_slot);
+$tabs_content = array($first_attribute_content, $second_attribute_content, $third_attribute_content, $fourth_attribute_content, $fifth_attribute_content);
+// Check if reviews globally enabled
+$configData = Mage::getStoreConfig('advanced');
+$reviewsenabled = $configData['modules_disable_output']['Mage_Review'];
+// Check if reviews enabled in extension
+$configData = Mage::getStoreConfig('product_view');
+$reviews = $configData['info_settings']['reviews'];
+// Check if equalizing tab heights
+$configData = Mage::getStoreConfig('product_view');
+$equalize = $configData['info_settings']['equalize'];
+?>
+
+<?php if ($quick_info_title != 'disabled' && $quick_value != ''): ?> 
+    <div id="quick-info-wrapper" style="display:none;">
+        <div id="quick-info-slot">
+            <h2><?php echo $this->__($quick_info_title) ?></h2>
+            <p><?php echo $quick_info_content ?></p>
+        </div>
+    </div>
+<?php endif; ?>
+
+
+    <div class="tabs-outer">
+            <ul class="tabs">
+                <?php foreach ($tabs_array as $tab): // Get our tabs  ?>
+                    <?php $code = substr($tab, 0, 4);
+                    if ($tab != 'disabled'): // If tab isn't disabled ?>
+
+                        <?php if ($code == 'ATT_'): // If attribute ?>
+                            <?php
+                            $tab = substr($tab, 4);
+                            $attvalue = $_product->getResource()->getAttribute($tab)->getFrontend()->getValue($_product);
+                            if ($attvalue != ''): ?>
+                                <li><a href="#<?php echo $tab ?>"><?php $tabtitle = $_product->getResource()->getAttribute($tab)->getStoreLabel();
+                            echo $this->__($tabtitle) ?></a></li>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <?php if ($code == 'addi'):  // If "additional info"  ?>
+                            <li class="additionaltab"><a href="#additional-info"><?php echo $this->__('Additional Information') ?></a></li>
+                        <?php endif; ?>
+
+                        <?php if ($code != 'ATT_' && $code != 'addi'): // If cms block ?>
+                            <?php $staticBlock = Mage::getModel('cms/block')->load($tab);
+                            $tabtitle = $staticBlock->getTitle(); ?>
+                            <li><a href="#cms_id_<?php echo $tab ?>"><?php echo $this->__($tabtitle) ?></a></li>
+                        <?php endif; ?>
+
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <?php if ($reviewsenabled == 0): ?><?php if ($reviews == 1): ?><li class="reviews"><a href="#reviews"><?php echo $this->__('Reviews') ?></a></li><?php endif; ?><?php endif; ?>
+            </ul>
+    </div>
+    <div class="tab_container">
+        <?php foreach (array_map(null, $tabs_array, $tabs_content) as $tabs): // Get our tab contents   ?>
+            <?php
+            list($tabs1, $tabs2) = $tabs;
+            $code = substr($tabs1, 0, 4);
+            if ($tabs1 != 'disabled'): // If tab isn't disabled:
+                ?>
+                    <?php if ($code == 'ATT_'): // If attribute  ?>
+                        <?php
+                        $tabs1 = substr($tabs1, 4);
+                        if($tabs1 == 'short_description'){
+                            $attvalue = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+                        }
+                        elseif($tabs1 == 'description'){
+                            $attvalue = $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description'); 
+                        }
+                        else{
+                            $attvalue = $_product->getResource()->getAttribute($tabs1)->getFrontend()->getValue($_product);
+                        };
+                        if ($attvalue != ''):
+                            ?>
+                        <div id="<?php echo $tabs1 ?>" class="<?php echo $tabs1 ?> tab_content">
+                            <?php
+                            $tab_content = str_replace('{{value}}', $attvalue, $tabs2);
+                            // Check for video link
+                            if ($_product->getVideoLink()) {
+                                $productvideo = $this->getLayout()->getBlock('rokmage_product_video')->toHtml();
+                                $tab_content = str_replace('{{video}}', $productvideo, $tab_content);
+                            } else {
+                                $novidtext = $this->__('There is currently no video available for this product');
+                                $tab_content = str_replace('{{video}}', $novidtext, $tab_content);
+                            };
+                            // Display content
+                            echo $tab_content
+                            ?>
+                        </div>
+                        <?php endif; ?>
+                <?php endif; ?> 
+        
+                <?php if ($code == 'addi'): // If "additional info"  ?>
+                    <div id="additional-info" class="additional-info tab_content">
+                    </div>
+                <?php endif; ?>
+        
+                <?php if ($code != 'ATT_' && $code != 'addi'): // If cms block  ?>
+                    <div id="cms_id_<?php echo $tabs1 ?>" class="cms_id_<?php echo $tabs1 ?> tab_content">
+                    	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($tabs1)->toHtml() ?>
+                    </div>
+                <?php endif; ?>
+        
+    <?php endif; ?>
+<?php endforeach; ?>
+
+<?php if ($reviewsenabled == 0): ?>
+    <?php if ($reviews == 1): ?>
+                <script type="text/javascript">/* <![CDATA[ */
+                    var $j = jQuery.noConflict();
+                    $j(document).ready(function(){
+                        $j("#customer-reviews a").contents().unwrap().wrap("<h3></h3>");
+                        $j("#customer-reviews dd").after("<br/>");
+                        $j(".review-box a").attr("href", "javascript:;");
+                        $j(".review-box a").click(function() {
+                                $j("ul.tabs li").removeClass("active");
+                                $j("ul.tabs li.reviews").addClass("active");
+                                $j(".tab_content").hide(); $j(".tab_content:last").show();
+                            });
+                        $j('.review-box .rating-links a:eq(0)').click(function(){ $j('html, body').animate({scrollTop: $j("#reviews").offset().top}, 'normal'); });
+                        $j('.review-box .rating-links a:eq(1)').click(function(){ $j('html, body').animate({scrollTop: $j("#review-form").offset().top}, 'slow'); });
+                        $j(".upsell-box-padding").each(function(){
+                            var link = $j("a:eq(0)", this).attr('href');
+                            $j("a:eq(2)", this).attr("href", link + "#reviews");
+                            $j("a:eq(3)", this).attr("href", link + "#review-form");
+                        });
+                    }); /* ]]> */
+                </script>
+                <div id="reviews" class="tab_content">
+        <?php echo $this->getLayout()->getBlock('product.info.product_additional_data')->toHtml() ?>
+        <?php echo $this->getLayout()->getBlock('product.review.form')->toHtml() ?>
+                </div>
+    <?php endif; ?>
+<?php endif; ?>
+    </div>
+<div class="tab-bottom">
+    <div class="tab-bottom"></div>
+</div>
+
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();
+<?php if ($equalize == 1): ?>
+        function equalHeight(group) {
+            tallest = 0;
+            group.each(function() {
+                thisHeight = $j(this).height();
+                if(thisHeight > tallest) {
+                    tallest = thisHeight + 20;
+                }
+            });
+            group.height(tallest);
+        }
+        var divs = $j('.tab_content');
+<?php endif; ?>
+$j(document).ready( function() {
+    // Move our product name up to the top
+    $name = $j('.product-shop .product-name').clone();
+    $j('.product-view .product-essential').prepend($name);
+    // Replace original content with our tabs and remove from source
+    $quicksource = $j('div#quick-info-wrapper'); $additional = $j('div.box-additional');
+    $j('.col2-left-layout div.short-description').replaceWith($quicksource.html());
+    $j('.col3-layout .product-img-box').after($quicksource.html());
+    $j('div#additional-info').html($additional.html());
+    if($j('div.box-additional').length == 0) { $j('.additionaltab').remove(); };
+    $j('.product-shop .product-name,.col3-layout div.short-description, div#quick-info-wrapper, div.product-collateral .box-additional, #additional-info h2').remove()<?php if ($equalize == 1): ?>,equalHeight(divs)<?php endif; ?>;
+    // Hide Tabs
+    $j(".tab_content").hide();
+    $j("ul.tabs li:first").addClass("active first-tab");
+    $j(".tab_content:first").show();
+    $j("ul.tabs li:last").addClass("last-tab");
+    // Add our tab functions
+    $j("ul.tabs li").click(function() {
+        $j("ul.tabs li").removeClass("active");
+        $j(this).addClass("active");
+        $j(".tab_content").hide();
+        var activeTab = $j(this).find("a").attr("href");
+        $j(activeTab).fadeIn(500);
+        return false;
+    });
+    var url = location.pathname;
+    // Enable the reviews tab if coming from review link
+    var url = document.location.toString();
+    if (url.match('#reviews')) {
+        $j("ul.tabs li").removeClass("active");
+        $j("ul.tabs li.reviews").addClass("active");
+        $j(".tab_content").hide();
+        $j("#reviews").show();
+        $j('html, body').animate({scrollTop: $j("#reviews").offset().top}, '1');
+    }
+    if (url.match('#review-form')) {
+        $j("ul.tabs li").removeClass("active");
+        $j("ul.tabs li.reviews").addClass("active");
+        $j(".tab_content").hide();
+        $j("#reviews").show();
+        $j('html, body').animate({scrollTop: $j("#review-form").offset().top}, '1');
+    }
+}); 
+</script>

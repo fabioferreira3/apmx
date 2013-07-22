@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.2 May 11, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout>
+
+<!--
+Default layout, loads most of the pages
+-->
+
+    <default>
+
+        <reference name="content">
+            <block type="core/template" name="rokmage_tinymce_setup" >
+                <action method="setTemplate" ifconfig="tiny_mce/general/enabledtinymce"><template>rokmagetinymce/tinymce.phtml</template></action>
+            </block>
+        </reference>
+    </default>
+
+</layout>

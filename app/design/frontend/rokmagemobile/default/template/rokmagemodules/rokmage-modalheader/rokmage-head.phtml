@@ -1,0 +1,75 @@
+<?php
+/**
+ * @version   $Id: rokmage-head.phtml 53679 2012-06-13 19:17:42Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/html/head.phtml - adds jQuery mobile
+ */
+?>
+
+<title>
+    <?php echo htmlspecialchars(html_entity_decode($this->getTitle())) ?>
+</title>
+
+<?php
+  // Get Tocuh Icon
+  $configData = Mage::getStoreConfig('rokmage_mobile');
+  $store_touch_icon = $configData['header_settings']['store_touch_icon'];
+  if($store_touch_icon == '')
+  { $store_touch_icon = $this->getSkinUrl('images/touchicon.png'); }
+  else 
+  { $store_touch_icon = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'rokmagemobile-touch-icons/'. $store_touch_icon; };
+?>
+
+<meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<link rel="apple-touch-icon-precomposed" href="<?php echo $store_touch_icon; ?>">
+<script type="text/javascript">
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+</script>
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">jQuery.noConflict();</script>
+
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+
+<?php
+  // Check if disabling ajax loading
+  $configData = Mage::getStoreConfig('rokmage_mobile');
+  $disableajax = $configData['general']['disableajax'];
+?>
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();   
+$j(document).ready(function(){    
+  $j('ol#checkoutSteps').attr("data-role","listview");
+  $j('button.btn-proceed-checkout').attr("data-theme","b");
+  $j('.add-to-cart .link-wishlist, button.btn-checkout').attr("data-role","button");
+  $j('.page-title').attr("data-role","header");
+  $j('.super-attribute-select').removeAttr("disabled");
+});
+<?php if($disableajax == 1): ?>
+$j(document).bind("mobileinit", function(){
+	$j.mobile.ajaxEnabled = false;
+});
+<?php endif; ?>
+</script>
+
+
+<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/additionalscripts.js') ?>"></script>
+
+<?php
+	// Get Theme Roller CSS
+	$configData = Mage::getStoreConfig('rokmage_mobile');
+	$css = $configData['style_settings']['css'];
+	$skinurl = $this->getSkinUrl('themeroller-images/');
+	$css = str_replace('images/', $skinurl, $css);
+  ?>
+<style type="text/css">
+<?php echo $css ?>
+</style>

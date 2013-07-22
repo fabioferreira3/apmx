@@ -1,0 +1,37 @@
+<?php if(Mage::helper('onestepcheckout')->showCouponCode()):?>
+	<div class="mw-osc-block-content">
+		<div id="tab-coupon">
+			<?php echo $this->getChildHtml('coupon');?>
+		</div>
+	</div>
+<?php endif;?>
+<?php
+	if(Mage::helper('onestepcheckout')->showEditCartLink())
+	{
+	?>	
+		<p class="a-right" style="margin: 0px;"><?php echo $this->__('Forgot an Item?') ?> 				
+		<a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo $this->__('Edit Your Cart') ?></a>
+		</p>
+	<?php 
+	}
+?>
+
+
+<!--bo sung -->
+<?php if(Mage::helper('onestepcheckout')->enableGiftMessage()):?>			
+<div class="mw-osc-giftmessagecontainer mw-osc-giftmessage">
+	<div class="onestepcheckout-giftmessages">
+		<div id="onepage-checkout-shipping-method-additional-load">
+			<?php echo $this->getChildHtml('additional') ?>
+		</div>
+	</div>			
+</div>
+<?php endif?>		
+
+<?php if(Mage::helper('onestepcheckout')->showComment()):?>	
+<div class="onestepcheckout-comments">
+		<label for="id_comments"><?php echo $this->__('Comments');?></label><br/>
+		<textarea id="id_comments" name="onestepcheckout_comments" cols="40" rows="4"></textarea>
+</div>
+<?php endif;?>
+

@@ -1,0 +1,27 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+.mageside-menu .block-content { padding-left: 2px; padding-top: 2px; }
+.mageside-menu { font-family: Arial, sans-serif; }
+.mageside-menu-toggle-button { width: 14px; height: 14px; margin: -23px 0 0 188px; float: left; cursor:pointer;}
+.mageside-menu-toggle-button.active { cursor:pointer;}
+.mageside-menu-toggle-button-current { display: none; }
+.mageside-menu-toggle-button-current.active { cursor:pointer;}
+.mageside-menu-heading { margin: 0 0 0 1px; height: 32px; line-height: 32px; width: 216px; font-size: 1.1em; font-weight: normal; float: left; text-decoration: none;}
+.col-right .mageside-menu-heading { margin: 0; width: 218px; }
+.mageside-menu-heading span { padding: 0 0 0 38px; display: block; }
+a.mageside-menu-heading:hover { text-decoration: none !important; }
+.mageside-menu-heading:hover, .mageside-menu-heading.hover { background-position: 15px 100%;}
+.mageside-menu-heading.active, .contacts-index-index .mageside-menu-heading.contact { background-position: 15px 100% !important; font-weight: bold;}
+.mageside-menu-heading.activecurrent { background-position: 15px 100% !important; font-weight: bold;}
+.mageside-menu-toggle-container { padding: 0 0 8px 31px; overflow: hidden; clear: both; font-size: 70%; line-height: 25px; margin:0 1px; }
+.mageside-menu-toggle-container.active { display: block !important;}
+.mageside-menu-toggle-container ul { padding-left: 8px; }
+.mageside-menu-toggle-container li a { font-size: 150%; text-decoration: none; padding-left: 14px; }
+.mageside-menu-toggle-container li a:hover, .mageside-menu-toggle-container li a.current { text-decoration: none; background-position: 0 100%;}
+.mageside-prod-num { font-size: 130%; }
+.mageside-menu-heading.active span.parent, .mageside-menu-heading.activecurrent .active span.parent { background-image:none; }

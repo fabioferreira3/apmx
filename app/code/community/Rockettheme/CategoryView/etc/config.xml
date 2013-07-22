@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_CategoryView>
+            <version>1.0.0</version>
+        </Rockettheme_CategoryView>
+    </modules>
+	<default>
+        <category_view>
+            <general>
+                <enablecategoryview>1</enablecategoryview>
+				<truncate>truncate</truncate>
+				<truncate_titlelength>50</truncate_titlelength>
+				<truncate_desclength>110</truncate_desclength>
+				<defaultlayout>list</defaultlayout>
+            </general>
+			<settings>
+                <filteraccordion>1</filteraccordion>
+            </settings>
+			<imagesettings>
+                <listimageheight>90</listimageheight>
+				<listimagewidth>90</listimagewidth>
+            </imagesettings>
+        </category_view>  
+    </default>
+    <global>
+        <helpers>
+            <categoryview>
+                <class>Rockettheme_CategoryView_Helper</class>
+            </categoryview>
+        </helpers>
+        <models>
+            <categoryviewmodel>
+                <class>Rockettheme_CategoryView_Model</class>
+            </categoryviewmodel>
+		</models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <categoryview>
+                    <file>rokmage-categoryview/rokmagecategoryview.xml</file>
+                </categoryview>
+            </updates>
+        </layout>
+    </frontend>		
+	<adminhtml>
+        <acl>
+            <resources>
+				 <all>
+	                    <title>Allow everything</title>
+	                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <category_view translate="title" module="categoryview">
+                                            <title>CategoryView Section</title>
+                                            <sort_order>60</sort_order>
+                                        </category_view>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

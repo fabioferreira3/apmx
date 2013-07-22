@@ -1,0 +1,49 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* RokMage Product Scroller */
+div.scrollable-container { width: 1000px; margin:0 auto; position:relative; padding-bottom:15px; }
+div.scrollable-container.smallerize { }
+div.scrollable { position:relative; overflow:hidden; width: 940px; height:225px; float:left; margin-left: 30px; }
+.smallerize div.scrollable { height:145px; }
+div.scrollable div.items { width:20000em; position:absolute; clear:both; text-align:center; }
+/* single scrollable item */
+div.scrollable div.items .scroll-item-middle { float:left; width:112px; margin:10px 12px 0; position: relative; }
+.smallerize div.scrollable div.items .scroll-item-middle { width:92px; margin:10px 12px 0; }
+div.scrollable div.items .scroll-item-top {  }
+div.scrollable div.items .scroll-item-bottom { padding:10px 0 25px; }
+div.scrollable div.items .product-name a { display:block; font-weight:bold; margin-bottom:10px; padding:0 10px 0 0; color:#333; text-decoration: none; font-size: 12px; line-height: 15px; height: 26px; }
+.scrollable-container .product-image img { padding:5px 6px 6px; }
+.scrollable-container .product-image img.tooltipped { margin-bottom:5px; }
+div.scrollable div.items .productPrice { display:block; font-size:11px; font-weight:bold; margin:5px 8px 5px 0; white-space:nowrap; color:#333 }
+.smallerize div.scrollable div.items .productPrice { margin:5px 0; }
+/* prev, next buttons */
+.scrollable-container a.prev, .scrollable-container a.next, .scrollable-container a.prevPage, .scrollable-container a.nextPage { display:block; width:60px; height:40px; position: absolute; top: 90px; cursor:pointer; font-size:1px; z-index: 9999; opacity: 1 !important; }
+.smallerize a.prev, .smallerize a.next, .smallerize a.prevPage, .smallerize a.nextPage { }
+a.disabled { cursor:default !important; visibility: visible !important; background-position:0 0 !important;}
+.scrollable-container a.next, .scrollable-container a.nextPage { right: 0; }
+.smallerize a.next, .smallerize a.nextPage, .smallerize a.prev, .smallerize a.next, .smallerize a.prevPage, .smallerize a.nextPage { background-position: 0 0; top: 50px; }
+.scrollable-container a.prev:hover, .scrollable-container a.prevPage:hover { background-position:0 -40px; }
+.scrollable-container a.next:hover, .scrollable-container a.nextPage:hover { background-position:0 -40px; }
+/* read more button */
+div.scrollable-container button.button { position: absolute; left: 25px; top: 170px;  }
+div.scrollable-container.smallerize button.button { position: absolute; left: 6px; top: 110px;  }
+div.scrollable-container.smallerize button.button span {font-size: 12px; height:20px; line-height:20px;}
+/* Tooltip */
+.tooltip { text-align: left; display:none; font-size:13px; width:130px; padding:20px 40px; z-index: 999999; line-height:14px; background:#f4f4f4; border-radius:10px; border:1px solid #d7d7d7;}
+.tooltip p { padding: 2px 0 0; }
+/* Ribbons */
+div.scrollable-container span.ribbon { display: none; position: absolute; width: 128px; height: 53px; top: 0; left: 25px; }
+div.scrollable-container.bestselling span.ribbon { display: block; background: url(../images/bestselling_sm.png); }
+div.scrollable-container.featured span.ribbon { display: block; background: url(../images/featured_sm.png); }
+div.scrollable-container.recent span.ribbon { display: block; background: url(../images/new_sm.png); }
+div.scrollable-container.viewed span.ribbon { display: block; background: url(../images/popular_sm.png); }
+div.scrollable-container.rated span.ribbon { display: block; background: url(../images/highestrated_sm.png); }
+div.scrollable-container.specialprice span.ribbon { display: block; background: url(../images/sale_sm.png); }
+
+/* 3col width fixes */
+.col3-layout .scrollable-container { margin-left: -28px; }

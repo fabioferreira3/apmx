@@ -1,0 +1,35 @@
+<?php
+/**
+ * @version   1.6.2.0 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/html/footer.phtml - Adds footer logo and "Back to top" link
+ */
+?>
+
+<?php
+// Check status of footer logo
+  $configData = Mage::getStoreConfig('footer_block');
+  $footerlogo = $configData['settings']['footer-logo'];
+?>
+
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+      $j(document).ready(function() {
+        $j('.top-link').click(function(){
+          $j('html, body').animate({scrollTop:0}, 'fast');
+        });
+      });
+</script>
+
+<div class="footer-wrapper">
+    <div class="footer">
+    <a href="javascript:void(0);" class="top-link"><?php echo $this->__('Top') ?></a>
+    <?php echo $this->getChildHtml() ?>
+    <br/>
+    <div id="copyright"><?php echo $this->getCopyright() ?></div><span class="hidden"><?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></span>
+    <?php if ($footerlogo != 1):?><?php endif; ?>
+    </div>
+</div>        
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @version    $Id: rokmagemodalheader.xml 47705 2012-01-18 21:55:02Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout version="0.1.0">
+
+    <default>
+    	<reference name="head">
+    		<action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+	    		<template>rokmagemodules/rokmage-modalheader/rokmage-head.phtml</template>
+	    	</action>
+	    	<action method="addItem" ifconfig="rokmage_mobile/general/enable"><type>skin_css</type><name>css/rokmagemobile.css</name></action>
+            <action method="addItem" ifconfig="rokmage_mobile/general/enable"><type>skin_js</type><script>js/jquery.cookie.js</script></action>
+    	</reference>
+    	<reference name="header">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-modalheader/rokmage-modal-header.phtml</template>
+            </action>
+        </reference>
+        <block type="checkout/cart_sidebar" name="rokmage_header_cart" template="rokmagemodules/rokmage-modalheader/rokmage-header-cart.phtml" >
+            <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+            <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+        </block>
+        <reference name="top.search">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-modalheader/rokmage-form-mini.phtml</template>
+            </action>
+        </reference>
+        <reference name="account.links">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-modalheader/mobile-links.phtml</template>
+            </action>
+        </reference>
+        <reference name="top.links">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-modalheader/mobile-links.phtml</template>
+            </action>
+        </reference>
+    </default>
+
+</layout>

@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="productscroller">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <product_scroller translate="label" module="productscroller">
+            <label>ProductScroller</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>5</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enabledhomepage translate="label">
+                            <label>Enable Homepage Scroller:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabledhomepage>
+                        <enabled translate="label">
+                            <label>Enable Category Scroller:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+						<scroll_by translate="label, comment">
+							<label>Prev/Next Function:</label>
+							<comment><![CDATA[PRODUCT scrolls to next product, PAGE scrolls to next page of products]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollerscrollby</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</scroll_by>
+						<scrollbuttonfade translate="label">
+                            <label>Enable Scroll Button fade animation:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </scrollbuttonfade>
+						<truncate translate="label, comment">
+							<label>Truncate Product Titles:</label>
+							<comment><![CDATA[Choose whether or not to truncate titles (good if you have long product names) - doesn't apply if tooltip is enabled]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollertruncate</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</truncate>
+						<truncate_titlelength translate="label, comment">
+							<label>Max Titles Length:</label>
+							<comment><![CDATA[Set the maximum length for product titles (for example '36')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_titlelength>
+						<circular translate="label, comment">
+							<label>Circular:</label>
+							<comment><![CDATA[Choose whether or not the scroller should loop infinitely]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollercircular</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</circular>
+						<speed translate="label, comment">
+							<label>Speed:</label>
+							<comment><![CDATA[Set the speed of the scroller in seconds]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</speed>
+						<autoscroll translate="label, comment">
+							<label>Enable Autoscroll:</label>
+							<comment><![CDATA[Enable autoscroll (automatic scrolling at set interval)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</autoscroll>
+						<interval translate="label, comment">
+							<label>Autoscroll Interval:</label>
+							<comment><![CDATA[Set the interval of the autoscroll in seconds]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</interval>
+						<items translate="label, comment">
+							<label>Products per page:</label>
+							<comment><![CDATA[Set the number of products per scroller page (CSS will need to be adjusted also)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</items>
+						<tooltip translate="label">
+                            <label>Use Tooltip for details:</label>
+							<comment><![CDATA[Display product details in an 'on hover' tooltip]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tooltip>
+						<tooltipeffect translate="label">
+                            <label>Use Tooltip animations:</label>
+							<comment><![CDATA[If enabled, tooltips will animate in and out of view]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollertooltip</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tooltipeffect>
+						<tooltipoffset translate="label">
+                            <label>Set Tooltip Offset:</label>
+							<comment><![CDATA[Set the offset position of the tooltip (for example "10,2")]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tooltipoffset>
+						<ribbons translate="label">
+                            <label>Disable Ribbons:</label>
+							<comment><![CDATA[Disable corner announcement ribbon]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ribbons>	
+                    </fields>
+                </general>
+				<settingshomepage translate="label">
+				<label>Homepage Scroller Products</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>1</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<no_of_productshomepage translate="label, comment">
+							<label>Number of products:</label>
+							<comment><![CDATA[For example 6, 12, 25 - leave blank to show all products]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</no_of_productshomepage>
+						<filter_byhomepage translate="label, comment">
+							<label>Filter products by:</label>
+							<comment><![CDATA[Choose attribute to filter product list by]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollerfilter</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</filter_byhomepage>
+						<randomizehomepage translate="label, comment">
+                            <label>Randomize Products:</label>
+							<comment><![CDATA[Applicable ONLY to All Products/Featured Products. If OFF, products will display in catalog order]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollerrandomize</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </randomizehomepage>
+					</fields>
+				</settingshomepage>
+                <settings translate="label">
+				<label>Category Scroller Products (automatically filtered by current category)</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<no_of_products translate="label, comment">
+							<label>Number of products:</label>
+							<comment><![CDATA[For example 6, 12, 25 - leave blank to show all products]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</no_of_products>
+						<filter_by translate="label, comment">
+							<label>Filter products by:</label>
+							<comment><![CDATA[Choose attribute to filter product list by]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollerfilter</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</filter_by>
+						<randomize translate="label, comment">
+                            <label>Randomize Products:</label>
+							<comment><![CDATA[Applicable ONLY to All Products/Featured Products. If OFF, products will display in catalog order]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productscrollermodel/Productscrollerrandomize</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </randomize>
+					</fields>
+				</settings>
+            </groups>
+        </product_scroller>
+    </sections>
+</config>

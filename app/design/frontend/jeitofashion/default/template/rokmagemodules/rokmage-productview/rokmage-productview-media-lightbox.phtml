@@ -1,0 +1,192 @@
+<?php
+/**
+ * @version   1.6.2.1 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/product/view/media.phtml - removes default zoom and replaces with jquery version
+ */
+?>
+ 
+<?php
+$_product = $this->getProduct();
+$_productNameStripped = $this->stripTags($_product->getName(), null, true);
+$_helper = $this->helper('catalog/output');
+?>
+ 
+<?php
+$panelId = 1;
+?>
+ 
+<?php
+// Get small image width
+$configData = Mage::getStoreConfig('product_view');
+$smallwidth = $configData['settings']['smallwidth'];
+// Get small image height
+$smallheight = $configData['settings']['smallheight'];
+// Get Large image width
+$largewidth = $configData['settings']['largewidth'];
+// Get Large image height
+$largeheight = $configData['settings']['largeheight'];
+// Get Thumbnail image width
+$thumbnailwidth = $configData['settings']['thumbnailwidth'];
+// Get Thumbnail image height
+$thumbnailheight = $configData['settings']['thumbnailheight'];
+// Check if Thumb Overlay is enabled
+$overlaythumbs = $configData['settings']['overlaythumbs'];
+// Get Spacing Offset
+$spacingoffset = $configData['settings']['spacingoffset'];
+?>
+   
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j(function() {    
+        $j('a.lightbox').lightBox({
+            overlayBgColor: '#000',
+            overlayOpacity: 0.2,
+            imageLoading: '<?php echo $this->getSkinUrl("rokmage-productview/images/lightbox-ico-loading.gif"); ?>',
+            imageBtnClose: '<?php echo $this->getSkinUrl("rokmage-productview/images/lightbox-btn-close.gif"); ?>',
+            imageBtnPrev: '<?php echo $this->getSkinUrl("rokmage-productview/images/lightbox-btn-prev.gif"); ?>',
+            imageBtnNext: '<?php echo $this->getSkinUrl("rokmage-productview/images/lightbox-btn-next.gif"); ?>',
+            containerResizeSpeed: 350,
+            txtImage: '<?php echo $this->__('Image') ?>',
+            txtOf: '<?php echo $this->__('of') ?>'
+           });
+        $j(".zoomer").css({ 'width': '<?php echo $smallwidth ?>', 'height': '<?php echo $smallheight ?>'});
+        $j('.product-shop .no-rating, .product-shop .ratings').remove(); // Hide these as we add them via product-view-media
+    });
+</script>
+       
+<?php
+// Get the package name
+$configData = Mage::getStoreConfig('design');
+$package = $configData['package']['name'];
+// Get bg image location
+$configData = Mage::getStoreConfig('product_view');
+$imagelocation = $configData['settings']['imagelocation'];
+// Get sizes
+$bgwidth = $smallwidth + (($smallwidth / 100) * 8.2);
+$bgheight = $smallheight + (($smallheight / 100) * 18);
+// Location of bg image
+$imageUrl = Mage::getBaseUrl('skin') . "frontend/" . $package . "/" . $imagelocation . "main_image_bg.png";
+// Check if we should resize bg image
+$configData = Mage::getStoreConfig('product_view');
+$resize = $configData['settings']['resize_bg'];
+// Get image name
+$imageName = "main_image_bg_resized.png";
+// If resizing:
+if ($resize == 1):
+// Resized image path
+    $imageResized = Mage::getBaseDir('skin') . DS . "frontend" . DS . $package . DS . $imagelocation . DS . $imageName;
+// Change image url to direct path
+    $dirImg = Mage::getBaseDir() . str_replace("/", DS, strstr($imageUrl, '/skin'));
+// Save the resized image to the resized directory
+    $imageObj = new Varien_Image($dirImg);
+    $imageObj->constrainOnly(FALSE);
+    $imageObj->keepAspectRatio(FALSE);
+    $imageObj->keepFrame(TRUE);
+    $imageObj->keepTransparency(TRUE);
+    $imageObj->resize($bgwidth, $bgheight);
+    $imageObj->save($imageResized);
+endif;
+// Make new image url
+$imageUrl = Mage::getBaseUrl('skin') . "frontend/" . $package . "/" . $imagelocation . $imageName;
+?>
+<?php
+// Check if lightbox resizing enabled
+$configData = Mage::getStoreConfig('product_view');
+$originalsize = $configData['settings']['originalsize'];
+
+if ($originalsize == 1) { // If Zoom is disabled, use small image sizes
+    $largeheight = NULL;
+    $largewidth = NULL;
+}
+?>
+<div class="rokmage-product-img-box" style="width:<?php echo round($smallwidth + (($smallwidth / 10))) ?>px;">
+    <div class="zoomer-product-pics">
+        <div class="hovertozoom"><?php echo $this->__('Click images to enlarge') ?></div>
+        <div id="zoomable" class="rounded_bg" style="width:<?php echo round($smallwidth + (($smallwidth / 100) * 1.6)) ?>px;height:<?php echo round($smallheight + (($smallheight / 100) * 14)) ?>px;padding:<?php echo round($bgwidth *= 0.032) ?>px;">
+            <div class="photo-container" style="width:<?php echo $smallwidth + 1 ?>px;height:<?php echo $smallheight ?>px;">
+                <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
+                    <div id="photo_1" class="zoomer"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($largewidth, $largeheight); ?>"><img id="productImgDefault" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($smallwidth, $smallheight); ?>" alt="<?php echo $_productNameStripped ?>" /></a></div>
+                <?php else: ?>
+                    <div id="photo_1" class="zoomer"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($largewidth, $largeheight); ?>"><img id="productImgDefault" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($smallwidth, $smallwidth); ?>" alt="<?php echo $_productNameStripped ?>" /></a></div>
+                <?php endif; ?>
+ 
+                <?php foreach ($this->getGalleryImages() as $_image): $panelId++; ?>
+                    <div id="photo_<?php echo $panelId; ?>" style="display:none;" class="zoomer"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></div>
+                <?php endforeach;
+                $panelId++; ?>
+ 
+                <?php if ($overlaythumbs == 1): // Add thumbnails overlay ?>
+                    <?php
+                    $panelId2 = 1;
+                    $panelIdtotal = $panelId - 1;
+                    ?>
+    <?php if (count($this->getGalleryImages()) <= 0): ?>
+    <?php else: ?>
+                        <div class="thumbswrapper" style="width:<?php echo $smallwidth ?>px;">
+                            <div class="thumbsbutton" style="width:<?php echo $smallwidth - 23 ?>px;"><a href="javascript&#058;void(0)"><?php echo $this->__('More images') ?></a></div>
+                            <div class="thumbsviewer">
+                                <ul class="thumbs">
+                                    <?php if (count($this->getGalleryImages()) > 0): ?>
+                                        <?php foreach ($this->getGalleryImages() as $_image): $panelId2++; ?>
+                                            <li style="width:<?php echo $thumbnailwidth ?>px;height:<?php echo $thumbnailheight ?>px"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($thumbnailwidth, $thumbnailheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a></li>
+            <?php endforeach;
+            $panelId2++; ?>
+        <?php endif; ?>
+                                </ul>
+                                <div class="clearfloat"></div>
+                            </div>
+                        </div>
+    <?php endif; ?>
+<?php endif; ?>
+ 
+               <!-- <div class="review-box" style="top:<?php echo round($smallheight + ($smallheight / 25)) ?>px;"><?php echo $this->getReviewsSummaryHtml($_product, false, true) ?></div>-->
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    // Add our thumbnail zoom effect on hover
+    $j(document).ready(function() {
+        $j('a.zoomhover img').hover(function() { //mouse in
+            $j(this).stop().animate({ width: "110%"}, 100);
+        }, function() { //mouse out
+            $j(this).stop().animate({ width: "100%"}, 300);
+        });
+        // Adjust width of info depending on size of image
+        $space = $j('div.col-main').width();
+        $used = $j('div.rokmage-product-img-box').width()
+        $available = $space - $used - <?php echo $spacingoffset; ?>;
+        $j('div.product-shop').css({ "width": $available });
+<?php if ($overlaythumbs == 1): // If showing thumbnails overlay  ?>
+                    // Add our slide up thumbnail viewer
+                    $j(".thumbsbutton, .thumbswrapper img").click(function(){
+                        $j(".thumbsviewer").slideToggle();
+                        $j(".thumbsbutton").toggleClass("show");
+                    });
+<?php endif; ?>
+            });
+</script>
+ 
+<?php if ($overlaythumbs == 0): // If thumbs overlay off ?>
+    <?php if (count($this->getGalleryImages()) <= 0): ?>
+    <?php else: ?>
+        <?php
+        $panelId2 = 1;
+        $panelIdtotal = $panelId - 1;
+        ?>
+        <ul class="thumbnails">
+                    <?php if (count($this->getGalleryImages()) > 0): ?>
+                        <?php foreach ($this->getGalleryImages() as $_image): $panelId2++; ?>
+                    <li style="width:<?php echo $thumbnailwidth ?>px;height:<?php echo $thumbnailheight ?>px"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($thumbnailwidth, $thumbnailheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a></li>
+            <?php endforeach;
+            $panelId2++; ?>
+        <?php endif; ?>
+        </ul>
+    <?php endif; ?>
+<?php endif; ?>
+ 

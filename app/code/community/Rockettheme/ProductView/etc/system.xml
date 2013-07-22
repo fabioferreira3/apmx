@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.6.2.1 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="productview">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <product_view translate="label" module="productview">
+            <label>ProductView</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>7</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enableproductview translate="label">
+                            <label>Enable Product View:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableproductview>
+                        <localoverride translate="label, comment">
+                            <comment><![CDATA[Default is 3 column. If set to "Yes" the 2 column left layout be be used, and all right sidebar content will be moved to left sidebar]]></comment>
+                            <label>Use 2 Column Layout:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</localoverride>
+                    </fields>
+                </general>
+                <info_settings translate="label">
+                    <label>Product Info Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <tabsenable translate="label, comment">
+                            <comment><![CDATA[Enable product info tabs]]></comment>
+                            <label>Enable tabbed product info:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tabsenable>
+                        <quick_info_slot translate="label, comment">
+                            <label>"Quick Info" Attribute:</label>
+                            <comment><![CDATA[Select product attribute to show in "Quick Info" slot (displayed beside product image)]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productviewmodel/Attributelist</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_info_slot>
+                        <quick_info_content translate="label, comment">
+                            <label>"Quick Info" Content:</label>
+                            <comment><![CDATA[Add content, use {{value}} to insert the attribute value]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </quick_info_content>
+                        <first_attribute_slot translate="label, comment">
+                            <label>Tab #1 Attribute:</label>
+                            <comment><![CDATA[Select product attribute to show in this slot]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productviewmodel/Attributelist</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </first_attribute_slot>
+                        <first_attribute_content translate="label, comment">
+                            <label>Tab #1 Content:</label>
+                            <comment><![CDATA[Add content, use {{value}} to insert the attribute value]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </first_attribute_content>
+                        <second_attribute_slot translate="label, comment">
+                            <label>Tab #2 Attribute:</label>
+                            <comment><![CDATA[Select product attribute to show in this slot]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productviewmodel/Attributelist</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </second_attribute_slot>
+                        <second_attribute_content translate="label, comment">
+                            <label>Tab #2 Content:</label>
+                            <comment><![CDATA[Add content, use {{value}} to insert the attribute value]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </second_attribute_content>
+                        <third_attribute_slot translate="label, comment">
+                            <label>Tab #3 Attribute:</label>
+                            <comment><![CDATA[Select product attribute to show in this slot]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productviewmodel/Attributelist</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </third_attribute_slot>
+                        <third_attribute_content translate="label, comment">
+                            <label>Tab #3 Content:</label>
+                            <comment><![CDATA[Add content, use {{value}} to insert the attribute value]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </third_attribute_content>
+                        <fourth_attribute_slot translate="label, comment">
+                            <label>Tab #4 Attribute:</label>
+                            <comment><![CDATA[Select product attribute to show in this slot]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productviewmodel/Attributelist</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fourth_attribute_slot>
+                        <fourth_attribute_content translate="label, comment">
+                            <label>Tab #4 Content:</label>
+                            <comment><![CDATA[Add content, use {{value}} to insert the attribute value]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fourth_attribute_content>
+                        <fifth_attribute_slot translate="label, comment">
+                            <label>Tab #5 Attribute:</label>
+                            <comment><![CDATA[Select product attribute to show in this slot]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>productviewmodel/Attributelist</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fifth_attribute_slot>
+                        <fifth_attribute_content translate="label, comment">
+                            <label>Tab #5 Content:</label>
+                            <comment><![CDATA[Add content, use {{value}} to insert the attribute value]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fifth_attribute_content>                                         
+                        <reviews translate="label, comment">
+                            <comment><![CDATA[Show reviews in product info tabs]]></comment>
+                            <label>Show product reviews:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reviews>
+                        <equalize translate="label, comment">
+                            <comment><![CDATA[Equalize all tab heights to the highest]]></comment>
+                            <label>Equalize tab heights:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </equalize>
+                        <upsellcolumns translate="label, comment">
+                            <comment><![CDATA[Number of Upsell columns (numeric, for example '1')]]></comment>
+                            <label>Upsell columns:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </upsellcolumns>
+                    </fields>
+                </info_settings>
+                <settings translate="label">
+                    <label>Product Image Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<mediaenable translate="label, comment">
+                            <comment><![CDATA[Enable RokMage image viewer]]></comment>
+                            <label>Enable RokMage media view:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </mediaenable>
+                        <resize_bg translate="label, comment">
+                            <comment><![CDATA[Dynamically resize the main photo background image on page load. Set to "Yes", save config, and refresh product view on frontend to trigger resize. Set to "No" again once image size has been finalized to serve cached version.]]></comment>
+                            <label>Resize product image background:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </resize_bg>
+                        <imagelocation translate="label, comment">
+                            <comment><![CDATA[Add location of image to resize in current package default skin folder (for example "main/images/")]]></comment>
+                            <label>Image background location:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </imagelocation>
+                        <smallwidth translate="label, comment">
+                            <label>Small Image Width:</label>
+                            <comment><![CDATA[Set the width, in pixels minus the 'px', of the small image (for example '460' for use with overlaid thumbs, or '300' for use with side thumbs)]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smallwidth>
+                        <smallheight translate="label, comment">
+                            <label>Small Image Height:</label>
+                            <comment><![CDATA[Set the height, in pixels, of the small image (for example '460' or '300' - minus the 'px')]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </smallheight>
+                        <largewidth translate="label, comment">
+                            <comment><![CDATA[Set the width, in pixels, of the large 'zoomed' image (for example '1000' - minus the 'px')]]></comment>
+                            <label>Large Image Width:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </largewidth>
+                        <largeheight translate="label, comment">
+                            <comment><![CDATA[Set the height, in pixels, of the large 'zoomed' image (for example '1000' - minus the 'px')]]></comment>
+                            <label>Large Image Height:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </largeheight>
+                        <thumbnailwidth translate="label, comment">
+                            <comment><![CDATA[Set the width, in pixels, of the thumbnail images (for example '68' - minus the 'px')]]></comment>
+                            <label>Thumbnail Width:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnailwidth>
+                        <thumbnailheight translate="label, comment">
+                            <comment><![CDATA[Set the height, in pixels, of the thumbnail images (for example '68' - minus the 'px')]]></comment>
+                            <label>Thumbnail Height:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </thumbnailheight>
+                        <zoom translate="label, comment">
+                            <comment><![CDATA[Disable the Image Zooming function (place static image of the smaller size specified above instead) - only applies to default inline zoom]]></comment>
+                            <label>Disable Zoomer:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </zoom>
+                        <lightbox translate="label, comment">
+                            <comment><![CDATA[Use "lightbox" overlay to show large images (default is inline zoom)]]></comment>
+                            <label>Enable Lightbox:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lightbox>
+                        <originalsize translate="label, comment">
+                            <comment><![CDATA[Show "lightbox" images at original size (as opposed to large image size specified above)]]></comment>
+                            <label>Original Size Lightbox Images:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </originalsize>
+                        <overlaythumbs translate="label, comment">
+                            <comment><![CDATA[Show additional images in an overlaid thumb gallery - if not thumbs will display alongside main image]]></comment>
+                            <label>Use Overlaid Thumb Gallery:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </overlaythumbs>
+						<spacingoffset translate="label, comment">
+                            <comment><![CDATA[Set a numeric offset for element spacing (for example '15' - minus the 'px'). This is useful if adding padding or margins to elements that would interefere with the automatic spacing calculations]]></comment>
+                            <label>Spacing Offset:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </spacingoffset>
+                    </fields>
+                </settings>
+            </groups>
+        </product_view>
+    </sections>
+</config>

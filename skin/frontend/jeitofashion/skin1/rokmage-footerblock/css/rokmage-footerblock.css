@@ -1,0 +1,40 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+.footer { position:relative; width: 942px; padding: 20px 20px 0; margin: 0 auto;}
+.clearfloat { clear: both; }
+
+/* Top Link */
+.footer .top-link { position: absolute; top: 40px; right: 35px; text-decoration: none; line-height: 10px; padding-left: 12px; }
+
+/* Footer lists */
+.rokmage-footer-inner-panel  { width: 190px; float:left; font-size: 13px; padding: 14px 8px 0 10px;}
+.footer .rokmage-footer-inner-panel ul { }
+.footer .rokmage-footer-inner-panel ul li a { text-decoration: none; display:block; padding-bottom:5px; padding-left:16px; font-family:'fashion','arial';}
+.rokmage-footer-inner-panel h3 { font-size:120%; font-weight:bold; padding-bottom: 12px;}
+#rokmage-footer-text {  float: right; width: 300px; padding: 15px 10px 15px 0px; }
+#rokmage-footer-text p, .rokmage-footer-inner-panel p {  text-align: left; }
+#rokmage-footer-text h3 { font-size:120%; font-weight:bold; padding-bottom: 12px;}
+
+/* Footer Menu */
+#footer-bottom { line-height: 45px; position:relative; height: 30px; text-align: center; margin: 10px 0 0; }
+#footer-bottom ul li { display: inline}
+#footer-bottom ul li a { font-size:120%; padding:0 17px 0 13px; font-family:'fashion',  'arial';}
+#footer-bottom ul li span { font-size:120%; padding:0 17px 0 13px; font-family:'fashion',  'arial';}
+#footer-bottom ul li.last a { background:none; }
+#footer-bottom ul li a:hover { text-decoration:none; }
+.footer ul.footermenu { float:none; margin:0 auto; padding:10px 0; }
+.footer .store-switcher { bottom:6px; left:0; line-height:36px; position:absolute; }
+#rocketlogo { margin: 0 auto 10px; height: 15px; width: 111px; padding: 5px 0; }
+#rocketlogo a { display: block;height: 15px; width: 111px; }
+#copyright { text-align: center; line-height:35px; }
+
+/* Footer Recently Viewed List */
+.footer-viewed { width: 930px; padding: 20px 20px 40px; margin: 0 auto !important; }
+.footer-viewed-content { padding: 10px 0; }
+.footer-viewed-content ol#recently-viewed-items {  }
+.footer-viewed-content ol li { float: left; width:186px; }

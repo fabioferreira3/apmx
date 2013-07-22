@@ -1,0 +1,42 @@
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* RokMage Product Scroller */
+div.scrollable-container { width: 1000px; background: url(../images/scroller-bg.jpg) no-repeat 0 0; margin:0 auto 10px; clear: both; position:relative; }
+div.scrollable-container.smallerize {background: url(../images/scroller-bg.jpg) no-repeat 0 30%;}
+div.scrollable { position:relative; overflow:hidden; width: 864px; height:225px; float:left; }
+.smallerize div.scrollable { height:185px; }
+div.scrollable div.items { width:20000em; position:absolute; clear:both; text-align:center; margin-left:10px; }
+/* single scrollable item */
+div.scrollable div.items .scroll-item-middle { background:transparent url(../images/scroller-item-m.png) repeat-y 0 0; border:0 none; padding:0; float:left; width:187px;margin:10px 12px 0; }
+div.scrollable div.items .scroll-item-top { background:transparent url(../images/scroller-item-t.png) no-repeat  50% 0; border:0 none; padding:0; }
+div.scrollable div.items .scroll-item-bottom { background:transparent url(../images/scroller-item-b.png) no-repeat 50% 100%; border:0 none; padding:10px 0 25px; }
+div.scrollable div.items .product-name a { display:block; font-weight:bold; margin-bottom:10px; padding:0 15px; color:#333; text-decoration: none; font-size: 12px; line-height: 15px; height: 26px; }
+.scrollable-container .product-image img { padding:5px 6px 6px; }
+.scrollable-container .product-image img.tooltipped { margin-bottom:5px; }
+div.scrollable div.items .productPrice { display:block; font-size:11px; font-weight:bold; margin:5px 0; white-space:nowrap; color:#333 }
+div.scrollable-container .scroll-item-bottom .minimal-price-link, div.scrollable-container .scroll-item-bottom .price-to, div.scrollable-container .scroll-item-bottom .map-info a { display: none; }
+div.scrollable-container .scroll-item-bottom .minimal-price, div.scrollable-container .scroll-item-bottom .price-from { padding: 0; }
+/* prev, next buttons */
+.scrollable-container a.prev, .scrollable-container a.next, .scrollable-container a.prevPage, .scrollable-container a.nextPage { opacity: 0; display:block; width:68px; height:225px; background: url(../images/scroll-left.png) no-repeat; float:left; margin:0px; cursor:pointer; font-size:1px;}
+.smallerize a.prev, .smallerize a.next, .smallerize a.prevPage, .smallerize a.nextPage { height:185px; }
+a.disabled { visibility:hidden !important;}
+.scrollable-container a.next, .scrollable-container a.nextPage { background-image:url(../images/scroll-right.png); clear:right; opacity: 0;}
+.smallerize a.next, .smallerize a.nextPage, .smallerize a.prev, .smallerize a.next, .smallerize a.prevPage, .smallerize a.nextPage { background-position: 0 35%; }
+/* read more button */
+div.scrollable-container button.button span span a, div.scrollable-container button.button span span a:hover {color: #fff; text-decoration: none; }
+/* Tooltip */
+.tooltip {display:none;	background:transparent url(../images/black_arrow.png); font-size:12px; height:70px; width:160px; padding:25px; color:#fff; z-index: 999999; }
+.tooltip p { padding: 2px 0 0; }
+/* Ribbons */
+div.scrollable-container span.ribbon { display: none; position: absolute; width: 128px; height: 53px; top: 0; left: 25px; }
+div.scrollable-container.bestselling span.ribbon { display: block; background: url(../images/bestselling_sm.png); }
+div.scrollable-container.featured span.ribbon { display: block; background: url(../images/featured_sm.png); }
+div.scrollable-container.recent span.ribbon { display: block; background: url(../images/new_sm.png); }
+div.scrollable-container.viewed span.ribbon { display: block; background: url(../images/popular_sm.png); }
+div.scrollable-container.rated span.ribbon { display: block; background: url(../images/highestrated_sm.png); }
+div.scrollable-container.specialprice span.ribbon { display: block; background: url(../images/sale_sm.png); }

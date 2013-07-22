@@ -1,0 +1,120 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+
+<?php
+    $page = Mage::getSingleton('cms/page')->getIdentifier(); // Check which CMS page we're on, if any
+    $route = Mage::app()->getFrontController()->getRequest()->getRouteName(); // Get route (either CMS or catalog)
+?>
+
+<!-- Get data from admin  -->
+<?php 
+// Check for default homepage
+	$configData = Mage::getStoreConfig('web');
+	$defaulthomepage = $configData['default']['cms_home_page'];
+	$defaulthomepage = explode('|', $defaulthomepage);
+	$defaulthomepage = $defaulthomepage[0];
+// Check if ProductScroller is ON or OFF
+    if($page == $defaulthomepage) {
+    $configData = Mage::getStoreConfig('product_scroller');
+    $scrollerpower = $configData['general']['enabledhomepage'];}
+    else {
+    $configData = Mage::getStoreConfig('product_scroller');
+    $scrollerpower = $configData['general']['enabled']; }
+// Check if ContentSlider is ON or OFF
+    if($page == $defaulthomepage) {
+    $configData = Mage::getStoreConfig('content_slider');
+    $sliderpower = 0;
+    $sliderpowerhome = $configData['general']['enabledhomepage'];}
+    else {
+    $configData = Mage::getStoreConfig('content_slider');
+    $sliderpowerhome = 0;
+    $sliderpower = $configData['general']['enabled'];}
+// Check if HomepageGrid is ON or OFF
+    if($page == $defaulthomepage) {
+    $configData = Mage::getStoreConfig('homepage_grid');
+    $gridpower = $configData['general']['enabled'];}
+// Get WelcomeMessage
+    if($page == $defaulthomepage) {
+    $configData = Mage::getStoreConfig('homepage_grid');
+    $welcome = $configData['settings']['welcome_msg'];}
+// If standard CMS page, disable Scroller & Slider
+    if($route != 'catalog' && $page != $defaulthomepage) { $sliderpowerhome = 0; $sliderpower = 0; $scrollerpower = 0;};
+ ?>
+<!-- End admin data -->
+
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+
+
+        <?php if($page == $defaulthomepage) : ?>
+        <!-- Add WelcomeMessage -->
+        <div id="slider_welcome">
+                        <div id="welcome">
+		            <?php echo $welcome ?>
+                        </div>
+	<!-- End WelcomeMessage -->
+        <!-- Add ContentSlider -->
+                            <?php if($sliderpowerhome == '1') : ?>
+                                <?php echo $this->getChildHtml('rokmage_content_slider') ?>
+                            <?php endif; ?>
+        </div>
+	<!-- End ContentSlider -->
+        <?php endif; ?>
+
+        <div class="main-container col2-left-layout">
+
+            <!-- Add Product Scroller -->
+                <?php if($scrollerpower == '1') : ?>
+                        <?php echo $this->getChildHtml('rokmage_product_scroller') ?>
+                <?php endif; ?>
+            <!-- End Product Scroller -->
+                
+            <div class="main">
+                <div class="col-main">
+			<div class="container">
+			<?php echo $this->getChildHtml('breadcrumbs') ?>
+                        <?php echo $this->getChildHtml('global_messages') ?>
+                        <!-- Add ContentSlider -->
+                        <?php if($sliderpower == '1') : ?>
+                            <?php echo $this->getChildHtml('rokmage_content_slider') ?>
+                        <?php endif; ?>
+                        <!-- End ContentSlider -->
+                        <?php echo $this->getChildHtml('content') ?>
+			</div>
+			<div class="col-main-end"></div>
+                </div>
+                <div class="col-left sidebar">
+                    <?php echo $this->getChildHtml('left') ?>
+		</div>
+            </div>
+        </div>
+		
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.6.2.0 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="footerblock">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <footer_block translate="label" module="footerblock">
+            <label>FooterBlock</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>11</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Footer Block:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>	
+						<no-list-items translate="label">
+                            <label>Number of items in lists:</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </no-list-items>
+						<truncate translate="label">
+                            <label>Truncate Product Titles:</label>
+							<comment><![CDATA[Choose whether or not to truncate titles (good if you have long product names)]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Footerblocktruncate</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </truncate>	
+						<truncate_titlelength translate="label, comment">
+							<label>Max Titles Length:</label>
+							<comment><![CDATA[Set the maximum length for product titles (for example '22')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_titlelength>
+						<randomize translate="label, comment">
+                            <label>Randomize Products:</label>
+							<comment><![CDATA[Applicable ONLY to Featured Products. If OFF, products will display in catalog order]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Footerblockrandomize</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </randomize>
+						<recentlyviewed translate="label">
+                            <label>Show Recently Viewed in footer:</label>
+							<comment><![CDATA[Enable this to display recently viewed items above the footer instead of in sidebar]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </recentlyviewed>
+                    </fields>
+                </general>
+                <settings translate="label">
+				<label>Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<first-column-content translate="label, comment">
+							<label>1st Column Content:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Footerblockcolumncontent</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first-column-content>
+						<first-custom-text translate="label, comment">
+							<label>1st Column Custom Text:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first-custom-text>
+						<firstblock translate="label, comment">
+							<label>1st Column Cms Block:</label>
+							<comment><![CDATA[Select CMS block to include in custom content]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Cmsblocks</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</firstblock>
+						<second-column-content translate="label, comment">
+							<label>2nd Column Content:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Footerblockcolumncontent</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second-column-content>
+						<second-custom-text translate="label, comment">
+							<label>2nd Column Custom Text:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second-custom-text>
+						<secondblock translate="label, comment">
+							<label>2nd Column Cms Block:</label>
+							<comment><![CDATA[Select CMS block to include in custom content]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Cmsblocks</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</secondblock>
+						<third-column-content translate="label, comment">
+							<label>3rd Column Content:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Footerblockcolumncontent</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third-column-content>
+						<third-custom-text translate="label, comment">
+							<label>3rd Column Custom Text:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third-custom-text>
+						<thirdblock translate="label, comment">
+							<label>3rd Column Cms Block:</label>
+							<comment><![CDATA[Select CMS block to include in custom content]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Cmsblocks</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</thirdblock>
+						<text-box translate="label, comment">
+							<label>Text Box Content:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</text-box>
+						<textblock translate="label, comment">
+							<label>Text Box Column Cms Block:</label>
+							<comment><![CDATA[Select CMS block to include in the text box]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>footerblockmodel/Cmsblocks</source_model>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</textblock>
+						<footer-logo translate="label, comment">
+							<label>Disable Footer Logo:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</footer-logo>
+					</fields>
+				</settings>
+            </groups>
+        </footer_block>
+    </sections>
+</config>

@@ -1,0 +1,546 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ * RokMage Local.xml
+ */
+-->
+<layout>
+
+    <default>
+
+<!-- START - Add Mobile Check -->
+        <reference name="before_body_end">
+            <block type="core/template" name="mobile.check">
+                <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                    <template>rokmagemobile/mobilecheck.phtml</template>
+                </action>
+            </block>
+        </reference>
+<!-- END - Add Mobile Check -->
+		
+<!-- START - Add currency block to all pages -->
+        <reference name="left">
+            <block type="directory/currency" name="currency-all" after="catalog.leftnav" template="directory/currency.phtml"/>
+        </reference>
+<!-- END - Add currency block to all pages -->
+
+		
+
+<!-- START - Removes Wishlist in top links -->
+        <reference name="top.links">
+            <action method="removeLinkByUrl">
+                <url helper="customer/getAccountUrl" />
+            </action>
+        </reference>
+        <reference name="wishlist_link">
+            <action method="setTemplate">
+                <template>rokmagelayouts/blank.phtml</template>
+            </action>         
+        </reference>
+<!-- END - Removes Wishlist in top links -->	
+		
+<!-- START - Checkout.xml - Allow Cart in all positions -->
+        <reference name="root">
+            <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
+                <action method="addItemRender">
+                    <type>simple</type>
+                    <block>checkout/cart_item_renderer</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>grouped</type>
+                    <block>checkout/cart_item_renderer_grouped</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>configurable</type>
+                    <block>checkout/cart_item_renderer_configurable</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>
+        </reference>
+<!-- END - Checkout.xml - Allow Cart in all positions -->
+
+<!-- * * * START TWO COLUMN LEFT SPECIFIC CHANGES * * * -->
+<!-- START - Changes default category view from 3 column layout to 2 -->
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+<!-- END - Changes default category view from 3 column layout to 2 -->
+
+<!-- START - Removes Right Sidebar & moves all content to the Left Sidebar -->
+        <remove name="right"/>
+        <reference name="left">
+            <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
+                <action method="addItemRender">
+                    <type>simple</type>
+                    <block>checkout/cart_item_renderer</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>grouped</type>
+                    <block>checkout/cart_item_renderer_grouped</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>configurable</type>
+                    <block>checkout/cart_item_renderer_configurable</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>bundle</type>
+                    <block>bundle/checkout_cart_item_renderer</block>
+                    <template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template>
+                </action>
+            </block>
+            <!--<block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>-->
+            <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml"/>
+            <block type="poll/activePoll" after="-" name="left.poll">
+                <action method="setPollTemplate">
+                    <template>poll/active.phtml</template>
+                    <type>poll</type>
+                </action>
+                <action method="setPollTemplate">
+                    <template>poll/result.phtml</template>
+                    <type>results</type>
+                </action>
+            </block>
+        </reference>
+<!-- END - Removes Right Sidebar & moves all content to the Left Sidebar -->
+<!-- * * * END TWO COLUMN LEFT SPECIFIC CHANGES * * * -->
+
+    </default>
+	
+<!-- * * * START TWO COLUMN LEFT SPECIFIC CHANGES * * * -->
+<!-- START - Moves Related Products Block to the Left Sidebar -->
+    <catalog_product_view>
+        <reference name="right">
+            <block type="catalog/product_list_related" name="catalog.product.related" template="catalog/product/list/related.phtml"/>
+        </reference>
+    </catalog_product_view>
+    
+    
+<!-- END - Moves Related Products Block to the Left Sidebar -->
+<!-- * * * END TWO COLUMN LEFT SPECIFIC CHANGES * * * -->
+
+
+<!-- START - Removes original image zoomer from review page (incase anyone accidentally gets there) -->
+    <review_product_list translate="label">
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="product_review_list.count" template="" />
+        </reference>
+        <remove name="product.info.media"/>
+    </review_product_list>
+    <review_product_view translate="label">
+        <label>Catalog Product Review View</label>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </review_product_view>
+<!-- END - Removes original image zoomer from review page (incase anyone accidentally gets there) -->
+
+<!-- START - Change sendfriend page to 2columns-left layout -->
+    <sendfriend_product_send translate="label">
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </sendfriend_product_send>
+<!-- END - Change sendfriend page to 2columns-left layout -->
+
+<!-- START - Changes Contact page to 2columns-left layout -->
+    <contacts_index_index translate="label">
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+            <action method="setHeaderTitle" translate="title" module="contacts">
+                <title>Contact Us</title>
+            </action>
+        </reference>
+    </contacts_index_index>
+<!-- END - Changes Contact page to 2columns-left layout -->
+
+<!-- * * * START TWO COLUMN LEFT SPECIFIC CHANGES * * * -->
+<!-- START - Checkout.xml overrides - Unremove left column on checkout, change template to 2columns-left -->
+    <checkout_cart_index>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </checkout_cart_index>
+    <checkout_multishipping>
+        <x-unremove name="right" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </checkout_multishipping>
+    <checkout_onepage_index>
+        <x-unremove name="left" />
+        <remove name="right"/>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChildren"></action>
+            <block type="page/html_wrapper" name="checkout.progress.wrapper" translate="label">
+                <label>Checkout Progress Wrapper</label>
+                <action method="setElementId">
+                    <value>checkout-progress-wrapper</value>
+                </action>
+                <block type="checkout/onepage_progress" name="checkout.progress" before="-" template="checkout/onepage/progress.phtml"/>
+            </block>
+        </reference>
+    </checkout_onepage_index>
+    <checkout_onepage_success>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_success>
+    <checkout_onepage_failure>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_failure>
+<!-- END - Checkout.xml overrides - Unremove left column on checkout, change template to 2columns-left -->
+<!-- START - Customer.xml - Removes duplicate Cart and Compare blocks, re-adds compare -->
+    <customer_account>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="left">
+            <remove name="cart_sidebar"/>
+            <remove name="catalog.compare.sidebar"/>
+        </reference>
+    </customer_account>
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl">
+                <url helper="customer/getLogoutUrl" />
+            </action>
+            <action method="addLink" translate="label title" module="customer">
+                <label>Log Out</label>
+                <url helper="customer/getLogoutUrl"/>
+                <title>Log Out</title>
+                <prepare/>
+                <urlParams/>
+                <position>1</position>
+            </action>
+            <action method="addLink" translate="label title" module="customer">
+                <label>My Account</label>
+                <url helper="customer/getAccountUrl"/>
+                <title>My Account</title>
+                <prepare/>
+                <urlParams/>
+                <position>100</position>
+            </action>
+        </reference>
+    </customer_logged_in>
+    <customer_logged_out>
+        <reference name="top.links">
+            <action method="removeLinkByUrl">
+                <url helper="customer/getLoginUrl" />
+            </action>
+            <action method="addLink" translate="label title" module="customer">
+                <label>Log In</label>
+                <url helper="customer/getLoginUrl"/>
+                <title>Log In</title>
+                <prepare/>
+                <urlParams/>
+                <position>1</position>
+            </action>
+            <action method="addLink" translate="label title" module="customer">
+                <label>Sign Up</label>
+                <url helper="customer/getRegisterUrl"/>
+                <title>Sign Up</title>
+                <prepare/>
+                <urlParams/>
+                <position>100</position>
+            </action>
+        </reference>
+    </customer_logged_out>
+    <customer_account_login>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </customer_account_login>
+    <customer_account_logoutsuccess>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </customer_account_logoutsuccess>
+    <customer_account_create>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </customer_account_create>
+    <customer_account_forgotpassword>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </customer_account_forgotpassword>
+    <customer_account_confirmation>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </customer_account_confirmation>
+    <customer_account_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </customer_account_index>
+<!-- END - Customer.xml - Removes duplicate Cart and Compare blocks, re-adds compare -->
+<!-- * * * END TWO COLUMN LEFT SPECIFIC CHANGES * * * -->
+
+<!-- START - Catalog.xml root template overrides -->
+    <catalog_category_default>
+        <reference name="root">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="root">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+            
+    <catalog_product_send>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalog_product_send>
+
+    <catalog_seo_sitemap>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalog_seo_sitemap>
+
+    <catalog_seo_searchterm_popular>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalog_seo_searchterm_popular>
+<!-- END - Catalog.xml root template overrides -->
+	
+<!-- START - Catalogsearch.xml root template overrides -->
+    <catalogsearch_result_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_result>
+	
+    <catalogsearch_term_popular>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_term_popular>
+<!-- END - Catalogsearch.xml root template overrides -->
+
+<!-- START - Directory.xml root template overrides -->
+    <catalog_category_default>
+        <reference name="currency">
+            <action method="setTemplate">
+                <template>rokmagelayouts/blank.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+        <reference name="currency">
+            <action method="setTemplate">
+                <template>rokmagelayouts/blank.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+    <catalogsearch_result_index>
+        <reference name="currency">
+            <action method="setTemplate">
+                <template>rokmagelayouts/blank.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+    <catalogsearch_advanced_index>
+        <reference name="right_currency">
+            <action method="setTemplate">
+                <template>rokmagelayouts/blank.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_index>
+    <catalogsearch_advanced_result>
+        <reference name="right_currency">
+            <action method="setTemplate">
+                <template>rokmagelayouts/blank.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_result>
+<!-- END - Directory.xml root template overrides -->
+
+<!-- START - Tag.xml root template overrides -->
+    <tag_list_index translate="label">
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </tag_list_index>
+<!-- END - Tag.xml root template overrides -->
+
+<!-- START - Billing_agreement.xml root template overrides -->
+    <sales_billing_agreement_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </sales_billing_agreement_index>
+	<sales_billing_agreement_view>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </sales_billing_agreement_view>
+<!-- END - Billing_agreement.xml root template overrides -->
+
+<!-- START - Recurring_profile.xml root template overrides -->
+    <sales_recurring_profile_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </sales_recurring_profile_index>
+	<sales_recurring_profile_view__tabs>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </sales_recurring_profile_view__tabs>
+<!-- END - Recurring_profile.xml root template overrides -->
+
+<!-- START - Rss.xml root template overrides -->
+    <rss_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </rss_index_index>
+<!-- END - Rss.xml root template overrides -->
+
+<!-- START - Paypal.xml root template overrides -->
+    <paypal_express_review>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </paypal_express_review>
+<!-- END - Paypal.xml root template overrides -->
+
+<!-- START - Paypaluk.xml root template overrides -->
+    <paypaluk_express_review>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </paypaluk_express_review>
+<!-- END - Paypaluk.xml root template overrides -->
+
+<!-- START - Googlecheckout.xml root template overrides -->
+    <googlecheckout_redirect_redirect>
+        <x-unremove name="left" />
+        <reference name="root">
+            <action method="setTemplate">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+    </googlecheckout_redirect_redirect>
+<!-- END - Googlecheckout.xml root template overrides -->
+
+</layout>

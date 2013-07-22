@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="modalheader">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <modal_header translate="label" module="modalheader">
+            <label>ModalHeader</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enabled translate="label">
+                            <label>Enable Modal Header:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>	
+						<enablecustomformelements translate="label">
+                            <label>Enable Custom Form Elements:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablecustomformelements>
+						<enablebreadcrumbs translate="label">
+                            <label>Enable Custom Breadcrumbs:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablebreadcrumbs>
+						<enablebuildspans translate="label">
+                            <label>Build Title Spans:</label>
+							<comment><![CDATA[Wrap first word of title in span for styling]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enablebuildspans>
+						<buildspans translate="label, comment">
+							<label>Classes to build spans for:</label>
+							<comment><![CDATA[Add a comma separated list of IDs/classes to build spans for]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</buildspans>
+						<disablemodallogin translate="label">
+                            <label>Disable Modal Log In:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disablemodallogin>
+						<disablemodalcart translate="label">
+                            <label>Disable Modal Cart:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disablemodalcart>
+						<disabletextsize translate="label">
+                            <label>Disable Text Resizer:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disabletextsize>
+						<disabledate translate="label">
+                            <label>Disable Date:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disabledate>
+                    </fields>
+                </general>
+				<settings_js_css translate="label">
+				<label>Additional Scripts and Styles</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<additional_js translate="label, comment">
+							<label>Additional jQuery scripts:</label>
+							<comment><![CDATA[Will be added within script tags before body end. Please use $j instead of $ (for noConflict mode)]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_js>
+						<additional_css translate="label, comment">
+							<label>Additional CSS:</label>
+							<comment><![CDATA[Will be added within style tags]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</additional_css>
+					</fields>
+				</settings_js_css>
+				<settings_modalanimation translate="label">
+				<label>Modal Window Animation Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>3</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<animation translate="label, comment">
+							<label>Animation settings:</label>
+							<comment><![CDATA[Add jQuery variables for modal window animations]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</animation>
+					</fields>
+				</settings_modalanimation>
+				<settings translate="label">
+				<label>IE Support</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>4</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<pie translate="label, comment">
+							<label>Add classes for PIE:</label>
+							<comment><![CDATA[Add a comma separated list of IDs/classes to apply PIE.js to (see css3pie.com for details)]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</pie>
+						<ie6support translate="label">
+                            <label>Redirect IE6 visitors:</label>
+							<comment><![CDATA[If set to "Yes", IE6 visitors will see an Unsupported Browser warning page (must have a URL Key of "ie6-redirect")]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ie6support>
+						<iefix translate="label, comment">
+							<label>Add classes for IE6 PNG fix:</label>
+							<comment><![CDATA[If supporting IE6, add a comma separated list of IDs/classes to apply PNG fix to]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</iefix>
+					</fields>
+				</settings>
+            </groups>
+        </modal_header>
+    </sections>
+</config>

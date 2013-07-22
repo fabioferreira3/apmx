@@ -1,0 +1,44 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/html/header.phtml - adds date, moves welcome message next to logo, moves topMenu within header-container div, adds modal-login, text-resizer and header-cart
+ */
+?>
+
+<?php
+// Check if text size disabled
+$configData = Mage::getStoreConfig('modal_header');
+$textsize = $configData['general']['disabletextsize'];
+// Check if date disabled
+$date = $configData['general']['disabledate'];
+?>
+
+<div class="header-container">
+    <div class="header">
+        <?php if ($date != 1): ?>
+			<?php $day = date("l", Mage::getModel('core/date')->timestamp(time())); $month = date("F", Mage::getModel('core/date')->timestamp(time()));
+			 $date = date("d", Mage::getModel('core/date')->timestamp(time())); $year = date("Y", Mage::getModel('core/date')->timestamp(time())); ?>
+			<span class="date"><?php echo $this->__($day); ?>, <?php echo $this->__($month); ?> <?php echo $this->__($date); ?>, <?php echo $year; ?></span>
+		<?php endif; ?>
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+        <div class="welcome-msg-R"><div class="welcome-msg-L"><?php echo $this->getWelcome()?> <?php echo $this->getAdditionalHtml() ?></div></div>
+        <div class="quick-access">     
+            <?php echo $this->getChildHtml('topLinks') ?>
+            <?php echo $this->getChildHtml('topSearch') ?>
+            <?php if ($textsize != 1): ?><?php echo $this->getChildHtml('rokmage_text_resizer') ?><?php endif; ?>
+            <?php echo $this->getChildHtml('store_language') ?>
+        </div>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+    </div>
+    <?php echo $this->getChildHtml('topMenu') ?>
+</div>
+<div class="homepage-spacer"></div>
+<?php echo $this->getChildHtml('rokmage_modal_login') ?>
+<?php echo $this->getChildHtml('rokmage_header_cart') ?>

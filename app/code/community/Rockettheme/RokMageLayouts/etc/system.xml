@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+	/**
+	 * @version    1.7.0.0 May 5, 2012
+	 * @author    RocketTheme http://www.rockettheme.com
+	 * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+	 * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+	 */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="rokmagelayouts">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <rokmage_layouts translate="label" module="rokmagelayouts">
+            <label>RokMage Layouts</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>3</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>Store Layout Overrides</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label">
+                            <label>Enable Layout Overrides:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+						<localoverride translate="label">
+                            <label>Use 2 column layout:</label>
+							<comment><![CDATA[Default is 3 column. If enabled, "local2columns.xml" will be used in place of "local.xml". This will then load all pages using the 2 column left layout, and all right sidebar content will be moved to left sidebar]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </localoverride>
+						<local translate="label">
+							<label>Layout Update XML:</label>
+                            <comment><![CDATA[Add additional layout updates, including full layout handles (between &lt;layout&gt; tags, specifying pages such as &lt;default&gt; etc)]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</local>	
+                    </fields>
+                </general>
+            </groups>
+        </rokmage_layouts>
+    </sections>
+</config>

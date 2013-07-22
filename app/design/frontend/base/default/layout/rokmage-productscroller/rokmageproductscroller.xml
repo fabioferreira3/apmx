@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout version="0.1.0">
+	
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem" ifconfig="product_scroller/general/enabledhomepage"><type>skin_css</type><name>rokmage-productscroller/css/rokmage-productscroller.css</name></action>
+            <action method="addItem" ifconfig="product_scroller/general/enabledhomepage"><type>skin_js</type><script>rokmage-productscroller/js/tools.scrollable.min.js</script></action>
+            <action method="addItem" ifconfig="product_scroller/general/enabledhomepage"><type>skin_js</type><script>rokmage-productscroller/js/tools.tooltip.min.js</script></action>
+        </reference>
+        <reference name="root">
+            <block type="catalog/product_send" name="rokmage_product_scroller">
+                     <action method="setTemplate" ifconfig="product_scroller/general/enabledhomepage">
+                        <template>rokmagemodules/rokmage-productscroller/rokmage-product-scroller.phtml</template>
+                     </action>
+             </block>
+        </reference>
+    </cms_index_index>
+
+    <catalog_category_default>
+        <reference name="head">
+            <action method="addItem" ifconfig="product_scroller/general/enabled"><type>skin_css</type><name>rokmage-productscroller/css/rokmage-productscroller.css</name></action>
+            <action method="addItem" ifconfig="product_scroller/general/enabled"><type>skin_js</type><script>rokmage-productscroller/js/tools.scrollable.min.js</script></action>
+            <action method="addItem" ifconfig="product_scroller/general/enabled"><type>skin_js</type><script>rokmage-productscroller/js/tools.tooltip.min.js</script></action>
+        </reference>
+        <reference name="root">
+            <block type="catalog/product_send" name="rokmage_product_scroller">
+                     <action method="setTemplate" ifconfig="product_scroller/general/enabled">
+                        <template>rokmagemodules/rokmage-productscroller/rokmage-product-scroller.phtml</template>
+                     </action>
+             </block>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="head">
+            <action method="addItem" ifconfig="product_scroller/general/enabled"><type>skin_css</type><name>rokmage-productscroller/css/rokmage-productscroller.css</name></action>
+            <action method="addItem" ifconfig="product_scroller/general/enabled"><type>skin_js</type><script>rokmage-productscroller/js/tools.scrollable.min.js</script></action>
+            <action method="addItem" ifconfig="product_scroller/general/enabled"><type>skin_js</type><script>rokmage-productscroller/js/tools.tooltip.min.js</script></action>
+        </reference>
+        <reference name="root">
+            <block type="catalog/product_send" name="rokmage_product_scroller">
+                     <action method="setTemplate" ifconfig="product_scroller/general/enabled">
+                        <template>rokmagemodules/rokmage-productscroller/rokmage-product-scroller.phtml</template>
+                     </action>
+             </block>
+        </reference>
+    </catalog_category_layered>
+
+</layout>

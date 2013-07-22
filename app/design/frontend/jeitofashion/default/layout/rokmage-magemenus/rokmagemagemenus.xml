@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.1 May 8, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem" ifconfig="mage_menus/general/enable_top"><type>skin_js</type><script>rokmage-magemenus/js/rokmage-magemenus-top.js</script></action>
+			<action method="addItem" ifconfig="mage_menus/general/enable_lavalamp"><type>skin_js</type><script>rokmage-magemenus/js/rokmage-lavalamp.js</script></action>
+            <action method="addItem" ifconfig="mage_menus/general/enable_top"><type>skin_css</type><name>rokmage-magemenus/css/rokmage-magemenus-top.css</name></action>
+            <action method="addItem" ifconfig="mage_menus/general/enable_side_left"><type>skin_js</type><script>rokmage-magemenus/js/rokmage-magemenus-side.js</script></action>
+            <action method="addItem" ifconfig="mage_menus/general/enable_side_left"><type>skin_css</type><name>rokmage-magemenus/css/rokmage-magemenus-side.css</name></action>
+            <action method="addItem" ifconfig="mage_menus/general/enable_side_right"><type>skin_js</type><script>rokmage-magemenus/js/rokmage-magemenus-side.js</script></action>
+            <action method="addItem" ifconfig="mage_menus/general/enable_side_right"><type>skin_css</type><name>rokmage-magemenus/css/rokmage-magemenus-side.css</name></action>
+        </reference>
+        <reference name="top.menu">
+            <block type="catalog/navigation" name="catalog.topnav">
+                <action method="setTemplate" ifconfig="mage_menus/general/enable_top">
+                    <template>rokmagemodules/rokmage-magemenus/rokmage-magemenu-top.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="catalog/navigation" name="left.menu" after="cart_sidebar">
+                <action method="setTemplate" ifconfig="mage_menus/general/enable_side_left">
+                   <template>rokmagemodules/rokmage-magemenus/rokmage-magemenu-left.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="right">
+            <block type="catalog/navigation" name="right.menu" after="cart_sidebar">
+                <action method="setTemplate" ifconfig="mage_menus/general/enable_side_right">
+                   <template>rokmagemodules/rokmage-magemenus/rokmage-magemenu-right.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </default>
+
+	<!--
+	Remove left nav if using side menu
+	-->
+
+	    <catalog_category_default>
+			<reference name="catalog.leftnav">
+	            <action method="setTemplate" ifconfig="mage_menus/settings_sideleft/catalog_cats">
+	                <template>rokmagelayouts/blank.phtml</template>
+	            </action>
+				<action method="setTemplate" ifconfig="mage_menus/settings_sideright/catalog_cats">
+	                <template>rokmagelayouts/blank.phtml</template>
+	            </action>
+	        </reference>
+	    </catalog_category_default>
+	
+</layout>

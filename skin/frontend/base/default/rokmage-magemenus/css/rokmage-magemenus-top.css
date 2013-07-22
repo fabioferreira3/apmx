@@ -1,0 +1,51 @@
+/**
+ * @version    1.7.0.1 May 8, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* 1st Level */
+ul#magemenu-top { position: relative; height: 28px; font-size: 14px; padding: 8px 15px 10px 14px; z-index: 999999999; border: 1px solid #CCC; }
+ul#magemenu-top li { float: left; height: 38px; white-space:nowrap; padding-right: 7px; position: relative; }
+ul#magemenu-top a { display: block; margin:5px 2px 5px 15px; text-decoration: none;  }
+/* 2nd Level */
+ul#magemenu-top li ul { background:#EFEFEF; border: 1px solid #CCC; z-index: 9999; display: none; position:absolute; top:37px; left:6px; text-align: left;  padding:0 6px 5px 6px; }
+ul.menu li ul { width: 364px; padding-bottom: 15px; } /* Double Only */
+ul.menu-single li ul { width: 184px; padding-bottom: 5px; } /* Single Only */
+ul.menu-single li ul li { width: 184px; padding: 0; }
+ul.menu li ul li { width: 175px; padding: 0; }
+ul#magemenu-top li ul li a span { display: block; padding: 5px 0 5px 6px; }
+ul#magemenu-top li ul li a { font-weight: normal; padding-left: 0px; margin:5px 2px 5px 0px; }
+/* 3rd Level */
+ul#magemenu-top li ul li ul { top: 0; padding-top: 0; margin-top: 0px; z-index: 9999999; }
+/* Misc */
+ul#magemenu-top .bg-top { display: none; height: 14px; position:absolute; top:-14px; left:160px; }
+ul.menu .bg-top { width: 365px; } /* Double Only */
+ul.menu-single .bg-top { width: 365px;  } /* Single Only */
+ul#magemenu-top .bg-top-curves { display: none; position:absolute; }
+/* Active States */
+ul#magemenu-top li ul li a:hover, ul#magemenu-top li ul li.active > a, ul#magemenu-top li ul li.hover > a {  }
+ul#magemenu-top li ul li.hover > a span, ul#magemenu-top li ul li.active > a span {  }
+ul#magemenu-top li.hover { cursor: pointer; }
+
+/* Lavalamp Effect */
+.inner-header-container #box { position:absolute; left:-1000px; top:6px !important; height:35px; margin:6px 0 0 10px; }
+.inner-header-container #box .head { width: 0px; height:35px; margin-left:-8px; }
+
+/* MegaMenu */
+ul#magemenu-top li ul.popup { padding: 0; height: auto; width: auto; cursor: default; padding-right: 15px; left: -5px !important; }
+ul#magemenu-top li ul.popup > li { float: none !important; height: auto; width: auto; }
+ul#magemenu-top li ul.popup li { padding: 0 0 12px 12px !important; }
+ul#magemenu-top li ul.popup div.column { padding: 0 4px; margin-top: -1px; float:left; width:200px; }
+ul#magemenu-top li ul.popup li a.level1 { padding: 3px 5px 5px !important; font-weight: bold; }
+ul#magemenu-top li ul.popup li a.level1 span { padding: 0 0 0 15px !important; }
+ul#magemenu-top li ul.popup div.itemSubMenu { font-size: 80%; margin-left: 0; }
+ul#magemenu-top li ul.popup div.itemSubMenu.level2 { margin-left: 15px; }
+ul#magemenu-top li ul.popup div.itemSubMenu.level1 { padding: 5px 0 10px; }
+ul#magemenu-top li ul.popup div.itemSubMenu a { padding: 0 5px 0 20px !important; line-height: 22px; font-size: 12px !important; }
+.clearBoth { clear:both; }
+/* Custom Block */
+ul#magemenu-top li ul.popup div.block-custom { margin: 0 -6px; padding: 14px 5px 2px; }
+ul#magemenu-top li ul.popup div.block-custom p { padding: 0; }
+

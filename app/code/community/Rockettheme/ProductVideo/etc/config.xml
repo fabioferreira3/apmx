@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.5.0.2 April 10, 2011
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2011 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+       <Rockettheme_ProductVideo>
+          <version>1.0.1</version>
+       </Rockettheme_ProductVideo>
+    </modules>
+    <global>
+        <helpers>
+        	<productvideo>
+        		<class>Rockettheme_ProductVideo_Helper</class>
+        	</productvideo>
+        </helpers>
+        <resources>
+            <productvideo_setup>
+                <setup>
+                    <module>Rockettheme_ProductVideo</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </productvideo_setup>
+            <productvideo_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </productvideo_write>
+            <productvideo_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </productvideo_read>
+        </resources>	    
+    </global>
+    <adminhtml>
+        <acl>
+          <resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+            <admin>
+              <children>
+                  <system>
+                      <children>
+                        <config>
+                          <children>
+                            <productvideo>
+                              <title>Rockettheme - ProductVideo</title>
+                            </productvideo>
+                          </children>
+                        </config>
+                      </children>
+                  </system>
+              </children>
+            </admin>
+          </resources>
+        </acl>
+    </adminhtml>    
+</config>

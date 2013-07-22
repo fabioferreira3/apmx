@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_ContentSlider>
+            <version>1.0.0</version>
+        </Rockettheme_ContentSlider>
+    </modules>
+	<default>
+        <content_slider>
+            <general>
+                <enabledhomepage>1</enabledhomepage>
+				<enabled>1</enabled>
+				<content_type>products</content_type>
+				<autoplay>true</autoplay>
+				<speed>4</speed>
+				<arrows>1</arrows>
+            </general>
+			<settings>
+                <filter_byhomepage>all</filter_byhomepage>
+				<no_of_productshomepage>4</no_of_productshomepage>
+				<truncate>truncate</truncate>
+				<slider_products>null</slider_products>
+				<truncate_titlelength>60</truncate_titlelength>
+				<truncate_desclength>250</truncate_desclength>
+				<filterbyroot>0</filterbyroot>
+            </settings>
+			<settings_cat>
+                <filter_by>all</filter_by>
+				<no_of_products>4</no_of_products>
+				<truncate>truncate</truncate>
+				<truncate_titlelength>30</truncate_titlelength>
+				<truncate_desclength>130</truncate_desclength>
+				<hidedesc>1</hidedesc>
+            </settings_cat>
+        </content_slider>  
+    </default>
+    <global>
+        <helpers>
+            <contentslider>
+                <class>Rockettheme_ContentSlider_Helper</class>
+            </contentslider>
+        </helpers>
+        <models>
+            <contentslidermodel>
+                <class>Rockettheme_ContentSlider_Model</class>
+            </contentslidermodel>
+			<contentslidermodelbackend>
+                <class>Rockettheme_ContentSlider_Model_BackendActions</class>
+            </contentslidermodelbackend>
+		</models>
+    </global>		
+    <frontend>
+        <layout>
+            <updates>
+                <contentslider>
+                    <file>rokmage-contentslider/rokmagecontentslider.xml</file>
+                </contentslider>
+            </updates>
+        </layout>
+    </frontend>
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <content_slider translate="title" module="contentslider">
+                                            <title>ContentSlider Section</title>
+                                            <sort_order>60</sort_order>
+                                        </content_slider>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

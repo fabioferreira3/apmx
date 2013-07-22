@@ -1,0 +1,36 @@
+/**
+ * @version    1.7.0.1 May 8, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+.mageside-menu  { background-image:none !important; margin-bottom:30px; }
+.mageside-menu .block-title  { padding-top: 10px; padding-bottom: 10px; }
+.mageside-menu .block-content  { padding-top: 0; padding-bottom: 0; background-image:none; }
+.mageside-menu ul { padding: 0 0 0 20px;}
+.mageside-menu ul li { padding:0 0 6px 0; }
+.mageside-menu-toggle-button { width: 14px; height: 14px; margin: -25px 0 0 200px; float: left; cursor:pointer; background: url(../images/magemenuside_menu_togglebtn.png) no-repeat 0 0;}
+.mageside-menu-toggle-button.active { cursor:pointer; background-position: 0 100%; }
+.mageside-menu-toggle-button-current { width: 14px; height: 14px; margin: -23px 0 0 200px; float: left; cursor:pointer;}
+.mageside-menu-toggle-button-current.active { cursor:pointer; }
+.mageside-menu-heading  { border: 0; background-position: 0px 12px; padding: 0; margin: 0; height: 38px; line-height: 38px; width: 220px; font-size: 1.1em; font-weight: normal; float: left; text-decoration: none; background-repeat: no-repeat; }
+.mageside-menu-heading:hover, .mageside-menu-heading.hover { background-position: 0px -443px;}
+.mageside-menu-heading.active, .contacts-index-index .mageside-menu-heading.contact { font-weight: bold; background-position: 0px -443px;}
+.mageside-menu-heading.activecurrent { font-weight: bold; background-position: 0px -443px;}
+.mageside-menu-toggle-container { padding: 0 0 10px 0; overflow: hidden; clear: both; line-height: 25px; width: 220px; }
+.mageside-menu-toggle-container.active { display: block !important;}
+.mageside-menu-toggle-container li a { font-size: 1.1em; text-decoration: none; padding:0 0 0 22px;}
+.mageside-menu-toggle-container li a.current { font-weight: bold; background-position: 0px -453px; }
+.mageside-menu-toggle-container li a:hover { text-decoration: none; background-position: 0px -453px; }
+.mageside-prod-num { font-size: 90%; }
+.mageside-menu-heading span { display:block; padding:0 0 0 20px; font-size:110%; }
+.mageside-menu-heading.active span.parent, .mageside-menu-heading.activecurrent .active span.parent { background-image:none; }
+.mageside-menu-toggle-button-current { display:none; }
+#tree-menu { padding-bottom: 5px; }
+#tree-menu ul { margin-left: 15px; }
+#tree-menu li { padding: 0; }
+
+/* 3col width fixes */
+.col3-layout .mageside-menu-heading, .col3-layout .mageside-menu-toggle-container { width: 200px; }
+.col3-layout .mageside-menu-toggle-button { margin: -25px 0 0 180px; }

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem" ifconfig="image_borders/general/enableimageborders"><type>skin_js</type><script>rokmage-imageborders/js/rokmage-imageborders.js</script></action>
+            <action method="addItem" ifconfig="image_borders/general/enableimageborders"><type>skin_css</type><name>rokmage-imageborders/css/rokmage-imageborders.css</name></action>
+        </reference>
+    </default>
+</layout>

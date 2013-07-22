@@ -1,0 +1,18 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* IE 8 fixes */
+
+/* ModalHeader */
+.rok-breadcrumbs ul li span { filter:alpha(opacity=0); }
+
+/* CategoryView */
+.block-currency .block-title strong { font-size: 140% !important; }
+
+/* ProductView */
+.product-view .product-shop .add-to-links { width: 120px; }
+.hovertozoom { width: 212px; }

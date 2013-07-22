@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    $Id: rokmagecategoryview.xml 53433 2012-06-04 20:40:13Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout>
+
+<!--
+Category default layout
+-->
+
+    <catalog_category_default>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+        <reference name="category.products">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-mobileview.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-toolbar.phtml</template>
+            </action>
+            <action method="addPagerLimit" ifconfig="rokmage_mobile/general/enable"><mode>grid</mode><limit>10</limit></action>
+            <action method="addPagerLimit" ifconfig="rokmage_mobile/general/enable"><mode>grid</mode><limit>50</limit></action>
+            <action method="addPagerLimit" ifconfig="rokmage_mobile/general/enable" translate="label"><mode>grid</mode><limit>all</limit><label>All</label></action>
+        </reference>
+        <reference name="product_list_toolbar_pager">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-pager.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="directory/currency" name="currency" after="category.products" template="directory/currency.phtml"/>
+        </reference>
+    </catalog_category_default>
+
+<!--
+Category layered navigation layout
+-->
+
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+        <reference name="category.products">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-mobileview.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-toolbar.phtml</template>
+            </action>
+            <action method="addPagerLimit" ifconfig="rokmage_mobile/general/enable"><mode>grid</mode><limit>10</limit></action>
+            <action method="addPagerLimit" ifconfig="rokmage_mobile/general/enable"><mode>grid</mode><limit>50</limit></action>
+            <action method="addPagerLimit" ifconfig="rokmage_mobile/general/enable" translate="label"><mode>grid</mode><limit>all</limit><label>All</label></action>
+        </reference>
+        <reference name="product_list_toolbar_pager">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-pager.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="directory/currency" name="currency" after="category.products" template="directory/currency.phtml"/>
+        </reference>
+    </catalog_category_layered>
+
+    <tag_product_list>
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+        <reference name="category.products">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-mobileview.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-toolbar.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar_pager">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-pager.phtml</template>
+            </action>
+        </reference>
+    </tag_product_list>
+
+<!--
+Set the category view template to show search results
+-->
+
+    <catalogsearch_result_index translate="label">
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+        <reference name="category.products">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-mobileview.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-toolbar.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar_pager">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-pager.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result translate="label">
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+        <reference name="category.products">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-mobileview.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-toolbar.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list_toolbar_pager">
+            <action method="setTemplate" ifconfig="rokmage_mobile/general/enable">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-pager.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+</layout>

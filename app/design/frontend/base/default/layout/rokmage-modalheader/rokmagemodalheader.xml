@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_css</type><name>rokmage-modalheader/css/rokmage-modalheader.css</name></action>
+            <action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><script>rokmage-modalheader/js/tools.scrollable.min.js</script></action>
+            <action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><script>rokmage-modalheader/js/font-controller.js</script></action>
+            <action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><script>rokmage-modalheader/js/modal-header-scripts.js</script></action>
+            <action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><name>rokmage-modalheader/js/modal-header-scripts-IE6.js</name><params/><if>lt IE 7</if></action>
+            <action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><name>rokmage-modalheader/js/modal-header-scripts-IE7.js</name><params/><if>lt IE 9</if></action>
+            <action method="addItem" ifconfig="modal_header/general/enablecustomformelements"><type>skin_js</type><script>rokmage-modalheader/js/customformelements.js</script></action>
+            <action method="addItem" ifconfig="modal_header/general/enablecustomformelements"><type>skin_js</type><script>rokmage-modalheader/js/inputstylingscripts.js</script></action>
+            <action method="addItem" ifconfig="modal_header/general/enablebreadcrumbs"><type>skin_js</type><script>rokmage-modalheader/js/jquery.jBreadCrumb.js</script></action>
+			<action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><script>rokmage-main-js/truncate.js</script></action>
+			<action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><script>rokmage-main-js/jquery.easing.js</script></action>	
+			<action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><name>rokmage-main-js/jquery.badBrowser.js</name><params/><if>IE 6</if></action>
+			<action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><name>rokmage-main-js/DD_belatedPNG.js</name><params/><if>IE 6</if></action>		
+			<action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><name>rokmage-main-js/selectivizr-min.js</name><params/><if>lt IE 9</if></action>
+			<action method="addItem" ifconfig="modal_header/general/enabled"><type>skin_js</type><name>rokmage-main-js/PIE.js</name><params/><if>gte IE 8</if></action>
+        </reference>
+        <reference name="header">
+            <action method="setTemplate" ifconfig="modal_header/general/enabled">
+                <template>rokmagemodules/rokmage-modalheader/rokmage-modal-header.phtml</template>
+            </action>
+            <block type="core/template" name="rokmage_text_resizer" template="rokmagemodules/rokmage-modalheader/rokmage-text-resizer.phtml"/>
+            <block type="checkout/cart_sidebar" name="rokmage_header_cart" template="rokmagemodules/rokmage-modalheader/rokmage-header-cart.phtml" >
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+                <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>rokmagemodules/rokmage-modalheader/headercart-item-renderer.phtml</template></action>
+            </block>
+        </reference>
+        <reference name="top.search">
+            <action method="setTemplate" ifconfig="modal_header/general/enabled">
+                <template>rokmagemodules/rokmage-modalheader/rokmage-form-mini.phtml</template>
+            </action>
+        </reference>
+        <remove name="checkout_cart_link"/> 
+        <reference name="before_body_end">
+            <block type="page/template_links" name="additional_jquery">
+                <action method="setTemplate" ifconfig="modal_header/general/enabled" >
+                    <template>rokmagemodules/rokmage-modalheader/additional-jquery.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </default>
+
+<!--
+Load this update on every page when customer is logged in
+-->
+
+    <customer_logged_in>
+        <reference name="top.links" as="topLinks">
+            <action method="setTemplate" ifconfig="modal_header/general/enabled">
+                <template>rokmagemodules/rokmage-modalheader/rokmage-top-links.phtml</template>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+<!--
+Load this update on every page when customer is logged out
+-->
+
+    <customer_logged_out>
+        <reference name="header">
+            <block type="customer/form_login" name="rokmage_modal_login" template="rokmagemodules/rokmage-modalheader/rokmage-modal-login.phtml"/>
+		</reference>
+        <reference name="top.links" as="topLinks">
+            <action method="setTemplate" ifconfig="modal_header/general/enabled">
+                <template>rokmagemodules/rokmage-modalheader/rokmage-top-links.phtml</template>
+            </action>
+        </reference>
+    </customer_logged_out>
+
+	<contacts_index_index>
+	        <reference name="head">
+	            <action method="setTitle"><title>Contact Us</title></action>
+	        </reference>
+	</contacts_index_index>
+</layout>
+

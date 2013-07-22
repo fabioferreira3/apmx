@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+/**
+  * @version   $Id: config.xml 47707 2012-01-18 23:46:59Z sam $
+  * @author    RocketTheme http://www.rockettheme.com
+  * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+  */
+-->
+<config>
+    <modules>
+        <Rockettheme_RokmageMobile>
+            <version>1.0.0</version>
+        </Rockettheme_RokmageMobile>
+    </modules>
+	<default>
+        <rokmage_mobile>
+            <general>
+                <enable>1</enable>
+                <disableajax>0</disableajax>
+            </general>
+            <header_settings>
+                <wishlist>1</wishlist>
+            </header_settings>
+            <menu_settings>
+                <show_count>1</show_count>
+            </menu_settings>
+            <slider_settings>
+                <enable>1</enable>
+                <enabletouch>1</enabletouch>
+                <duration>5</duration>
+                <slide_one_image>default/scroller_img001.png</slide_one_image>
+                <slide_two_image>default/scroller_img002.png</slide_two_image>
+                <slide_three_image>default/scroller_img003.png</slide_three_image>
+            </slider_settings>
+            <catalog_settings>
+                <listfilter>1</listfilter>
+                <ratingstars>1</ratingstars>
+            </catalog_settings>
+			<footer_settings>
+                <text-box-title>Disclaimer</text-box-title>
+                <text-box>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</text-box>
+                <contact_link>1</contact_link>
+                <sitemap_link>1</sitemap_link>
+            </footer_settings>
+        </rokmage_mobile>  
+    </default>
+    <global>
+        <helpers>
+            <rokmagemobile>
+                <class>Rockettheme_RokmageMobile_Helper</class>
+            </rokmagemobile>
+        </helpers>
+        <models>
+            <rokmagemobilemodel>
+                <class>Rockettheme_RokmageMobile_Model</class>
+            </rokmagemobilemodel>
+            <rokmagemobileswitcher>
+                <class>Rockettheme_RokmageMobile_Model</class>
+            </rokmagemobileswitcher>
+            <contentslidermodelbackend>
+                <class>Rockettheme_RokmageMobile_Model_BackendActions</class>
+            </contentslidermodelbackend>
+            <core>
+                <rewrite>
+                    <design_package>Rockettheme_RokmageMobile_Model_Package</design_package>
+                </rewrite>
+            </core>
+		</models>
+        <blocks>
+            <catalog>
+                <rewrite>
+                    <product_list_toolbar>Rockettheme_RokmageMobile_Block_PagerFramelength</product_list_toolbar>
+                </rewrite>
+            </catalog>
+        </blocks>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <rokmagemobile>
+                    <file>rokmage-mobile/rokmagemobile.xml</file>
+                </rokmagemobile>
+            </updates>
+        </layout>
+        <routers>
+            <rokmagemobileswitcher>
+                <use>standard</use>
+                <args>
+                    <module>Rockettheme_RokmageMobile</module>
+                    <frontName>switchtheme</frontName>
+                </args>
+            </rokmagemobileswitcher>
+        </routers>
+    </frontend>		
+	<adminhtml>
+        <acl>
+            <resources>
+				<all>
+	            	<title>Allow everything</title>
+	            </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <rokmage_mobile translate="title" module="rokmagemobile">
+                                            <title>RokmageMobile Section</title>
+                                            <sort_order>60</sort_order>
+                                        </rokmage_mobile>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

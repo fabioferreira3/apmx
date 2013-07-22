@@ -1,0 +1,68 @@
+<?php
+/**
+ * @version   1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/html/header.phtml 
+ * Specific to Moxy
+ */
+?>
+
+<?php
+// Check if text size disabled
+$configData = Mage::getStoreConfig('modal_header');
+$textsize = $configData['general']['disabletextsize'];
+// Check if date disabled
+$date = $configData['general']['disabledate'];
+?>
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();
+$j(document).ready( function() {
+	// Add divs to hold rounded corners
+	    /* <![CDATA[ */
+	    $j(".product-image-col").append('<div class="infobox-top-L"></div><div class="infobox-bottom-L"></div>');
+	    $j(".product-info-col").append('<div class="infobox-top-R"></div><div class="infobox-bottom-R"></div>');
+	    /* ]]> */
+});
+</script>		
+<!-- <?php echo $this->getChildHtml('topMenu') ?> -->
+	
+	
+<div class="header-container z2">
+
+    <div class="header">
+        <div class="inner-header-container">
+        
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif; ?>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+        </div>
+        
+        
+        
+    </div>
+</div>
+ <div class="homepage-spacer"></div> 
+<div class="header-container">
+    <div class="quick-access">
+        <div class="inner-header-container">
+    <?php if ($date != 1): ?>
+		<?php $day = date("l", Mage::getModel('core/date')->timestamp(time())); $month = date("F", Mage::getModel('core/date')->timestamp(time()));
+		 $date = date("d", Mage::getModel('core/date')->timestamp(time())); $year = date("Y", Mage::getModel('core/date')->timestamp(time())); ?>
+	<span class="date"><strong><?php echo $this->__($day); ?></strong> &nbsp;<?php echo $this->__($month); ?> <?php echo $this->__($date); ?> , <?php echo $year; ?></span>
+	<?php endif; ?>
+        <?php echo $this->getChildHtml('topSearch') ?>
+        <?php if ($textsize != 1): ?><?php echo $this->getChildHtml('rokmage_text_resizer') ?><?php endif; ?>
+    </div></div>
+    <div class="quick-access2"><div class="inner-header-container">
+        <?php echo $this->getChildHtml('store_language') ?><div class="welcome-msg"><?php echo $this->getWelcome()?> <?php echo $this->getAdditionalHtml() ?></div><div class="top-links"><?php echo $this->getChildHtml('topLinks') ?></div>
+    </div></div>
+</div>
+
+<?php echo $this->getChildHtml('rokmage_modal_login') ?>
+<?php echo $this->getChildHtml('rokmage_header_cart') ?>

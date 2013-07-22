@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="homepagegrid">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <homepage_grid translate="label" module="homepagegrid">
+            <label>HomepageGrid</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>3</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Homepage Grid:</label>
+							<comment><![CDATA[Note: You must call the block from your CMS homepage using the following: {{block type="catalog/product_list" name="rokmage_homepage_grid" template="rokmagemodules/rokmage-homepagegrid/rokmage-homepage-grid.phtml"}}]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>		
+                    </fields>
+                </general>
+                <settings translate="label">
+				<label>Product Grid Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+                        <welcome_msg translate="label, comment">
+							<label>Welcome Message:</label>
+                            <comment><![CDATA[Add a welcome message (may or may not be shown, depending on template)]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</welcome_msg>
+						<grid_title translate="label, comment">
+							<label>Product Grid Title:</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</grid_title>
+						<grid_text translate="label, comment">
+							<label>Product Grid Text:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</grid_text>
+						<no_of_products translate="label, comment">
+							<label>Number of products to show in grid:</label>
+							<comment><![CDATA[For example 6, 12, 24 - leave blank to show all products - set to 0 to disable products and show only the above text &uarr;]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</no_of_products>
+						<defaultlayout translate="label, comment">
+							<label>Default products layout:</label>
+							<comment><![CDATA[Choose default layout for product list]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>homepagegridmodel/Homepagedefaultlayout</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</defaultlayout>
+						<filter_by translate="label, comment">
+							<label>Filter products by:</label>
+							<comment><![CDATA[Choose filter for product list]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>homepagegridmodel/Homepagegridfilter</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</filter_by>
+						<productlist translate="label, comment">
+							<label>Select Homepage List:</label>
+							<comment><![CDATA[Select your 'Homepage' products from the list. Hold *ctrl & click to multi-select (*cmd on a Mac) ]]></comment>
+							<frontend_type>multiselect</frontend_type>
+                            <source_model>homepagegridmodel/Homepageproductlist</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</productlist>
+						<randomize translate="label, comment">
+                            <label>Randomize Products:</label>
+							<comment><![CDATA[Applicable ONLY to All Products/Featured Products/Select List. If OFF, products will display in catalog order]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>homepagegridmodel/Homepagegridrandomize</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </randomize>
+						<truncate translate="label, comment">
+							<label>Truncate Product Titles/Descriptions:</label>
+							<comment><![CDATA[Choose whether or not to truncate titles/descriptions (good if you have long product names/descriptions)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>homepagegridmodel/Homepagegridtruncate</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</truncate>
+						<truncate_titlelength translate="label, comment">
+							<label>Max Titles Length:</label>
+							<comment><![CDATA[Set the maximum length for product titles (for example '50')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_titlelength>
+						<truncate_desclength translate="label, comment">
+							<label>Max Descriptions Length:</label>
+							<comment><![CDATA[Set the maximum length for product descriptions (for example '110')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_desclength>
+						<listimageheight translate="label, comment">
+							<label>Image Height:</label>
+							<comment><![CDATA[Set the height, in pixels, of the category product images (for example '135' - minus the 'px')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</listimageheight>
+						<listimagewidth translate="label, comment">
+							<label>Image Width:</label>
+							<comment><![CDATA[Set the width, in pixels, of the category product images (for example '135' - minus the 'px')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</listimagewidth>
+						<ribbons translate="label">
+                            <label>Disable Ribbons:</label>
+							<comment><![CDATA[Disable corner announcement ribbon]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ribbons>
+					</fields>
+				</settings>
+            </groups>
+        </homepage_grid>
+    </sections>
+</config>

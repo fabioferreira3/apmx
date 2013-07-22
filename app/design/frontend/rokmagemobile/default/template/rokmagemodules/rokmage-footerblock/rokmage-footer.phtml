@@ -1,0 +1,37 @@
+<?php
+/**
+ * @version   $Id: rokmage-footer.phtml 53433 2012-06-04 20:40:13Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/html/footer.phtml - Adds footer text block
+ */
+?>
+
+<?php
+  // Get Text Box Content
+  $configData = Mage::getStoreConfig('rokmage_mobile');
+  $textblocktitle = $configData['footer_settings']['text-box-title'];
+  $textblockcontent = $configData['footer_settings']['text-box'];
+?>
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();   
+$j(document).ready(function(){    
+  $j('.footermenu a[title="<?php echo $this->__('Advanced Search') ?>"]').addClass("advancedsearch");
+});
+</script>
+
+<div class="ui-bar-a">
+  <div class="footer-text" data-role="collapsible" data-theme="a" data-content-theme="c">
+    <h5><?php echo $textblocktitle ?></h5>
+    <?php echo $textblockcontent ?>
+  </div>
+</div>
+
+<div class="footer-container" data-role="footer">
+    <div class="footer">
+        <?php echo $this->getChildHtml() ?>
+        <div id="copyright"><?php echo $this->getCopyright() ?></div><span class="hidden"><?php echo $this->__('(ver. %s)', Mage::getVersion()) ?></span>
+    </div>
+</div>

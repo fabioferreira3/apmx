@@ -1,0 +1,565 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="contentslider">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <content_slider translate="label" module="contentslider">
+            <label>ContentSlider</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>4</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enabledhomepage translate="label">
+                            <label>Enable Homepage Slider:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabledhomepage>
+                        <enabled translate="label">
+                            <label>Enable Category Slider:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+						<content_type translate="label, comment">
+							<label>Homepage Content Type:</label>
+							<comment><![CDATA[Choose to display either Products selected from the list below OR Custom Content (configured in 'Custom' section)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Contentslidertype</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</content_type>	
+						<autoplay translate="label">
+                            <label>Enable Autoplay:</label>
+							<comment><![CDATA[If enabled, slider will automatically cycle through content]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Contentsliderautoplay</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </autoplay>
+						<arrows translate="label">
+                            <label>Show Prev/Next Arrows:</label>
+							<comment><![CDATA[Choose whether or not to show 'previous' and 'next' navigation arrows]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </arrows>	
+						<speed translate="label, comment">
+							<label>Duration:</label>
+							<comment><![CDATA[Set the duration each slide is shown for (in seconds) if Autoplay is enabled]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</speed>
+						<ribbons translate="label">
+                            <label>Disable Ribbons:</label>
+							<comment><![CDATA[Disable corner announcement ribbon]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ribbons>
+                    </fields>
+                </general>
+                <settings translate="label">
+				<label>Homepage Slider Products</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<filter_byhomepage translate="label, comment">
+							<label>Filter products by:</label>
+							<comment><![CDATA[Choose attribute to filter product list by]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Productfilter</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</filter_byhomepage>
+						<no_of_productshomepage translate="label, comment">
+							<label>Number of products:</label>
+							<comment><![CDATA[For example 4, 6, 8]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</no_of_productshomepage>
+						<slider_products translate="label, comment">
+							<label>Select specific products:</label>
+							<comment><![CDATA[Choose products to show in slider. Hold *ctrl & click to multi-select (*cmd on a Mac) ]]></comment>
+							<frontend_type>multiselect</frontend_type>
+                            <source_model>contentslidermodel/Productlist</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slider_products>
+						<truncate translate="label, comment">
+							<label>Truncate Product Titles/Descriptions:</label>
+							<comment><![CDATA[Choose whether or not to truncate titles/descriptions (good if you have long product names/descriptions). Doesn't apply to Custom Content]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Contentslidertruncate</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</truncate>
+						<truncate_titlelength translate="label, comment">
+							<label>Max Titles Length:</label>
+							<comment><![CDATA[Set the maximum length for product titles (for example '30')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_titlelength>
+						<truncate_desclength translate="label, comment">
+							<label>Max Descriptions Length:</label>
+							<comment><![CDATA[Set the maximum length for product descriptions (for example '130')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_desclength>
+						<randomizehomepage translate="label, comment">
+                            <label>Randomize Products:</label>
+							<comment><![CDATA[Enable this to show random products on each page refresh]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Sliderrandomize</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </randomizehomepage>
+					</fields>
+				</settings>
+				<settings_cat translate="label">
+				<label>Category Slider Products (automatically filtered by current category)</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>3</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<filter_by translate="label, comment">
+							<label>Filter products by:</label>
+							<comment><![CDATA[Choose attribute to filter product list by]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Productfiltercat</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</filter_by>
+						<no_of_products translate="label, comment">
+							<label>Number of products:</label>
+							<comment><![CDATA[For example 4, 6, 8]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</no_of_products>
+						<truncate translate="label, comment">
+							<label>Truncate Product Titles/Descriptions:</label>
+							<comment><![CDATA[Choose whether or not to truncate titles/descriptions (good if you have long product names/descriptions). Doesn't apply to Custom Content]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Contentslidertruncate</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</truncate>
+						<truncate_titlelength translate="label, comment">
+							<label>Max Titles Length:</label>
+							<comment><![CDATA[Set the maximum length for product titles (for example '30')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_titlelength>
+						<truncate_desclength translate="label, comment">
+							<label>Max Descriptions Length:</label>
+							<comment><![CDATA[Set the maximum length for product descriptions (for example '130')]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </truncate_desclength>
+						<hidedesc translate="label, comment">
+                            <label>Hide Description:</label>
+							<comment><![CDATA[Hide the product description]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hidedesc>
+						<randomize translate="label, comment">
+                            <label>Randomize Products:</label>
+							<comment><![CDATA[Enable this to show random products on each page refresh]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>contentslidermodel/Sliderrandomize</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </randomize>
+					</fields>
+				</settings_cat>
+				<settings_custom_one translate="label">
+				<label>Homepage Slide #1 Custom Content</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>4</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<slide_one_title translate="label, comment">
+							<label>Slide #1 Title:</label>
+							<comment><![CDATA[Add the word "disable" to disable panel]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_title>
+						<slide_one_content translate="label, comment">
+							<label>Slide #1 Content:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_content>
+						<slide_one_image translate="label, comment">
+							<label>Slide #1 Image:</label>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmage-contentslider-images</upload_dir>
+                            <base_url type="media" scope_info="1">rokmage-contentslider-images</base_url>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_image>
+						<slide_one_image_as_bg translate="label, comment">
+							<label>Use image as background:</label>
+							<comment><![CDATA[Add image behind text as background-image]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_image_as_bg>
+						<slide_one_buttontext translate="label, comment">
+							<label>Slide #1 Button Text:</label>
+							<comment><![CDATA[Add the button text (for example "Read More")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_buttontext>
+						<slide_one_buttonurl translate="label, comment">
+							<label>Slide #1 Button/Link URL:</label>
+							<comment><![CDATA[Add the URL the button will redirect to when pressed (only the final portion, after index.php/ - for example "microsoft-wireless-optical-mouse-5000.html")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_buttonurl>
+						<fullimagelink_one translate="label, comment">
+							<comment><![CDATA[Make linkable area cover full image]]></comment>
+							<label>Full size link:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fullimagelink_one>
+					</fields>
+				</settings_custom_one>
+				<settings_custom_two translate="label">
+				<label>Homepage Slide #2 Custom Content</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>5</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<slide_two_title translate="label, comment">
+							<label>Slide #2 Title:</label>
+							<comment><![CDATA[Add the word "disable" to disable panel]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_title>
+						<slide_two_content translate="label, comment">
+							<label>Slide #2 Content:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_content>
+						<slide_two_image translate="label, comment">
+							<label>Slide #2 Image:</label>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmage-contentslider-images</upload_dir>
+                            <base_url type="media" scope_info="1">rokmage-contentslider-images</base_url>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_image>
+						<slide_two_image_as_bg translate="label, comment">
+							<label>Use image as background:</label>
+							<comment><![CDATA[Add image behind text as background-image]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_image_as_bg>
+						<slide_two_buttontext translate="label, comment">
+							<label>Slide #2 Button Text:</label>
+							<comment><![CDATA[Add the button text (for example "Read More")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_buttontext>
+						<slide_two_buttonurl translate="label, comment">
+							<label>Slide #2 Button/Link URL:</label>
+							<comment><![CDATA[Add the URL the button will redirect to when pressed (only the final portion, after index.php/ - for example "microsoft-wireless-optical-mouse-5000.html")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_buttonurl>
+						<fullimagelink_two translate="label, comment">
+							<comment><![CDATA[Make linkable area cover full image]]></comment>
+							<label>Full size link:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fullimagelink_two>
+					</fields>
+				</settings_custom_two>
+				<settings_custom_three translate="label">
+				<label>Homepage Slide #3 Custom Content</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>6</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<slide_three_title translate="label, comment">
+							<label>Slide #3 Title:</label>
+							<comment><![CDATA[Add the word "disable" to disable panel]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_title>
+						<slide_three_content translate="label, comment">
+							<label>Slide #3 Content:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_content>
+						<slide_three_image translate="label, comment">
+							<label>Slide #3 Image:</label>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmage-contentslider-images</upload_dir>
+                            <base_url type="media" scope_info="1">rokmage-contentslider-images</base_url>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_image>
+						<slide_three_image_as_bg translate="label, comment">
+							<label>Use image as background:</label>
+							<comment><![CDATA[Add image behind text as background-image]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_image_as_bg>
+						<slide_three_buttontext translate="label, comment">
+							<label>Slide #3 Button Text:</label>
+							<comment><![CDATA[Add the button text (for example "Read More")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_buttontext>
+						<slide_three_buttonurl translate="label, comment">
+							<label>Slide #3 Button/Link URL:</label>
+							<comment><![CDATA[Add the URL the button will redirect to when pressed (only the final portion, after index.php/ - for example "microsoft-wireless-optical-mouse-5000.html")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_buttonurl>
+						<fullimagelink_three translate="label, comment">
+							<comment><![CDATA[Make linkable area cover full image]]></comment>
+							<label>Full size link:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fullimagelink_three>
+					</fields>
+				</settings_custom_three>
+				<settings_custom_four translate="label">
+				<label>Homepage Slide #4 Custom Content</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>7</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<slide_four_title translate="label, comment">
+							<label>Slide #4 Title:</label>
+							<comment><![CDATA[Add the word "disable" to disable panel]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_four_title>
+						<slide_four_content translate="label, comment">
+							<label>Slide #4 Content:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_four_content>
+						<slide_four_image translate="label, comment">
+							<label>Slide #4 Image:</label>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmage-contentslider-images</upload_dir>
+                            <base_url type="media" scope_info="1">rokmage-contentslider-images</base_url>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_four_image>
+						<slide_four_image_as_bg translate="label, comment">
+							<label>Use image as background:</label>
+							<comment><![CDATA[Add image behind text as background-image]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_four_image_as_bg>
+						<slide_four_buttontext translate="label, comment">
+							<label>Slide #4 Button Text:</label>
+							<comment><![CDATA[Add the button text (for example "Read More")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_four_buttontext>
+						<slide_four_buttonurl translate="label, comment">
+							<label>Slide #4 Button/Link URL:</label>
+							<comment><![CDATA[Add the URL the button will redirect to when pressed (only the final portion, after index.php/ - for example "microsoft-wireless-optical-mouse-5000.html")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_four_buttonurl>
+						<fullimagelink_four translate="label, comment">
+							<comment><![CDATA[Make linkable area cover full image]]></comment>
+							<label>Full size link:</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fullimagelink_four>
+					</fields>
+				</settings_custom_four>
+            </groups>
+        </content_slider>
+    </sections>
+</config>

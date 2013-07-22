@@ -1,0 +1,246 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_blank
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/* IE 6 only */
+* html .validation-advice { height:13px; }
+* html .error-msg,
+* html .success-msg,
+* html .note-msg,
+* html .notice-msg { height:24px; }
+.block li.item,
+.block-poll li,
+.opc li.section { vertical-align:top; }
+
+/* Doubled Margin Fixes */
+.product-view .product-img-box .more-views li,
+.product-view .box-tags .form-add .input-box,
+.sp-methods select.month { display:inline; }
+
+/********** < Navigation styles */
+#nav li,
+#nav li a { zoom:1; }
+#nav li { vertical-align:top; }
+/* Show Menu */
+#nav li.over ul.shown-sub { left:0; }
+#nav li.over li ul.shown-sub { left:100px; }
+/********** < Navigation styles */
+
+select { margin-bottom:1px; }
+input.radio { width:13px; height:13px; }
+input.checkbox { width:13px; height:13px; }
+button.button { height:21px; }
+button.button span { position:relative; }
+button.btn-checkout {}
+.form-list label { position:relative; z-index:0; }
+.form-list label.required em { position:absolute; top:0; right:-8px; }
+
+/*table { face-color:expression(runtimeStyle.scrollbarFaceColor = '#fff', cellSpacing = 0); }*/ /* Cellspacing fix for IE6-7 */
+
+.tool-tip .btn-close a { margin:0; }
+
+.product-view .product-img-box .zoom.disabled { filter:alpha(opacity=30); }
+
+/* Clearer */
+.clearer { display:block; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
+
+/* Clears and hasLayout fixes */
+.header-container,
+.header-container .top-container,
+.header,
+.header .quick-access,
+#nav,
+.main,
+.footer,
+.footer-container .bottom-container,
+.col-main,
+.col2-set,
+.col3-set,
+.col4-set,
+.messages li,
+.search-autocomplete li,
+.block,
+.block .block-content,
+.block .actions,
+.block li.item,
+.block-poll li,
+.block-poll .label,
+.block-layered-nav .currently li,
+.block-account .block-content li a,
+.mini-products-list .product-details,
+.page-title,
+.rss-title h1,
+.products-grid,
+.products-list li.item,
+.box-account .box-head,
+.dashboard .box .box-title,
+.box-reviews li.item,
+.box-tags li.item,
+.pager,
+.sorter,
+.ratings,
+.add-to-box,
+.add-to-cart,
+.product-essential,
+.product-collateral,
+.product-view .product-img-box .more-views ul,
+.product-view .box-tags .form-add,
+.product-options .options-list li,
+.product-options-bottom,
+.truncated,
+.truncated .truncated_full_value,
+.product-review,
+.cart,
+.cart-collaterals,
+.cart .crosssell li.item,
+.cart .discount,
+.opc .step-title,
+.opc .step,
+.multiple-checkout,
+.sp-methods,
+.checkout-progress,
+.multiple-checkout .place-order,
+.form-list li,
+.form-list .field,
+.group-select li,
+.buttons-set,
+.page-print .print-head,
+.cart-tax-total,
+.advanced-search-summary,
+.advanced-search-summary p,
+.gift-messages-form .item,
+.send-friend .form-list li p { zoom:1; }
+
+/* Hover Fix */
+iframe.hover-fix { position:absolute; left:-1px; top:-1px; z-index:-1; background:transparent; filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=0); }
+
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* --------- RokMage Module Fixes --------- */
+/* IE6 Warning */
+#iewarn { width: 100%; text-align: left; font-family: Helvetica, Arial, FreeSans, sans-serif; background: #C6D3DA url(../rokmage-modalheader/images/error.png) 10px 20px no-repeat;opacity: 0;top: 0px; left: 0px; margin: 0 auto;font-size: 110%;color: #001D29;z-index: 8000;}
+#iewarn div {position: relative;border-top: 5px solid #95B8C9;border-bottom: 5px solid #95B8C9;padding: 10px 80px 10px 220px;}
+#iewarn h3 {font-size: 175%; margin: 15px 0px; line-height: 1.1em}
+#iewarn h4 {color: #900; font-weight: bold; line-height: 120%; font-size: 120%; margin: 15px 0px;}
+#iewarn p {margin: 0px 0px 15px; line-height: 1.7em;}
+#iewarn a {color: #296AC6;font-weight: bold; text-decoration: none; }
+#warningClose {background: url(../rokmage-modalheader/images/close.png) 50% 50% no-repeat;display: block;cursor: pointer;position: absolute;width: 61px;height: 21px;top: 25px;right: 12px;}
+
+/* Layout */
+.col3-layout .col-wrapper { width: 734px; }
+
+
+/* Image Borders */
+* html .rounded_xl, * html .round-xl, * html .rounded_l, * html .round-l, * html .rounded_m, * html .round-m, * html .rounded_s, * html .round-s { background-image: none !important; }
+
+/* ModalHeader */
+* html body { height: 100% !important; }
+* html .header ul.links { margin-top: 0; }
+* html .header .quick-access { margin-top: -10px; }
+* html .header ul.links .first a { background-image: none !important; }
+.header #search_mini_form input { margin-left: -218px; }
+.fontResizer { width: 105px; }
+* html .header .rokmage-cart-box-container { width: 160px; left: 53%;  position:absolute; top:45px; }
+* html .header .rokmage-cart-box-R { margin-left: 9px;}
+* html .header .rokmage-cart-box-L .cart-icon { height: 21px; width: 26px; }
+* html #overlay { position: absolute !important; height:expression(document.body.clientHeight + "px"); }
+* html #rokmage-header-cart, * html #rokmage-login-content, * html #video, * html #video-flow { position: absolute !important; top:expression(eval(document.documentElement.scrollTop) + 300 + "px"); }
+* html #rokmage-login-content span.input-left { display: none !important; }
+* html span.input-left { margin-top: 2px !important; }
+* html #rokmage-login-content input.inputstyled { background-image: none !important; border: 1px solid #ccc !important; color:#333 !important; }
+.rok-breadcrumbs { margin-left: 0 !important; }
+* html .rok-breadcrumbs { margin-left: 2px !important; }
+* html .rok-breadcrumbs ul li { background-image: none }
+* html .chevronOverlay { background-image: none !important }
+.rok-breadcrumbs ul li span { filter:alpha(opacity=0); }
+.breadcrumbs { display: block; visibility: hidden; }
+.rok-breadcrumbs { visibility: visible; }
+
+/* MageMenus */
+.header-container { z-index: 1; }
+* html .mageside-menu-toggle-button { margin: -23px 0px 0px 90px;}
+ul#magemenu-top li ul li a { background-position: 0 98%;}
+* html .mageside-menu .block-content { padding: 0 !important; }
+ul#magemenu-top li ul li { position: static; } 
+ul#magemenu-top li.hover { position: relative; } 
+
+/* CategoryView */
+* html .filter-toggle-container { display: none; }
+* html .product-image-col .product-image.rounded_m { margin-right: -2px; }
+* html ul.display { margin-left: 0px; }
+* html ul.thumb_view { width: 478px; }
+* html ul.thumb_view li .product-container { margin-right:8px; width:230px; }
+* html ul.thumb_view li .product-info-col { width:100px; }
+
+/* ContentSlider */
+* html #homepage-contentslider-container .backward { left: 35px; }
+* html #homepage-contentslider-container .forward { right: 25px; }
+* html #homepage-contentslider-container .images { margin-left:7px; }
+* html #contentslider-container .backward { left: 25px; }
+* html #contentslider-container .forward { right: 25px; }
+* html #contentslider-container .images { margin:15px 7px; }
+#homepage-contentslider-container .images div { width: 900px; }
+
+/* ProductScroller */
+* html .cms-index-index .scrollable-container { margin-left: 0 !important;}
+* html .scrollable-container { margin-left: -10px !important;}
+* html div.scrollable div.items { margin-left: -8px !important; }
+
+
+/* ProductView */
+* html #video { position: absolute; }
+* html .col3-layout .col-wrapper { width: 748px; }
+* html .col3-layout .col-main { margin:5px 0 0 0; padding:0; width:496px; }
+* html .zoomer-product-pics ul.thumbnails { position: relative; width: 150px; }
+.add-to-box span.input-left, .product-options-bottom span.input-left { top: 0px; }
+* html .thumbsbutton { top: -28px; }
+* html .show { top: 0px !important; margin-left: 5px; width: 200px; overflow: hidden; }
+* html .product-view .ratings { position: relative; margin-top: -20px;}
+/* Product Info Tabs */
+* html ul.tabs { display: none !important; }
+* html .tab_content { display: block !important;  }
+.product-view .product-shop .add-to-links { width: 100px; }
+.hovertozoom { width: 182px; }
+
+/* Footer */
+.footer .top-link { z-index: 99999999; position: static; }
+* html .footer .rokmage-footer-inner-panel ul { line-height: 10px;}
+* html .footer .rokmage-footer-inner-panel ul li a { padding: 2px 0 3px 20px;}
+.footer .store-switcher { line-height: 23px; margin: -25px 0 0 10px; position: static; }
+
+/* Misc */
+* html .crosssell .rounded_s { margin-right: 0 !important; }
+* html .checkout-cart-index .col2-set .col-2 { width: 100px !important;}
+.col-main-end, .bg-container-end { zoom: 1; }
+.cms-index-index .col3-layout .col-main-end { margin-left: 10px; }
+
+/* jQuery fading PNG transparency fix */
+img { background: transparent; -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE8 */
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF); /* IE6 & 7 */
+zoom: 1; }

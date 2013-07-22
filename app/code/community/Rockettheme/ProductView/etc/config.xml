@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.6.2.1 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_ProductView>
+            <version>1.0.0</version>
+        </Rockettheme_ProductView>
+    </modules>
+	<default>
+        <product_view>
+            <general>
+                <enableproductview>1</enableproductview>
+				<localoverride>1</localoverride>
+            </general>
+			<info_settings>
+                <tabsenable>1</tabsenable>
+				<quick_info_slot>ATT_short_description</quick_info_slot>
+				<quick_info_content>{{value}}</quick_info_content>
+				<first_attribute_slot>ATT_description</first_attribute_slot>
+				<first_attribute_content>{{value}}</first_attribute_content>
+				<second_attribute_slot>additional</second_attribute_slot>
+				<second_attribute_content>{{value}}</second_attribute_content>
+				<third_attribute_slot>disabled</third_attribute_slot>
+				<fourth_attribute_slot>disabled</fourth_attribute_slot>
+				<fifth_attribute_slot>disabled</fifth_attribute_slot>
+				<reviews>1</reviews>
+				<equalize>0</equalize>
+				<upsellcolumns>2</upsellcolumns>
+            </info_settings>
+			<settings>
+                <mediaenable>1</mediaenable>
+				<resize_bg>0</resize_bg>
+				<imagelocation>default/rokmage-productview/images/</imagelocation>
+				<smallwidth>260</smallwidth>
+				<smallheight>260</smallheight>
+				<largewidth>800</largewidth>
+				<largeheight>800</largeheight>
+				<thumbnailwidth>78</thumbnailwidth>
+				<thumbnailheight>78</thumbnailheight>
+				<zoom>0</zoom>
+				<overlaythumbs>1</overlaythumbs>
+				<spacingoffset>10</spacingoffset>
+            </settings>
+        </product_view>  
+    </default>
+    <global>
+        <helpers>
+            <productview>
+                <class>Rockettheme_ProductView_Helper</class>
+            </productview>
+        </helpers>
+		<models>
+            <productviewmodel>
+				<class>Rockettheme_ProductView_Model</class>
+            </productviewmodel>
+		</models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <productview>
+                    <file>rokmage-productview/rokmageproductview.xml</file>
+                </productview>
+            </updates>
+        </layout>
+    </frontend>		
+	<adminhtml>
+        <acl>
+            <resources>
+				 <all>
+	                <title>Allow everything</title>
+	             </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <product_view translate="title" module="productview">
+                                            <title>ProductView Section</title>
+                                            <sort_order>60</sort_order>
+                                        </product_view>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

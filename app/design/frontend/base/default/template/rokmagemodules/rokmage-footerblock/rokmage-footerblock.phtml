@@ -1,0 +1,295 @@
+<?php
+/**
+ * @version   1.6.2.0 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php
+/**
+ * @see Mage_Page_Block_Template_Links
+ */
+?>
+
+<?php
+// Get modal animation settings from admin
+$configData = Mage::getStoreConfig('modal_header');
+$animation = $configData['settings_modalanimation']['animation'];
+?>
+
+<?php
+// Number of items in lists
+$configData = Mage::getStoreConfig('footer_block');
+$no_of_items = $configData['general']['no-list-items'];
+// Check if Truncate is ON
+$truncate = $configData['general']['truncate'];
+// Get Truncate Title Length
+$titlelength = $configData['general']['truncate_titlelength'];
+// Check if Randomize is ON
+$randomize = $configData['general']['randomize'];
+// First Column Content
+$firstcolumncontent = $configData['settings']['first-column-content'];
+// First Custom Text
+$firstcolumntext = $configData['settings']['first-custom-text'];
+// Get first CMS Block
+$firstblock = $configData['settings']['firstblock'];
+// Second Column Content
+$secondcolumncontent = $configData['settings']['second-column-content'];
+// Second Custom Text
+$secondcolumntext = $configData['settings']['second-custom-text'];
+// Get Second CMS Block
+$secondblock = $configData['settings']['secondblock'];
+// Third Column Content
+$thirdcolumncontent = $configData['settings']['third-column-content'];
+// Third Column Content
+$thirdcolumntext = $configData['settings']['third-custom-text'];
+// Get Third CMS Block
+$thirdblock = $configData['settings']['thirdblock'];
+// Get Text Box Content
+$textblockcontent = $configData['settings']['text-box'];
+// Get Text Box CMS Block
+$textblock = $configData['settings']['textblock'];
+// If featured list being used
+if ($firstcolumncontent == 'Our Featured Products' OR $secondcolumncontent == 'Our Featured Products' OR $thirdcolumncontent == 'Our Featured Products') {
+// Get Featured category type from backend
+    $configData = Mage::getStoreConfig('featured_products');
+    $featuredtype = $configData['general']['featuredtype'];
+    // Get Featured category from backend
+    $featuredcategory = $configData['settings']['featuredcategory'];
+    // Get Featured attribute from backend
+    $featuredattribute = $configData['settings']['featuredattribute'];
+    // Get Featured Products from list
+    $featuredlist = $configData['settings']['featuredlist'];
+    $featuredlist = explode(',', $featuredlist);
+};
+// Check if modal cart disabled
+$configData = Mage::getStoreConfig('modal_header');
+$modalcart = $configData['general']['disablemodalcart'];
+?>
+
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    // Truncate
+    $j(function() {
+        $j('.footer_truncate').truncate({max_length: <?php echo $titlelength ?>});
+    });
+</script>
+
+<?php
+// Check product visibility
+$visibility = array(
+    Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
+    Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
+);
+
+// Check if root filter is ON
+$configData = Mage::getStoreConfig('featured_products');
+$filterbyroot = $configData['settings']['filterbyroot'];
+
+// Get the current category
+if ($filterbyroot == 1) { // If filter by root is enabled
+        $_currcat = Mage::app()->getStore()->getRootCategoryId();
+} else {
+        $_currcat = 0;
+};
+$_category = Mage::getModel('catalog/category')->load($_currcat);
+
+
+if ($firstcolumncontent == 'Best Selling Products' OR $secondcolumncontent == 'Best Selling Products' OR $thirdcolumncontent == 'Best Selling Products') {
+//** Best-Selling - load a product collection filtered by best-selling **//
+    $_bs_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbyBestSelling('name', $visibility, $_category, $no_of_items, $_currcat);
+}
+
+// If featured products being used
+if ($firstcolumncontent == 'Our Featured Products' OR $secondcolumncontent == 'Our Featured Products' OR $thirdcolumncontent == 'Our Featured Products') {
+//** Featured - load a product collection filtered by featured **//
+    if ($featuredtype == 'list') {
+        //** Featured - load a product collection selected in the admin **//
+        $_feat_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbyFullCollection('name', $visibility, $_category, '', $randomize, $_currcat)->addAttributeToFilter('entity_id', array('in' => array($featuredlist)))->setPageSize($no_of_items);
+    } elseif ($featuredtype == 'attribute') {
+        //** Featured - load a product collection filtered by featured attribute **//
+        $_feat_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbyFeaturedAttribute('name', $visibility, $featuredattribute, $_category, $no_of_items, $randomize, $_currcat);
+    } elseif ($featuredtype == 'category') {
+        //** Featured - load a product collection filtered by featured category **//
+        $_featcategory = Mage::getModel('catalog/category')->load($featuredcategory); // Load featured category
+        $_feat_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbyFeaturedCategory('name', $visibility, $_featcategory, $no_of_items, $randomize, $_currcat);
+    };
+}
+
+if ($firstcolumncontent == 'Recently Added Products' OR $secondcolumncontent == 'Recently Added Products' OR $thirdcolumncontent == 'Recently Added Products') {
+//** Recently Added - load a product collection filtered by recently added **//
+    $_newest_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbyRecentlyAdded('name', $visibility, $_category, $no_of_items, $_currcat);
+}
+
+if ($firstcolumncontent == 'Most Viewed Products' OR $secondcolumncontent == 'Most Viewed Products' OR $thirdcolumncontent == 'Most Viewed Products') {
+//** Most Viewed - load a product collection filtered by most views **//
+    $_viewed_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbyMostViewed('name', $visibility, $_category, $no_of_items, $_currcat);
+}
+
+if ($firstcolumncontent == 'Special Price Products' OR $secondcolumncontent == 'Special Price Products' OR $thirdcolumncontent == 'Special Price Products') {
+//** Special Price Products - load a product collection filtered Special Price **//
+    $_specialprice_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbySpecialPrice('name', $visibility, $_category, $no_of_items, $_currcat);
+}
+
+if ($firstcolumncontent == 'Highest Rated Products' OR $secondcolumncontent == 'Highest Rated Products' OR $thirdcolumncontent == 'Highest Rated Products') {
+//** Highest Rated - load a product collection filtered by ratings **//
+    $_rated_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1)->filterbyHighestRated('name', $visibility, $_category, $no_of_items, $_currcat);
+};
+?>
+
+<div id="rokmage-footer-lists">
+
+    <?php
+    // Check what to show in first column
+    if ($firstcolumncontent == 'Best Selling Products')
+        $_first_productCollection = $_bs_productCollection;
+    elseif ($firstcolumncontent == 'Our Featured Products')
+        $_first_productCollection = $_feat_productCollection;
+    elseif ($firstcolumncontent == 'Recently Added Products')
+        $_first_productCollection = $_newest_productCollection;
+    elseif ($firstcolumncontent == 'Most Viewed Products')
+        $_first_productCollection = $_viewed_productCollection;
+    elseif ($firstcolumncontent == 'Special Price Products')
+        $_first_productCollection = $_specialprice_productCollection;
+    elseif ($firstcolumncontent == 'Highest Rated Products')
+        $_first_productCollection = $_rated_productCollection;
+    ?>
+
+    <?php if ($firstcolumncontent == 'text'): ?>
+        <div class="rokmage-footer-inner-panel">
+            <?php echo $firstcolumntext ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($firstblock)->toHtml(); ?>
+        </div>
+    <?php else : ?>
+        <div class="rokmage-footer-inner-panel">
+            <h3><?php echo $this->__($firstcolumncontent) ?></h3>
+            <ul>
+                <?php foreach ($_first_productCollection as $_first_product): ?>
+                    <?php $_productNameStripped = $this->stripTags($_first_product->getName(), null, true); ?>
+                    <li class="<?php echo $truncate ?>"><a href="<?php echo $_first_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>"><?php echo $_productNameStripped ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($firstblock)->toHtml(); ?>
+        </div>
+    <?php endif ?>
+
+    <?php
+    // Check what to show in second column
+    if ($secondcolumncontent == 'Best Selling Products')
+        $_second_productCollection = $_bs_productCollection;
+    elseif ($secondcolumncontent == 'Our Featured Products')
+        $_second_productCollection = $_feat_productCollection;
+    elseif ($secondcolumncontent == 'Recently Added Products')
+        $_second_productCollection = $_newest_productCollection;
+    elseif ($secondcolumncontent == 'Most Viewed Products')
+        $_second_productCollection = $_viewed_productCollection;
+    elseif ($secondcolumncontent == 'Special Price Products')
+        $_second_productCollection = $_specialprice_productCollection;
+    elseif ($secondcolumncontent == 'Highest Rated Products')
+        $_second_productCollection = $_rated_productCollection;
+    ?>
+
+    <?php if ($secondcolumncontent == 'text'): ?>
+        <div class="rokmage-footer-inner-panel">
+            <?php echo $secondcolumntext ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($secondblock)->toHtml(); ?>
+        </div>
+    <?php else : ?>
+        <div class="rokmage-footer-inner-panel">
+            <h3><?php echo $this->__($secondcolumncontent) ?></h3>
+            <ul>
+                <?php foreach ($_second_productCollection as $_second_product): ?>
+                    <?php $_productNameStripped = $this->stripTags($_second_product->getName(), null, true); ?>
+                    <li class="<?php echo $truncate ?>"><a href="<?php echo $_second_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>"><?php echo $_productNameStripped ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($secondblock)->toHtml(); ?>
+        </div>
+    <?php endif ?>
+
+    <?php
+    // Check what to show in third column
+    if ($thirdcolumncontent == 'Best Selling Products')
+        $_third_productCollection = $_bs_productCollection;
+    elseif ($thirdcolumncontent == 'Our Featured Products')
+        $_third_productCollection = $_feat_productCollection;
+    elseif ($thirdcolumncontent == 'Recently Added Products')
+        $_third_productCollection = $_newest_productCollection;
+    elseif ($thirdcolumncontent == 'Most Viewed Products')
+        $_third_productCollection = $_viewed_productCollection;
+    elseif ($thirdcolumncontent == 'Special Price Products')
+        $_third_productCollection = $_specialprice_productCollection;
+    elseif ($thirdcolumncontent == 'Highest Rated Products')
+        $_third_productCollection = $_rated_productCollection;
+    ?>
+
+    <?php if ($thirdcolumncontent == 'text'): ?>
+        <div class="rokmage-footer-inner-panel">
+            <?php echo $thirdcolumntext ?>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($thirdblock)->toHtml(); ?>
+        </div>
+    <?php else : ?>
+        <div class="rokmage-footer-inner-panel">
+            <h3><?php echo $this->__($thirdcolumncontent) ?></h3>
+            <ul>
+                <?php foreach ($_third_productCollection as $_third_product): ?>
+                    <?php $_productNameStripped = $this->stripTags($_third_product->getName(), null, true); ?>
+                    <li class="<?php echo $truncate ?>"><a href="<?php echo $_third_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>"><?php echo $_productNameStripped ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($thirdblock)->toHtml(); ?>
+        </div>
+    <?php endif ?>
+
+    <div id="rokmage-footer-text">
+        <?php echo $textblockcontent ?>
+        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($textblock)->toHtml(); ?>
+    </div>
+    <div class="clearfloat"></div>
+</div>
+<div class="clearfloat"></div>
+
+<div id="footer-bottom">
+    <?php $_links = $this->getLinks(); ?>
+    <?php if (count($_links) > 0): ?>
+
+        <script type="text/javascript">//<![CDATA[
+            var $j = jQuery.noConflict();
+            $j(document).ready(function(){
+                var cartcount = $j('.rokmage-cart-box-container span.big').html();
+                if(cartcount == 0) {
+                    // Do Nothing
+                } else {
+                    if(cartcount == 1) {
+                        $j('.footermenu li:eq(0)').html("<a href=\"<?php echo $this->getUrl('checkout/cart') ?>\" class=\"footercart\"><?php echo $this->__('Cart') ?> (<strong>1</strong> <?php echo $this->__('item') ?>)</a>");
+                    } else {
+                        $j('.footermenu li:eq(0)').html("<a href=\"<?php echo $this->getUrl('checkout/cart') ?>\" class=\"footercart\"><?php echo $this->__('Cart') ?> (<strong>" + cartcount + "</strong> <?php echo $this->__('items') ?>)</a>");
+                    };
+                };
+            }); //]]>
+        </script>
+
+        <ul class="footermenu">
+            <li><span><?php echo $this->__('Cart') ?> (<strong>0</strong> <?php echo $this->__('items') ?>)</span></li>
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>
+            <?php $_links = $this->getLinks(); ?>
+            <?php foreach ($_links as $_link): ?>
+                <?php if ($_link instanceof Mage_Core_Block_Abstract): ?>
+                    <?php echo $_link->toHtml() ?>
+                <?php else: ?>
+                    <li<?php if ($_link->getIsFirst() || $_link->getIsLast()): ?> class="<?php if ($_link->getIsFirst()): ?>first<?php endif; ?><?php if ($_link->getIsLast()): ?> last<?php endif; ?>"<?php endif; ?> <?php echo $_link->getLiParams() ?>><?php echo $_link->getBeforeText() ?><a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>" <?php echo $_link->getAParams() ?>><?php echo $_link->getLabel() ?></a><?php echo $_link->getAfterText() ?></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</div>
+
+<?php if($modalcart == 0): ?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('a.footercart').rokmagemodal({ rokmagemodalcontainer: "#rokmage-header-cart", <?php echo $animation ?> });
+    });
+</script>
+<?php endif; ?>

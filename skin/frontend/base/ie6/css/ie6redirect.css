@@ -1,0 +1,11 @@
+body { background: url(../images/bg.png); color: #888888; font-size: 14px; line-height: 130%; font-family: Helvetica,Arial,Sans-Serif; }
+body a {
+    color: #FF7528;
+}
+body a:hover {
+    color: #CCC;
+}
+h1 {color:#DF6929;line-height: 1.1em;
+    margin: 15px 0; background: url(../images/header-bg.png) 50% 0 no-repeat; padding-top: 90px;}
+p {font-size:16px;color:#999;}
+.wrapper { width: 690px; margin: 20px auto;}

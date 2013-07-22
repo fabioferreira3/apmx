@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<!--
+ /**
+  * @version   $Id: system.xml 53679 2012-06-13 19:17:42Z sam $
+  * @author    RocketTheme http://www.rockettheme.com
+  * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+  */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="rokmagemobile">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <rokmage_mobile translate="label" module="rokmagemobile">
+            <label>RokmageMobile</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enable translate="label">
+                            <label>Enable Mobile Theme:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <disableajax translate="label">
+                            <label>Disable Ajax page loading:</label>
+                            <comment><![CDATA[See jQuery Mobile documentation for more info]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disableajax>
+                    </fields>
+                </general>
+                <header_settings translate="label">
+                <label>Header Settings</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>1</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                    <fields>
+                    	<store_logo translate="label, comment">
+							<label>Store Logo:</label>
+							<comment><![CDATA[Image should be 118px wide by 45px high (transparent PNG is best)]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmagemobile-logos</upload_dir>
+                            <base_url type="media" scope_info="1">rokmagemobile-logos</base_url>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</store_logo>
+						<store_touch_icon translate="label, comment">
+							<label>Store Touch Icon:</label>
+							<comment><![CDATA[Image should be 114px by 114px (PNG32 format)]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmagemobile-touch-icons</upload_dir>
+                            <base_url type="media" scope_info="1">rokmagemobile-touch-icons</base_url>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</store_touch_icon>
+                        <wishlist translate="label">
+                            <label>Show Wishlist Link:</label>
+                            <comment><![CDATA[Show a link to the Wishlist in the header]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </wishlist>
+                    </fields>
+                </header_settings>
+                <menu_settings translate="label">
+                <label>Menu Settings</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>2</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                    <fields>
+						<show_count translate="label">
+                            <label>Show Product Count:</label>
+                            <comment><![CDATA[Show product count in categories menu]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_count>
+                        <subcats translate="label, comment">
+							<label>Visible Categories Depth:</label>
+							<comment><![CDATA[Level of categories to show (for example 1, 2, 3, 4)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</subcats>
+						<collapse translate="label, comment">
+							<label>Collapse 1st level parents:</label>
+							<comment><![CDATA[Disable links, collapse sub-categories, and enable accordion effect]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</collapse>
+                    </fields>
+                </menu_settings>
+                <slider_settings translate="label">
+				<label>Homepage Slider Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>3</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label, comment">
+							<label>Enable Homepage Slider:</label>
+							<comment><![CDATA[Show content slider on homepage]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						<enabletouch translate="label, comment">
+							<label>Enable Touch Controls:</label>
+							<comment><![CDATA[Enable swiping slider to change slide]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enabletouch>
+						<duration translate="label, comment">
+							<label>Duration:</label>
+							<comment><![CDATA[Set the duration each slide is shown for (in seconds)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</duration>
+						<slide_one_image translate="label, comment">
+							<label>Slide #1 Image:</label>
+							<comment><![CDATA[Image should be 320px wide by 160px high]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmagemobile-slider-images</upload_dir>
+                            <base_url type="media" scope_info="1">rokmagemobile-slider-images</base_url>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_image>
+						<slide_one_url translate="label, comment">
+							<label>Slide #1 Link URL:</label>
+							<comment><![CDATA[Add the URL the slide will redirect to when pressed (only the final portion, after index.php/ - for example "microsoft-wireless-optical-mouse-5000.html")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_url>
+						<slide_two_image translate="label, comment">
+							<label>Slide #2 Image:</label>
+							<comment><![CDATA[Image should be 320px wide by 120px high]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmagemobile-slider-images</upload_dir>
+                            <base_url type="media" scope_info="1">rokmagemobile-slider-images</base_url>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_image>
+						<slide_two_url translate="label, comment">
+							<label>Slide #2 Link URL:</label>
+							<comment><![CDATA[Add the URL the slide will redirect to when pressed (only the final portion, after index.php/ - for example "microsoft-wireless-optical-mouse-5000.html")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_url>
+						<slide_three_image translate="label, comment">
+							<label>Slide #3 Image:</label>
+							<comment><![CDATA[Image should be 320px wide by 120px high]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>contentslidermodelbackend/ImageUpload</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">rokmagemobile-slider-images</upload_dir>
+                            <base_url type="media" scope_info="1">rokmagemobile-slider-images</base_url>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_image>
+						<slide_three_url translate="label, comment">
+							<label>Slide #3 Link URL:</label>
+							<comment><![CDATA[Add the URL the slide will redirect to when pressed (only the final portion, after index.php/ - for example "microsoft-wireless-optical-mouse-5000.html")]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_url>
+					</fields>
+				</slider_settings>
+				<catalog_settings translate="label">
+                    <label>Category View Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<listfilter translate="label">
+                            <label>Enable Quick Filter:</label>
+                            <comment><![CDATA[Show quick filter box above product list]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </listfilter>
+                        <ratingstars translate="label">
+                            <label>Show Rating Stars:</label>
+                            <comment><![CDATA[Overlay the rating stars on product images]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ratingstars>
+                    </fields>
+                </catalog_settings>
+				<footer_settings translate="label">
+				<label>Footer Menu Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>5</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<text-box-title translate="label, comment">
+							<label>Text Box Title:</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</text-box-title>
+						<text-box translate="label, comment">
+							<label>Text Box Content:</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</text-box>
+						<footercms_links translate="label, comment">
+							<label>Footer CMS Links:</label>
+							<comment><![CDATA[Select CMS page links to show in footer]]></comment>
+							<frontend_type>multiselect</frontend_type>
+                            <source_model>rokmagemobilemodel/Menucontent</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</footercms_links>
+						<sitemap_link translate="label, comment">
+							<label>Include 'Sitemap' link:</label>
+							<comment><![CDATA[Include a link to the Sitemap]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sitemap_link>
+						<searchterms_link translate="label, comment">
+							<label>Include 'Search Terms' link:</label>
+							<comment><![CDATA[Include a link to the Search Terms page]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</searchterms_link>
+						<advancedsearch_link translate="label, comment">
+							<label>Include 'Advanced Search' link:</label>
+							<comment><![CDATA[Include a link to the Advanced Search]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</advancedsearch_link>
+						<contact_link translate="label, comment">
+							<label>Include 'Contact Us' link:</label>
+							<comment><![CDATA[Include a link to the Contact page]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</contact_link>
+						<backtotop_link translate="label, comment">
+							<label>Include 'Back To Top' link:</label>
+							<comment><![CDATA[Include a link to bring you to top of page]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</backtotop_link>
+						<desktop_link translate="label, comment">
+							<label>Include 'View Desktop Site' link:</label>
+							<comment><![CDATA[Include a link to switch to the standard version of the site]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</desktop_link>
+					</fields>
+				</footer_settings>
+				<style_settings translate="label">
+                    <label>Style Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>99</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<css translate="label">
+                            <label>Theme Roller CSS:</label>
+                            <comment><![CDATA[Add CSS from Theme Roller (http://jquerymobile.com/themeroller)]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </css>
+                    </fields>
+                </style_settings>
+            </groups>
+        </rokmage_mobile>
+    </sections>
+</config>

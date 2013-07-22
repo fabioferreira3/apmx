@@ -1,0 +1,29 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* --------- RokMage Module Fixes --------- */
+
+/* ModalHeader */
+* html .smallFont, * html .largeFont { background-color: #fff; }
+#rokmage-header-cart { background: url(../images/modal-cart-bg-IE.gif) 0 0 no-repeat !important; }
+#rokmage-login-content { background: url(../images/modal-bg-IE.gif) 0 0 no-repeat !important; }
+/* prev, next buttons */
+* html .cart-scrollable-container a.prev, * html .cart-scrollable-container a.next {  }
+* html .cart-scrollable-container a.next {  }
+
+/* MageMenus */
+* html ul#magemenu-top li ul li a { color: #333 !important; }
+
+/* ProductScroller */
+* html .scrollable-container a.prev, * html .scrollable-container a.prevPage { background-image:url(../images/scroll-right.gif); }
+* html .scrollable-container a.next, * html .scrollable-container a.nextPage { background-image:url(../images/scroll-left.gif); }
+
+/* Cat View */
+* html .col-left .block .block-content { clear: both; }
+
+/* ProductView */
+#video, #video-flow { background: url(../rokmage-productview/images/modal-vid-bg-IE.gif) 0 0 no-repeat;  }

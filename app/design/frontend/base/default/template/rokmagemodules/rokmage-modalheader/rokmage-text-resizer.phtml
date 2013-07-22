@@ -1,0 +1,20 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Specific to Theme
+ */
+?>
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();
+$j('document').ready(function(){
+    fontSize(".fontResizer", ".wrapper", 10, 12, 14, "<?php echo $this->__('Text Size') ?>", "ThemeCookie", "", "");
+    $j('a.smallFont').attr('title', "<?php echo $this->__('Decrease Text Size') ?>")
+    $j('a.largeFont').attr('title', "<?php echo $this->__('Increase Text Size') ?>")
+});
+</script>
+
+<div class="fontResizer"></div>

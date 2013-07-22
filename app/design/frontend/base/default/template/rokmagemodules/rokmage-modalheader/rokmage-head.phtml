@@ -1,0 +1,134 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/page/html/head.phtml - adds jquery truncate and easing scripts, plus IE png fix
+ */
+?>
+
+<title><?php echo str_replace("'", "&#8217;", $this->getTitle()) ?></title>
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<!--<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />-->
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<?php
+	$product = Mage::registry('current_product');
+	if($product){
+?>
+<meta property="og:title" content="<?php echo trim($product->getName()); ?>"/>
+<meta property="og:url" content="<?php echo $this->helper('core/url')->getCurrentUrl();?>"/>
+<meta property="og:type" content="product"/>
+<meta property="og:description" content="<?php echo strip_tags($product->getDescription()); ?>" />
+<meta property="og:image" content="<?php echo $this->helper('catalog/image')->init($product, 'image') ;?>"/>
+<?php
+	}
+?> 
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>
+
+<!-- Start Theme Styles -->
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/theme-styles.css') ?>" />
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/main.css') ?>" />
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/colorstyles.css') ?>" />
+<!-- End Theme Styles -->
+
+<!--[if IE 9]>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/styles-ie9.css') ?>" />
+<![endif]-->
+
+<!--[if IE 8]>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/styles-ie8.css') ?>" />
+<![endif]-->
+
+<!--[if IE 7]>
+<link type="text/css" rel="stylesheet" href="<?php echo $this->getSkinUrl('css/styles-ie.css') ?>" />
+<![endif]-->
+
+<!--[if IE 6]>
+<?php	
+// Get list of images to fix transparency for
+$configData = Mage::getStoreConfig('modal_header');
+$ie6_fixlist = $configData['settings']['iefix'];
+?>
+<script type="text/javascript">
+DD_belatedPNG.fix('<?php echo $ie6_fixlist ?>');
+</script>
+<![endif]-->
+
+<?php 
+// Check if build spans enabled
+	$configData = Mage::getStoreConfig('modal_header');
+	$enablebuildspans = $configData['general']['enablebuildspans'];
+// Get build spans list
+	$buildspans = $configData['general']['buildspans'];
+// Get additional CSS
+	$css = $configData['settings_js_css']['additional_css'];
+// Get PIE selectors
+	$pie = $configData['settings']['pie'];
+// Get style to add to body class
+	$configData = Mage::getStoreConfig('design');
+	$style = $configData['theme']['skin'];
+?>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=143826425691480";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+<script type="text/javascript">/* <![CDATA[ */
+var $j = jQuery.noConflict();
+$j(document).ready(function(){
+// Add hover to buttons
+$j('button').hover(
+	function () {
+		$j(this).addClass("hover");
+	}, 
+	function () {
+		$j(this).removeClass("hover");
+	}
+);
+// Add style to body class
+$j('body').addClass("<?php echo $style; ?>");
+// Add PIE selectors
+    $j(function() {
+        if (window.PIE) {
+            $j('<?php echo $pie; ?>').each(function() {
+                PIE.attach(this);
+            });
+        }
+    });
+});
+<?php if($enablebuildspans == 1) : // IF BUILD SPANS ENABLED ?>
+// Add a span to first word of specified titles
+$j(window).load(function(){
+	$j('<?php echo $buildspans; ?>').each(function(){
+	   $j(this).wrapStart(1);
+	});
+});
+<?php endif;  ?>
+/* ]]> */
+</script>
+
+<?php if($css != '') : // IF EXTRA CSS ?>
+<style type="text/css" media="screen">
+	<?php echo $css; ?>
+</style>
+<?php endif;  ?>

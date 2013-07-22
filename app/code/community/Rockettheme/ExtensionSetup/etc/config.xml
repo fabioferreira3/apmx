@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.5.1.1 September 1, 2011
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2011 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+       <Rockettheme_ExtensionSetup>
+          <version>1.0.1</version>
+       </Rockettheme_ExtensionSetup>
+    </modules>
+    <global>
+        <helpers>
+        	<extensionsetup>
+        		<class>Rockettheme_ExtensionSetup_Helper</class>
+        	</extensionsetup>
+        </helpers>
+        <resources>
+            <extensionsetup_setup>
+                <setup>
+                    <module>Rockettheme_ExtensionSetup</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </extensionsetup_setup>
+            <extensionsetup_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </extensionsetup_write>
+            <extensionsetup_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </extensionsetup_read>
+        </resources>	    
+    </global>
+    <adminhtml>
+        <acl>
+          <resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+            <admin>
+              <children>
+                  <system>
+                      <children>
+                        <config>
+                          <children>
+                            <extensionsetup>
+                              <title>Rockettheme - ExtensionSetup</title>
+                            </extensionsetup>
+                          </children>
+                        </config>
+                      </children>
+                  </system>
+              </children>
+            </admin>
+          </resources>
+        </acl>
+    </adminhtml>    
+</config>

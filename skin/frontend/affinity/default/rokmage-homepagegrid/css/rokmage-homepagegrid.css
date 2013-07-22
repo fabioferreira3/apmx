@@ -1,0 +1,39 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+.cms-index-index #slider_welcome { height:320px; margin:0 auto 10px; position:relative; width:980px; }
+.cms-index-index #welcome { position:absolute; right:30px; top:25px; width:255px; text-align:justify; }
+.cms-index-index #welcome p { padding: 10px; }
+.cms-index-index .main, .cms-index-index .col-main { padding: 0px; }
+.cms-index-index .grid-text { padding: 0 0 10px 10px; }
+.cms-index-index .bg-container { position: relative; }
+.cms-index-index .col3-layout .col-main .bg-container-end { margin-top: 0; }
+
+/* Welcome Message */
+.cms-index-index #welcome .block-title { padding:6px 0 4px 10px; }
+.cms-index-index #welcome .block-title strong span { font-size:1.3em; font-weight:normal; line-height:20px; margin:0; }
+
+/* Remove main col if 1column */
+.cms-index-index .col1-layout .col-main { display: none; }
+.cms-index-index .col1-layout { background:none; }
+
+/* 3column */
+.cms-index-index .col3-layout .col-main .bg-container { margin: 15px 0 0; }
+.cms-index-index .col3-layout .col-main .std > p { padding: 0; }
+
+/* Switch */
+.cms-index-index span.switch_thumb { position: absolute; right: 30px; top: 35px; }
+
+/* Ribbons */
+ul.display li { position: relative; }
+div.category-products span.ribbon { display: none; position: absolute; width: 127px; height: 52px; top: -4px; left: -5px; }
+div.category-products.bestselling span.ribbon { display: block; background: url(../images/bestselling_sm.png); }
+div.category-products.featured span.ribbon { display: block; background: url(../images/featured_sm.png); }
+div.category-products.recent span.ribbon { display: block; background: url(../images/new_sm.png); }
+div.category-products.viewed span.ribbon { display: block; background: url(../images/popular_sm.png); }
+div.category-products.rated span.ribbon { display: block; background: url(../images/highestrated_sm.png); }
+div.category-products.specialprice span.ribbon { display: block; background: url(../images/sale_sm.png); }

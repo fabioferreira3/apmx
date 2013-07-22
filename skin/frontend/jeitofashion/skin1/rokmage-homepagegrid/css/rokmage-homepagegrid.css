@@ -1,0 +1,30 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+.cms-index-index .grid-text {padding: 0 0 5px 5px;}
+.cms-index-index .product-info-col .price-box { padding: 5px 0;}
+.cms-index-index span.switch_thumb { margin: 0 0 10px 5px;  }
+
+/* Welcome Message Container */
+.cms-index-index #slider_welcome { position:relative; width:100%; }
+.cms-index-index #welcome { padding-top:90px; position:absolute; padding-left:2%; padding-top:12%; text-align:center; width:30%; font-size:120%; line-height: 20px; color: #fff;  }
+.cms-index-index #welcome p { color: #6c6c6c;}
+.cms-index-index .main, .cms-index-index .col-main { padding-left:2.7%; }
+
+/* Welcome Message */
+.cms-index-index #welcome .block-title { padding:6px 0 4px 10px; }
+.cms-index-index #welcome .block-title strong span { font-size:1.7em; line-height:20px; margin:0; font-weight: normal; }
+
+/* Ribbons */
+ul.display li { position: relative; }
+div.category-products span.ribbon { display: none; position: absolute; width: 128px; height: 53px; top: -4px; left: -5px; }
+div.category-products.bestselling span.ribbon { display: block; background: url(../images/bestselling_sm.png); }
+div.category-products.featured span.ribbon { display: block; background: url(../images/featured_sm.png); }
+div.category-products.recent span.ribbon { display: block; background: url(../images/new_sm.png); }
+div.category-products.viewed span.ribbon { display: block; background: url(../images/popular_sm.png); }
+div.category-products.rated span.ribbon { display: block; background: url(../images/highestrated_sm.png); }
+div.category-products.specialprice span.ribbon { display: block; background: url(../images/sale_sm.png); }

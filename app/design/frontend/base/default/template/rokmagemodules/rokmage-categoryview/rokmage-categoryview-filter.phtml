@@ -1,0 +1,75 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/layer/view.phtml - adds jquery accordion script
+ */
+?>
+
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+
+<?php // Get Filter Title
+        $configData = Mage::getStoreConfig('category_view');
+	$filtertitle = $configData['settings']['filtertitle'];
+	// Open first accordion by default
+	$openfirst = $configData['settings']['openfirst'];
+?>
+
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j(document).ready(function(){
+        $j(".filter-toggle-container").hide();
+        $j(".filter-toggle-button").click(function(){
+            if ($j(".filter-toggle-button").hasClass("active")) { $j(".filter-toggle-button").removeClass("active"); };
+            if ($j(this).next(".filter-toggle-container").is(":hidden")) {
+                $j(".filter-toggle-container:visible").slideUp("normal");
+                $j(this).next(".filter-toggle-container").slideDown("normal");
+                $j(this).addClass("active");
+                $j(this).prev(".filter-toggle-button").addClass("active");
+            } else {
+                $j(this).next(".filter-toggle-container").slideUp("normal");
+                $j(this).removeClass("active");
+                $j(this).prev(".filter-toggle-button").removeClass("active");
+            }      
+        });
+		<?php if ($openfirst == 1):?>
+		$j(".toggle1").addClass("active").next(".filter-toggle-container").slideDown("normal");
+		<?php endif; ?>
+    });
+</script>
+
+<?php if($this->canShowBlock()): ?>
+<div id="rokmage-layered-nav" class="block block-layered-nav">
+    <div class="block-title">
+		<strong>
+        	<span><?php if ($filtertitle == ''):?><?php echo $this->__('Filter products by') ?><?php else: ?><?php echo $filtertitle ?><?php endif;?></span>
+		</strong>
+    </div>
+    <div class="block-content">
+        <?php echo $this->getStateHtml() ?>
+        <?php if ($this->getLayer()->getState()->getFilters()): ?>
+            <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+        <?php endif; ?>
+        <?php if($this->canShowOptions()): ?>
+            
+            <dl>
+                <?php $_filters = $this->getFilters(); $_count = 0; ?>
+                <?php foreach ($_filters as $_filter): ?>
+                <?php if($_filter->getItemsCount()): $_count++ ?>
+                    <dt class="filter-toggle-button <?php echo "toggle".$_count ?>"><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dd class="filter-toggle-container"><?php echo $_filter->getHtml() ?></dd>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>

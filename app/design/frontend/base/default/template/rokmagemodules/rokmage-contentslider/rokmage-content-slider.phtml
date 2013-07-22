@@ -1,0 +1,471 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php
+// Check which CMS page we're on, if any
+$page = Mage::getSingleton('cms/page')->getIdentifier();
+// Check for default homepage
+$configData = Mage::getStoreConfig('web');
+$defaulthomepage = $configData['default']['cms_home_page'];
+$defaulthomepage = explode('|', $defaulthomepage);
+$defaulthomepage = $defaulthomepage[0];
+?>
+
+<?php if ($page == $defaulthomepage) : // Check if we're on the Homepage '?>
+    <?php
+    // Check Slider Content Type
+    $configData = Mage::getStoreConfig('content_slider');
+    $homecontenttype = $configData['general']['content_type'];
+    // Get the number of items to show from admin
+    $no_of_items = $configData['settings']['no_of_productshomepage'];
+	if($no_of_items == '') { $no_of_items = '30'; };
+    // Check if Autoplay is ON or OFF
+    $autoplay = $configData['general']['autoplay'];
+    // Check if Nav Arrows are ON or OFF
+    $arrows = $configData['general']['arrows'];
+    // Get slider speed (Duration)
+    $speed = $configData['general']['speed'] * 1000;
+    // Check if Truncate is ON or OFF
+    $truncate = $configData['settings']['truncate'];
+    // Get Truncate Title Length
+    $titlelength = $configData['settings']['truncate_titlelength'];
+    // Get Truncate Description Length
+    $desclength = $configData['settings']['truncate_desclength'];
+    if ($homecontenttype == 'products') {
+        // Get filter type
+        $filter_by = $configData['settings']['filter_byhomepage'];
+        // Check if Randomize is ON or OFF
+        $randomize = $configData['settings']['randomizehomepage'];
+        if ($filter_by == 'selectlist') {
+            // Get selected products
+            $selectlist = $configData['settings']['slider_products'];
+            $selectlist = explode(',', $selectlist);
+        } elseif ($filter_by == 'featured') {
+            // Get Featured category type from backend
+            $configData = Mage::getStoreConfig('featured_products');
+            $featuredtype = $configData['general']['featuredtype'];
+            // Get Featured category from backend
+            $featuredcategory = $configData['settings']['featuredcategory'];
+            // Get Featured attribute from backend
+            $featuredattribute = $configData['settings']['featuredattribute'];
+            // Get Featured Products from list
+            if ($featuredtype == 'list') {
+                $featuredlist = $configData['settings']['featuredlist'];
+                $featuredlist = explode(',', $featuredlist);
+            };
+        }
+    };
+    if ($homecontenttype == 'custom') {
+        $size = 1;
+        $no_of_items = 0;
+		$filter_by = 'custom';
+        $storeurl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+        // Get Slide #1 title
+        $configData = Mage::getStoreConfig('content_slider');
+        $slideonetitle = $configData['settings_custom_one']['slide_one_title'];
+        // Get Slide #1 content text
+        $slideonetext = $configData['settings_custom_one']['slide_one_content'];
+        $slideonetext = str_replace("{{store}}",$storeurl,$slideonetext);
+        // Get Slide #1 image
+        $slideoneimage = $configData['settings_custom_one']['slide_one_image'];
+        // Slide #1 image as bg
+        $slideoneimageasbg = $configData['settings_custom_one']['slide_one_image_as_bg'];
+        // Get Slide #1 button text
+        $slideonebuttontext = $configData['settings_custom_one']['slide_one_buttontext'];
+        // Get Slide #1 button url
+        $slideonebuttonurl = $configData['settings_custom_one']['slide_one_buttonurl'];
+        // Slide #1 full link
+        $fullimagelinkone = $configData['settings_custom_one']['fullimagelink_one'];
+        // Get Slide #2 title
+        $slidetwotitle = $configData['settings_custom_two']['slide_two_title'];
+        // Get Slide #2 content text
+        $slidetwotext = $configData['settings_custom_two']['slide_two_content'];
+        $slidetwotext = str_replace("{{store}}",$storeurl,$slidetwotext);
+        // Get Slide #2 image
+        $slidetwoimage = $configData['settings_custom_two']['slide_two_image'];
+        // Slide #2 image as bg
+        $slidetwoimageasbg = $configData['settings_custom_two']['slide_two_image_as_bg'];
+        // Get Slide #2 button text
+        $slidetwobuttontext = $configData['settings_custom_two']['slide_two_buttontext'];
+        // Get Slide #2 button url
+        $slidetwobuttonurl = $configData['settings_custom_two']['slide_two_buttonurl'];
+        // Slide #2 full link
+        $fullimagelinktwo = $configData['settings_custom_two']['fullimagelink_two'];
+        // Get Slide #3 title
+        $slidethreetitle = $configData['settings_custom_three']['slide_three_title'];
+        // Get Slide #3 content text
+        $slidethreetext = $configData['settings_custom_three']['slide_three_content'];
+        $slidethreetext = str_replace("{{store}}",$storeurl,$slidethreetext);
+        // Get Slide #3 image
+        $slidethreeimage = $configData['settings_custom_three']['slide_three_image'];
+        // Slide #3 image as bg
+        $slidethreeimageasbg = $configData['settings_custom_three']['slide_three_image_as_bg'];
+        // Get Slide #3 button text
+        $slidethreebuttontext = $configData['settings_custom_three']['slide_three_buttontext'];
+        // Get Slide #3 button url
+        $slidethreebuttonurl = $configData['settings_custom_three']['slide_three_buttonurl'];
+        // Slide #3 full link
+        $fullimagelinkthree = $configData['settings_custom_three']['fullimagelink_three'];
+        // Get Slide #4 title
+        $slidefourtitle = $configData['settings_custom_four']['slide_four_title'];
+        // Get Slide #4 content text
+        $slidefourtext = $configData['settings_custom_four']['slide_four_content'];
+        $slidefourtext = str_replace("{{store}}",$storeurl,$slidefourtext);
+        // Get Slide #4 image
+        $slidefourimage = $configData['settings_custom_four']['slide_four_image'];
+        // Slide #4 image as bg
+        $slidefourimageasbg = $configData['settings_custom_four']['slide_four_image_as_bg'];
+        // Get Slide #4 button text
+        $slidefourbuttontext = $configData['settings_custom_four']['slide_four_buttontext'];
+        // Get Slide #4 button url
+        $slidefourbuttonurl = $configData['settings_custom_four']['slide_four_buttonurl'];
+        // Slide #4 full link
+        $fullimagelinkfour = $configData['settings_custom_four']['fullimagelink_four'];
+    };
+    // Set $hidedesc to 0
+    $hidedesc = '0';
+    ?>
+    <?php // if page isn't homepage
+else: ?>
+    <?php
+    // CATEGORY SETTINGS
+    // Check if Autoplay is ON or OFF
+    $configData = Mage::getStoreConfig('content_slider');
+    $autoplay = $configData['general']['autoplay'];
+    // Get the number of items to show from admin
+    $no_of_items = $configData['settings_cat']['no_of_products'];
+	if($no_of_items == '') { $no_of_items = '30'; };
+    // Check if Nav Arrows are ON or OFF
+    $arrows = $configData['general']['arrows'];
+    // Get slider speed (Duration)
+    $speed = $configData['general']['speed'] * 1000;
+    // Check if Truncate is ON or OFF
+    $truncate = $configData['settings_cat']['truncate'];
+    // Get Truncate Title Length
+    $titlelength = $configData['settings_cat']['truncate_titlelength'];
+    // Get Truncate Description Length
+    $desclength = $configData['settings_cat']['truncate_desclength'];
+    // Check whether to show Description
+    $hidedesc = $configData['settings_cat']['hidedesc'];
+    // Get filter type
+    $filter_by = $configData['settings_cat']['filter_by'];
+    // Check if Randomize is ON or OFF
+    $randomize = $configData['settings_cat']['randomize'];
+    if ($filter_by == 'featured') {
+        // Get Featured category type from backend
+        $configData = Mage::getStoreConfig('featured_products');
+        $featuredtype = $configData['general']['featuredtype'];
+        // Get Featured category from backend
+        $featuredcategory = $configData['settings']['featuredcategory'];
+        // Get Featured attribute from backend
+        $featuredattribute = $configData['settings']['featuredattribute'];
+        // Get Featured Products from list
+        if ($featuredtype == 'list') {
+            $featuredlist = $configData['settings']['featuredlist'];
+            $featuredlist = explode(',', $featuredlist);
+        };
+    };
+    // Set $homecontenttype to products
+    $homecontenttype = 'products';
+    ?>
+<?php endif; ?>
+<?php
+// Check if Ribbon is disabled
+$configData = Mage::getStoreConfig('content_slider');
+$ribbon = $configData['general']['ribbons'];
+?>
+<?php
+// Check product visibility
+$visibility = array(
+    Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
+    Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
+);
+
+// Check if root filter is ON
+$configData = Mage::getStoreConfig('featured_products');
+$filterbyroot = $configData['settings']['filterbyroot'];
+
+// Get the current category
+if ($page == $defaulthomepage) { // If this is homepage, use root id as current category
+    if ($filterbyroot == 1) { // If filter by root is enabled
+        $_currcat = Mage::app()->getStore()->getRootCategoryId();
+    } else {
+        $_currcat = 0;
+    };
+} 
+else {
+    $_currcat = Mage::app()->getRequest()->getParam('id', false);
+};
+$_category = Mage::getModel('catalog/category')->load($_currcat);
+
+// Select attributes
+$_attributes = array('name', 'price', 'small_image', 'short_description', 'msrp_enabled', 'msrp_display_actual_price_type', 'msrp', 'apply_to');
+
+// Get Product Collection Model
+$_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1);
+
+//** All Products **//
+if ($filter_by == 'all') {
+    $_productCollection->filterbyFullCollection($_attributes, $visibility, $_category, $no_of_items, $randomize, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize();
+}
+
+//** Best-Selling - load a product collection filtered by best-selling **//
+elseif ($filter_by == 'bestselling') {
+    $_productCollection->filterbyBestSelling($_attributes, $visibility, $_category, $no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize();
+}
+
+//** Featured **//
+elseif ($filter_by == 'featured') {
+    if ($featuredtype == 'list') {
+        //** Featured - load a product collection selected in the admin **//
+        $_productCollection->filterbyFullCollection($_attributes, $visibility, $_category, '', $randomize, $_currcat)->addAttributeToFilter('entity_id', array('in' => array($featuredlist)))->setPageSize($no_of_items);
+        // Get size of collection
+        $size = $_productCollection->getSize();
+    } elseif ($featuredtype == 'attribute') {
+        //** Featured - load a product collection filtered by featured attribute **//
+        $_productCollection->filterbyFeaturedAttribute($_attributes, $visibility, $featuredattribute, $_category, $no_of_items, $randomize, $_currcat);
+        // Get size of collection
+        $size = $_productCollection->getSize();
+    } elseif ($featuredtype == 'category') {
+        if ($page != $defaulthomepage) {
+            echo "<ul class=\"messages\"><li class=\"error-msg\"><ul><li>Change your ContentSlider/FeaturedProducts settings. Unable to filter by featured category AND current category.</li></ul></li></ul>";
+        } else {
+            //** Featured - load a product collection filtered by featured category **//
+            $_featcategory = Mage::getModel('catalog/category')->load($featuredcategory); // Load featured category
+            $_productCollection->filterbyFeaturedCategory($_attributes, $visibility, $_featcategory, $no_of_items, $randomize, $_currcat); // Get collection filtered by featured category
+            // Get size of collection
+            $size = $_productCollection->getSize();
+        };
+    }
+}
+
+//** Recently Added - load a product collection filtered by recently added **//
+elseif ($filter_by == 'recent') {
+    $_productCollection->filterbyRecentlyAdded($_attributes, $visibility, $_category, $no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize();
+}
+
+//** Most Viewed - load a product collection filtered by most views **//
+elseif ($filter_by == 'viewed') {
+    $_productCollection->filterbyMostViewed($_attributes, $visibility, $_category, $no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize();
+}
+
+//** Highest Rated - load a product collection filtered by ratings **//
+elseif ($filter_by == 'rated') {
+    $_productCollection->filterbyHighestRated($_attributes, $visibility, $_category, $no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize();
+}
+
+//** Special Price - load a collection of products currently with Special Price **//
+elseif ($filter_by == 'specialprice') {
+    $_productCollection->filterbySpecialPrice($_attributes, $visibility, $_category, $no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize();
+}
+
+//** Select List - load a product collection from the admin select list **//
+elseif ($filter_by == 'selectlist') {
+    $_productCollection->filterbyFullCollection($_attributes, $visibility, $_category, '', $randomize, $_currcat)->addAttributeToFilter('entity_id', array('in' => array($selectlist)))->setPageSize($no_of_items);
+    // Get size of collection
+    $size = $_productCollection->getSize();
+}
+
+echo '<script type="text/javascript">
+ var $j = jQuery.noConflict();
+// Truncate
+$j(function() {
+      $j(".truncate_slider_title").truncate({max_length: ' . $titlelength . ' });
+      $j(".truncate_slider_desc").truncate({max_length: ' . $desclength . ' });
+ });
+</script>';
+?>
+
+<?php if ($truncate == 'truncate') {
+    $truncatetitle = 'truncate_slider_title';
+    $truncatedesc = 'truncate_slider_desc';
+} else {
+    $truncatetitle = '';
+    $truncatedesc = '';
+}; ?>
+                <?php if ($arrows == 0) {
+                    $disablearrows = 'disabled';
+                } else {
+                    $disablearrows = "";
+                }; ?>
+
+                <?php if ($size >= $no_of_items): // Show slider ?>
+
+    <div id="<?php if ($page == $defaulthomepage)
+                    echo 'homepage-' ?>contentslider-container" <?php if ($ribbon == '0' && $homecontenttype == 'products'): ?>class="<?php echo $filter_by ?>"<?php endif; ?><?php if($homecontenttype == 'custom'): ?>class="custom"<?php endif; ?>>
+
+        <!-- "previous slide" button -->
+            <?php if ($disablearrows == 'disabled') : ?><?php else: ?><a class="backward">prev</a><?php endif; ?>
+
+        <!-- container for the slides -->
+        <div class="images">
+
+            <?php if ($homecontenttype == 'products') : // START PRODUCT SLIDES ?>
+                    <?php foreach ($_productCollection as $_product): ?>
+                        <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>	
+                    <div>
+                        <a class="product-image" href="<?php echo $_product->getProductUrl() ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(250, 250); ?>" alt="<?php echo $_productNameStripped; ?>" title="<?php echo $_productNameStripped; ?>" />
+                        </a>
+                        <div class="slider-productinfo">
+                            <h3><a href="<?php echo $_product->getProductUrl() ?>" class="<?php echo $truncatetitle ?>"><?php echo $_productNameStripped ?></a></h3>
+                            <?php
+                            $storeId = Mage::app()->getStore()->getId();
+                            $summaryData = Mage::getModel('review/review_summary')
+                                    ->setStoreId($storeId)
+                                    ->load($_product->getId());
+                            // echo '('.$summaryData->getReviewsCount().' reviews)';
+                            if ($summaryData->getRatingSummary() != '') {
+                                echo '<span class="rating-box"><span class="rating" style="width: ' . $summaryData->getRatingSummary() . '%"></span></span><br/>';
+                            };
+                            ?>
+                        <?php if ($hidedesc == 0) : ?><p class="<?php echo $truncatedesc ?>"><?php echo $_product->getShortDescription() ?></p><?php endif; ?>
+                        <?php echo $this->getPriceHtml($_product, true) ?><br/>
+                            <button class="button" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Read More') ?></span></span></button>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+    <?php endif; // END PRODUCT SLIDES  ?>
+
+                    <?php if ($homecontenttype == 'custom') : // START CUSTOM SLIDES ?>
+                <!-- first slide -->
+                        <?php if ($slideonetitle != 'disable') : ?>
+                    <div <?php if ($slideoneimageasbg == 1) : ?>class="slide one" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slideoneimage; ?>) no-repeat 0 0;"<?php endif; ?>>
+                        <?php if ($slideoneimageasbg == 0) : ?>
+                            <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slideonebuttonurl; ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slideoneimage; ?>" alt="" />
+                            </a>
+                    <?php endif; ?>
+                        <div class="slider-productinfo">
+                            <?php if ($slideonetitle != '') : ?><h3><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slideonebuttonurl; ?>"><?php echo $slideonetitle ?></a></h3><?php endif; ?>
+                        <?php echo $slideonetext ?>
+            <?php if ($slideonebuttontext != ''): ?>
+                                <button class="button" onclick="setLocation('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slideonebuttonurl; ?>')"><span><span><?php echo $slideonebuttontext ?></span></span></button>
+                        <?php endif; ?>
+                        </div>
+            <?php if ($fullimagelinkone == 1): ?><a class="slide-full-link" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slideonebuttonurl; ?>"></a><?php endif; ?>
+                    </div>
+                        <?php endif; ?>
+                <!-- second slide -->
+                        <?php if ($slidetwotitle != 'disable') : ?>
+                    <div <?php if ($slidetwoimageasbg == 1) : ?>class="slide two" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slidetwoimage; ?>) no-repeat 0 0;"<?php endif; ?>>
+                        <?php if ($slidetwoimageasbg == 0) : ?>
+                            <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidetwobuttonurl; ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidetwoimage; ?>" alt="<?php echo $slidetwotitle ?>" />
+                            </a>
+                    <?php endif; ?>
+                        <div class="slider-productinfo">
+                            <?php if ($slidetwotitle != '') : ?><h3><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidetwobuttonurl; ?>"><?php echo $slidetwotitle ?></a></h3><?php endif; ?>
+                        <?php echo $slidetwotext ?>
+            <?php if ($slidetwobuttontext != ''): ?>
+                                <button class="button" onclick="setLocation('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidetwobuttonurl; ?>')"><span><span><?php echo $slidetwobuttontext ?></span></span></button>
+                        <?php endif; ?>
+                        </div>
+            <?php if ($fullimagelinktwo == 1): ?><a class="slide-full-link" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidetwobuttonurl; ?>"></a><?php endif; ?>
+                    </div>
+                        <?php endif; ?>
+                <!-- third slide -->
+                        <?php if ($slidethreetitle != 'disable') : ?>
+                    <div <?php if ($slidethreeimageasbg == 1) : ?>class="slide three" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slidethreeimage; ?>) no-repeat 0 0;"<?php endif; ?>>
+                        <?php if ($slidethreeimageasbg == 0) : ?>
+                            <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidethreebuttonurl; ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidethreeimage; ?>" alt="<?php echo $slidethreetitle ?>" />
+                            </a>
+                    <?php endif; ?>
+                        <div class="slider-productinfo">
+                            <?php if ($slidethreetitle != '') : ?><h3><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidethreebuttonurl; ?>"><?php echo $slidethreetitle ?></a></h3><?php endif; ?>
+            <?php echo $slidethreetext ?>
+                <?php if ($slidethreebuttontext != ''): ?>
+                                <button class="button" onclick="setLocation('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidethreebuttonurl; ?>')"><span><span><?php echo $slidethreebuttontext ?></span></span></button>
+            <?php endif; ?>
+                        </div>
+                    <?php if ($fullimagelinkthree == 1): ?><a class="slide-full-link" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidethreebuttonurl; ?>"></a><?php endif; ?>
+                    </div>
+                <?php endif; ?>
+                <!-- fourth slide -->
+                <?php if ($slidefourtitle != 'disable') : ?>
+                    <div <?php if ($slidefourimageasbg == 1) : ?>class="slide four" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slidefourimage; ?>) no-repeat 0 0;"<?php endif; ?>>
+                    <?php if ($slidefourimageasbg == 0) : ?>
+                            <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidefourbuttonurl; ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidefourimage; ?>" alt="<?php echo $slidefourtitle ?>" />
+                            </a>
+                    <?php endif; ?>
+                        <div class="slider-productinfo">
+                            <?php if ($slidefourtitle != '') : ?><h3><a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidefourbuttonurl; ?>"><?php echo $slidefourtitle ?></a></h3><?php endif; ?>
+                    <?php echo $slidefourtext ?>
+                    <?php if ($slidefourbuttontext != ''): ?>
+                                <button class="button" onclick="setLocation('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidefourbuttonurl; ?>')"><span><span><?php echo $slidefourbuttontext ?></span></span></button>
+                    <?php endif; ?>
+                        </div>
+                    <?php if ($fullimagelinkfour == 1): ?><a class="slide-full-link" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidefourbuttonurl; ?>"></a><?php endif; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endif; // END CUSTOM SLIDES ?>
+
+        </div>
+
+        <!-- "next slide" button -->
+        <?php if ($disablearrows == 'disabled') : ?><?php else: ?><a class="forward">next</a><?php endif; ?>
+
+        <!-- the tabs -->
+        <div class="tabs">
+    <?php $counter = 0;
+    if ($homecontenttype == 'products') : // START PRODUCT SLIDES  ?>
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php if ($counter < $no_of_items) : ?>
+                <?php $counter++; // Count our items  ?>
+                        <a href="#"></a>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; // END PRODUCT SLIDES  ?>
+    <?php if ($homecontenttype == 'custom') : // START CUSTOM SLIDES  ?>
+        <?php if ($slideonetitle != 'disable') : ?>
+                    <a href="#"></a>
+        <?php endif; ?>
+        <?php if ($slidetwotitle != 'disable') : ?>
+                    <a href="#"></a>
+        <?php endif; ?>
+        <?php if ($slidethreetitle != 'disable') : ?>
+                    <a href="#"></a>
+        <?php endif; ?>
+        <?php if ($slidefourtitle != 'disable') : ?>
+                    <a href="#"></a>
+        <?php endif; ?>
+    <?php endif; // END CUSTOM SLIDES  ?>
+        </div>
+
+        <div class="clearfloat"></div>
+    <?php if ($ribbon == '0'): ?><span class="ribbon"></span><?php endif; ?>
+    </div>
+
+    <script type="text/javascript">
+        var $j = jQuery.noConflict();
+        $j(function() {
+            $j("div.tabs").tabs(".images > div", {
+                effect: 'fade',
+                fadeOutSpeed: "slow",
+                rotate: true
+                // use the slideshow plugin.
+            }).slideshow( { autoplay: <?php echo $autoplay ?>, interval: <?php echo $speed ?>, clickable: false, autopause: true});
+        });
+    </script>
+
+<?php endif; ?>

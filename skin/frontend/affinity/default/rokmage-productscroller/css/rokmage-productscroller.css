@@ -1,0 +1,49 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* RokMage Product Scroller */
+div.scrollable-container { width: 1000px; margin:0 0 10px -17px; position: relative; }
+div.scrollable { position:relative; overflow:hidden; width: 920px; height:185px; float:left; }
+.smallerize div.scrollable { height:185px; }
+div.scrollable div.items { width:20000em; position:absolute; clear:both; text-align:center; margin-left:2px; }
+/* single scrollable item */
+div.scrollable div.items .scroll-item-middle { border:0 none; padding:0; float:left; width:110px;margin:5px 11px 0; }
+div.scrollable div.items .scroll-item-top { border:0 none; padding:0; }
+div.scrollable div.items .scroll-item-bottom { border:0 none; padding:10px 0 25px; }
+div.scrollable div.items .product-name a { display:block; font-weight:bold; margin-bottom:0; padding:1px 5px 0 0; text-decoration: none; font-size: 11px; line-height: 12px; height: 26px; }
+.scrollable-container .product-image img { padding:5px 6px 6px; }
+.scrollable-container .product-image img.tooltipped { margin-bottom:5px; }
+div.scrollable div.items .productPrice { background:#333; color:#EFEFEF; display:block; font-size:11px; font-weight:bold; margin:-33px 0 0 10px; padding:2px 0; position:absolute; white-space:nowrap; width:82px; opacity: 0.9; }
+/* prev, next buttons */
+.scrollable-container a.prev, .scrollable-container a.next, .scrollable-container a.prevPage, .scrollable-container a.nextPage { opacity: 0; display:block; width:40px; height:195px; float:left; margin:0px; cursor:pointer; font-size:1px;}
+.smallerize a.prev, .smallerize a.next, .smallerize a.prevPage, .smallerize a.nextPage { height:184px; }
+a.disabled { visibility:hidden !important;}
+.scrollable-container a.next, .scrollable-container a.nextPage { clear:right; opacity: 0;}
+.scrollable-container a.prev, .scrollable-container a.prevPage { background-position: 15px 46% !important; }
+.scrollable-container a.next, .scrollable-container a.nextPage { background-position: 0 46% !important; }
+.smallerize a.prev, .smallerize a.prevPage { background-position: 15px 74px; }
+.smallerize a.next, .smallerize a.nextPage { background-position: 0 74px; }
+/* read more button */
+div.scrollable-container button.button span span a, div.scrollable-container button.button span span a:hover { text-decoration: none; }
+div.scrollable-container button.button { margin: -3px 0 0 -7px; }
+div.scrollable-container.smallerize button.button { margin: 0 0 0 -7px; }
+div.scrollable-container button.button span { height: 30px; padding-left: 8px;}
+div.scrollable-container button.button span span { padding:4px 16px 0 8px; height: 30px; }
+/* Tooltip */
+.tooltip { text-align: left; display:none; font-size:12px; width:160px; padding:12px; z-index: 999999; background:#DDDDDD; color:#464646; border-radius:15px; border: 3px solid #9E9E9E; }
+.tooltip p { padding: 0; }
+.tooltip .special-price .price { font-weight:bold; font-size:20px; color:#0099d9; }
+.tooltip .price-box {margin-bottom:0px;}
+/* Ribbons */
+div.scrollable-container span.ribbon { display: none; position: absolute; width: 127px; height: 52px; top: 0px; left: 21px; }
+div.scrollable-container.smallerize span.ribbon { top: -4px; left: 21px; }
+div.scrollable-container.bestselling span.ribbon { display: block; background: url(../images/bestselling_sm.png) no-repeat; }
+div.scrollable-container.featured span.ribbon { display: block; background: url(../images/featured_sm.png); }
+div.scrollable-container.recent span.ribbon { display: block; background: url(../images/new_sm.png); }
+div.scrollable-container.viewed span.ribbon { display: block; background: url(../images/popular_sm.png); }
+div.scrollable-container.rated span.ribbon { display: block; background: url(../images/highestrated_sm.png); }
+div.scrollable-container.specialprice span.ribbon { display: block; background: url(../images/sale_sm.png); }

@@ -1,0 +1,46 @@
+<?php
+/**
+ * @version   1.6.2.1 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/product/list/upsell.phtml
+ */
+?>
+<?php // Get number of upsell columns
+$configData = Mage::getStoreConfig('product_view');
+$nocols = $configData['info_settings']['upsellcolumns']; 
+$width = '';
+if($nocols == 1){ $width = '100%';};
+if($nocols == 2){ $width = '50%';};
+if($nocols == 3){ $width = '33%';};
+if($nocols == 4){ $width = '25%';};
+?>
+<div class="clearfloat"></div>
+<?php if(count($this->getItemCollection()->getItems())): ?>
+<div class="up-sell">
+    <h3><?php echo $this->__('You may also be interested in the following product(s)') ?></h3>
+    <table class="products-grid" id="upsell-product-table">
+    <?php $this->setColumnCount($nocols);  ?>
+    <?php $this->resetItemsIterator() ?>
+    <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
+        <tr>
+        <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
+            <?php if($_link=$this->getIterableItem()): ?>
+			<?php $_productNameStripped = $this->stripTags($_link->getName(), null, true); ?>
+            <td <?php if($width != '') { echo "style=\"width:".$width."\"";}; ?>><div class="upsell-box-padding">
+                <a href="<?php echo $_link->getProductUrl() ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_link, 'small_image')->resize(50) ?>" width="50" height="50" alt="<?php echo $_productNameStripped ?>" title="<?php echo $_productNameStripped ?>" /></a>
+                <h4 class="product-name"><a href="<?php echo $_link->getProductUrl() ?>"><?php echo $_productNameStripped ?></a></h4>
+                <?php echo $this->getPriceHtml($_link, true) ?>
+                <?php echo $this->getReviewsSummaryHtml($_link) ?>
+                <div class="clearfloat"></div></div></td>
+            <?php else: ?>
+            <td class="empty">&nbsp;</td>
+            <?php endif; ?>
+        <?php endfor; ?>
+        </tr>
+    <?php endfor; ?>
+    </table>
+    <script type="text/javascript">decorateTable('upsell-product-table')</script>
+</div>
+<?php endif ?>

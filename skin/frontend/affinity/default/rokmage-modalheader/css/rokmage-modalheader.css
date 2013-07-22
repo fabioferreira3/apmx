@@ -1,0 +1,127 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* Header ================================================================================ */
+body { font:0.75em Helvetica,Arial,sans-serif; line-height: 16px; }
+.page { padding:0;}
+.no-wrap { white-space:nowrap;}
+.header-container { width:968px; margin:0 auto; position: relative; }
+.header { padding: 18px 0 0 11px; border: 0; height: 130px; }
+.header .logo { margin-top: 23px; }
+
+.header .welcome-msg-R { float:left; font-size:13px; height:19px; margin-top:51px; padding-right:10px; }
+.header .welcome-msg-L { font-size:11px; padding:3px 0 4px 10px; }
+
+.header #search_mini_form input { border: 0; width: 195px; text-align: left; }
+.header .form-search { width: 206px; padding: 16px 10px 15px 34px; text-align:center; position: absolute; top: 45px; left: 50%; margin-left: 225px; }
+#search_autocomplete { margin: 2px 0 0 -16px; background: #fff; padding: 5px; border: 1px solid #ccc; border-top: 0; box-shadow: 3px 3px 3px #666; -moz-box-shadow: 3px 3px 3px #666; -webkit-box-shadow: 3px 3px 3px #666; color: #666; }
+#search_autocomplete ul li { cursor: pointer; text-align: left; }
+#search_autocomplete ul li.even { background-color:#f6f6f6; }
+#search_autocomplete span.amount { font-weight: bold; padding-right: 4px; float: right; }
+.header .form-language { text-align:center; position: absolute; top: 6px; left: 50%; margin-left: -22px; font-weight:bold; font-size: 12px; }
+.header .form-language select { padding: 1px; }
+.header .date { font-size:12px; font-weight:bold; left:50%; margin-left:-470px; position:absolute; top:6px; }
+
+.header .rokmage-cart-box-container { right: 50%; margin:0 -200px 0 0; position:absolute; top:46px;}
+.header .rokmage-cart-box-container a {text-decoration: none;}
+.header .rokmage-cart-box-R { height: 48px; float:left; padding-right: 12px; }
+.header .rokmage-cart-box-L { height: 48px; padding: 12px 0 0 9px; font-size:12px; }
+.header .rokmage-cart-box-L .cart-icon { float: left; padding:2px 5px 0 2px; }
+.header .rokmage-cart-box-L a span.big, .header .rokmage-cart-box-L span.big { float: left; font-size: 34px; line-height: 26px; padding: 0 5px 0 2px; }
+.header .rokmage-cart-box-L span.items-checkout { line-height: 12px; float: left; display: block; width: 70px; }
+.header .rokmage-cart-box-L span.items-checkout a, .header .rokmage-cart-box-L span.items-checkout .inactive { text-decoration: none;}
+.header .rokmage-cart-box-L span.items-checkout a:hover { text-decoration: none;}
+
+/* Top Links */
+.header .links { float:right; font-size:12px; margin:-10px 40px 0; }
+.header .links li {  display: inline; padding: 0 10px; }
+.header .links li a { font-weight:bold; text-decoration: none; }
+.header .links li a:hover { text-decoration: none; }
+.header ul li.first a { padding: 2px 0 2px 17px; background: url(../images/login.png) no-repeat 0 30%; }
+.header ul li.first a.logout { background: url(../images/logout.png) no-repeat 0 30%; }
+
+/* Font Resizer */
+.fontResizer { display:block; height:20px; left:50%; margin-left:330px; position:absolute; top:8px; width:145px; }
+.fontResizer a { display: block; float: left; width: 15px; height: 15px; text-align: center; line-height: 15px; text-decoration: none; margin: 0 0 0 4px; }
+.rokmage-text-resize { font-size: 12px; font-weight:bold; float:left; padding-right: 3px; }
+
+
+/* ----- Modal Windows ----- */
+/* Defaults */
+.modal-close { position: absolute; top: 40px; right: 35px; padding: 11px; cursor: pointer;}
+#overlay { background:#000; display: none; opacity: 0; height:100%; left:0; position:fixed; top:0; width:100%; z-index:9999; cursor:pointer; }
+div.modalcontent { display: none; position: fixed; left: 50%; z-index: 999999; }
+
+/* Cart Modal*/
+#rokmage-header-cart {  width: 240px; margin-left: -150px; height: 290px; margin-top: -165px; padding: 30px; }
+#rokmage-header-cart h6 { padding:13px 0 10px 13px; font-size: 15px; font-weight: normal; }
+#rokmage-header-cart h4 a { text-decoration: none; }
+#rokmage-header-cart .modalcart-btn-remove { text-decoration: none; }
+#rokmage-header-cart .modalcart-btn-remove img { padding: 1px 3px 0 0;}
+#cart-buttons { margin-top: 10px; }
+#rokmage-header-cart span.button { float:left; font-size:13px; line-height:22px; padding:0 12px 0 0; text-align:center; white-space:nowrap;}
+#rokmage-header-cart span.button a { border:0 none; cursor:pointer; overflow:visible; padding:4px 0 4px 12px; width:auto; text-decoration: none; }
+/* details */
+#rokmage-header-cart .bundle-details { cursor:pointer; text-decoration: underline; }
+/* Login Modal*/
+#rokmage-login-content { width: 240px; margin-left: -150px; height: 290px; margin-top: -165px; padding: 30px; }
+#rokmage-login-content fieldset { padding: 10px 7px;}
+#rokmage-login-content h2 { padding: 1px 0 25px 5px; font-size: 15px; font-weight: bold; }
+.rokmage-email-login-block { width: 115px; }
+.rokmage-password-login-block { width: 115px; }
+#rokmage-login-content #send2 { margin: 10px 0 ;}
+#rokmage-login-content p.required { position: absolute; top: 195px; left: 185px; }
+#rokmage-login-content input.inputstyled { width: 184%; }
+#rokmage-login-content span.input-left { display: block !important; }
+p.rokmage-forgot-pass a { text-decoration: none; }
+#rokmage-login-content button.button { margin-left: -2px; }
+#rokmage-login-content button.button span { height: 30px; padding-left: 14px; }
+#rokmage-login-content button.button span span { padding:4px 20px 0 8px; height: 30px; }
+.validation-advice { width: 101px; }
+
+/* Custom Form Elements */
+span.select { position: absolute; width: 79px; height: 21px; padding: 0 24px 0 8px; color: #1D1A17; font: 12px/21px arial,sans-serif; background: url(../images/select.png) no-repeat 100% 0; overflow: hidden; text-align: left }
+.input-wrap { position: relative !important; float: left;  }
+.input-box { padding-right: 5px;}
+input.inputstyled { padding:4px 4px 3px 8px !important; font:16px Helvetica, sans-serif; vertical-align:middle; border:1px solid #cecece; }
+.block-subscribe input.inputstyled{ width:173px; }
+span.input-left { padding:0px; position: absolute; top: 0; left: 0; width: 9px; height: 30px; }
+.group-select .input-box select { padding:6px 4px 5px; height: 30px;margin-top: 2px; font-size:13px; }
+
+
+/* ----- Cart Scroller ----- */
+div.cart-scrollable-container { margin:0 auto; }
+div.cart-scrollable { position:relative; overflow:hidden; width: 200px; height:200px; float:left; }
+div.cart-scrollable div.items { width:20000em; position:absolute; clear:both; text-align:center; }
+/* single scrollable item */
+div.cart-scrollable div.items ul.scroll-item { border:0 none; padding:0; float:left; width:200px; }
+.cart-scrollable-container .product-image img { padding:5px 6px 6px; }
+div.cart-scrollable div.items .productPrice { display:block; font-size:11px; font-weight:bold; margin:5px 0; white-space:nowrap; }
+/* prev, next buttons */
+.cart-scrollable-container a.prev, .cart-scrollable-container a.next { opacity: 1; display:block; width:20px; height:170px; float:left; margin:0px; cursor:pointer; font-size:1px; }
+.cart-scrollable-container a.disabled { visibility:hidden !important; }
+.cart-scrollable-container a.next { clear:right; opacity: 1; }
+/* Misc for sidebar cart */
+.block-cart .subtotal { text-align: left; }
+
+/* BreadCrumbs */
+.breadcrumbs { display: none; }
+.rok-breadcrumbs { margin:0 0 12px; display: block; height: 21px; overflow: hidden; width: 932px; padding:7px 18px; }
+.rok-breadcrumbs ul { margin: 0; padding: 0; height: 21px; display: block; }
+.rok-breadcrumbs ul li { display: block; float: left; position: relative; height: 22px; overflow: hidden; line-height: 22px; margin: 0px 6px 0px 0; padding: 0px 10px 0px 0; font-size: 1em; }
+.rok-breadcrumbs ul li div.chevronOverlay { position: absolute; right: 0; top: 0; z-index: 2; }
+.rok-breadcrumbs ul li span { display: block; overflow: hidden; margin-right: -3px; }
+.rok-breadcrumbs ul li a { display: block; position: relative; height: 21px; line-height: 22px; overflow: hidden; float: left; text-decoration: none; }
+.rok-breadcrumbs ul li.first a { height: 20px !important; text-indent:-1000em; width:20px; overflow: hidden; }
+.rok-breadcrumbs ul li.first { padding-top:2px; }
+.rok-breadcrumbs ul li.first a:hover { background-position: 0 -20px; }
+.rok-breadcrumbs ul li.last { background: none; margin-right: 0; padding-right: 0; }
+.chevronOverlay { display: none; width: 20px; height: 22px; }
+
+/* Misc */
+.clearfloat { clear:both; }
+.block .actions { float: left; }

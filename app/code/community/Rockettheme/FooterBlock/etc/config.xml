@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.6.2.0 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_FooterBlock>
+            <version>1.0.0</version>
+        </Rockettheme_FooterBlock>
+    </modules>
+ 	<default>
+		<footer_block>
+            <general>
+                <enabled>1</enabled>
+				<no-list-items>6</no-list-items>
+				<truncate>footer_truncate</truncate>
+				<truncate_titlelength>22</truncate_titlelength>
+				<filterbyroot>0</filterbyroot>
+				<recentlyviewed>0</recentlyviewed>
+            </general>
+            <settings>
+                <first-column-content>Recently Added Products</first-column-content>
+            	<second-column-content>Highest Rated Products</second-column-content>
+            	<third-column-content>Most Viewed Products</third-column-content>
+            	<text-box><![CDATA[<h3>Disclaimer</h3><p><strong>Important:</strong> This demo is purely for demonstration purposes and all the content relating to products, services and events are fictional and are designed to showcase a live shopping site. All images are copyrighted to their respective owners. This is not an actual store, only representative of one.</p><p><strong>You can edit this text by going to Admin -&gt; Config -&gt; FooterBlock -&gt; Text Box Content.</strong></p>]]></text-box>
+				<footer-logo>0</footer-logo>
+            </settings>
+        </footer_block>
+    </default>
+    <global>
+        <helpers>
+            <footerblock>
+                <class>Rockettheme_FooterBlock_Helper</class>
+            </footerblock>
+        </helpers>
+        <models>
+            <footerblockmodel>
+                <class>Rockettheme_FooterBlock_Model</class>
+            </footerblockmodel>
+		</models>
+    </global>		
+    <frontend>
+        <layout>
+            <updates>
+                <footerblock>
+                    <file>rokmage-footerblock/rokmagefooterblock.xml</file>
+                </footerblock>
+            </updates>
+        </layout>
+    </frontend>
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <footer_block translate="title" module="footerblock">
+                                            <title>FooterBlock Section</title>
+                                            <sort_order>60</sort_order>
+                                        </footer_block>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

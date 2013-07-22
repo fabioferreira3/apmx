@@ -1,0 +1,709 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.1 May 8, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <tabs>
+        <rockettheme translate="label" module="magemenus">
+            <label>RT RokMage Modules</label>
+            <sort_order>196</sort_order>
+        </rockettheme>
+    </tabs>
+    <sections>
+        <mage_menus translate="label" module="magemenus">
+            <label>MageMenus</label>
+            <tab>rockettheme</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>2</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						<enable_top translate="label">
+                            <label>Enable Top Menu:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_top>
+						<enable_side_left translate="label">
+                            <label>Enable Left Side Menu:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_side_left>
+						<enable_side_right translate="label">
+                            <label>Enable Right Side Menu:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_side_right>
+						<enable_lavalamp translate="label">
+                            <label>Enable Top Menu lavalamp effect:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_lavalamp>
+                    </fields>
+                </general>
+				<settings translate="label">
+				<label>Top Menu Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<columns translate="label, comment">
+							<label>Double column dropdown:</label>
+							<comment><![CDATA[Enable double column dropdowns (default is single)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</columns>
+						<offsetfix translate="label, comment">
+							<label>Apply Right Offset Fix:</label>
+							<comment><![CDATA[Apply dropdown-position fix to 2nd level items appearing beyond template width]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</offsetfix>
+						<home_page translate="label, comment">
+							<label>Include 'Home' link:</label>
+							<comment><![CDATA[Include a link to the Home page]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</home_page>
+						<catalog_cats translate="label, comment">
+							<label>Include Catalog Categories:</label>
+							<comment><![CDATA[Include Catalog Categories in menu]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menutype</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</catalog_cats>
+						<first_menu_item translate="label, comment">
+							<label>Slot #1 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first_menu_item>
+						<first_menu_item_subitems translate="label, comment">
+							<label> - Slot #1 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first_menu_item_subitems>
+						<second_menu_item translate="label, comment">
+							<label>Slot #2 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second_menu_item>
+						<second_menu_item_subitems translate="label, comment">
+							<label> - Slot #2 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second_menu_item_subitems>
+						<third_menu_item translate="label, comment">
+							<label>Slot #3 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third_menu_item>
+						<third_menu_item_subitems translate="label, comment">
+							<label> - Slot #3 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third_menu_item_subitems>
+						<fourth_menu_item translate="label, comment">
+							<label>Slot #4 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fourth_menu_item>
+						<fourth_menu_item_subitems translate="label, comment">
+							<label> - Slot #4 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fourth_menu_item_subitems>
+						<fifth_menu_item translate="label, comment">
+							<label>Slot #5 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fifth_menu_item>
+						<fifth_menu_item_subitems translate="label, comment">
+							<label> - Slot #5 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fifth_menu_item_subitems>
+						<sixth_menu_item translate="label, comment">
+							<label>Slot #6 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sixth_menu_item>
+						<sixth_menu_item_subitems translate="label, comment">
+							<label> - Slot #6 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sixth_menu_item_subitems>
+						<contact_link translate="label, comment">
+							<label>Include 'Contact' link:</label>
+							<comment><![CDATA[Include a link to the Contact page]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</contact_link>
+					</fields>
+				</settings>
+				<settings_topanimation translate="label">
+				<label>Top Menu Animation Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>3</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<animation translate="label, comment">
+							<label>Animation settings:</label>
+							<comment><![CDATA[Add jQuery variables for drop down menu animations]]></comment>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</animation>
+					</fields>
+				</settings_topanimation>
+				<settings_megamenu translate="label">
+				<label>Top "MegaMenu" Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>4</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<width translate="label, comment">
+							<label>Mega Dropdown Width:</label>
+							<comment><![CDATA[Set the width in pixels of the mega dropdown (for example "500", without the px)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</width>
+						<subcats translate="label, comment">
+							<label>Visible Sub-categories Depth:</label>
+							<comment><![CDATA[Level of sub-categories to show (for example 2, 3, 4)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</subcats>
+						<cols translate="label, comment">
+							<label>Number of Inner Columns:</label>
+							<comment><![CDATA[Maximum number of inner columns to show in mega dropdown (for example 1, 2, 3)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</cols>
+						<colswidth translate="label, comment">
+							<label>Inner Column Width:</label>
+							<comment><![CDATA[Set the width in pixels of the inner columns (for example "150", without the px)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</colswidth>
+						<blocksenabled translate="label, comment">
+							<label>Enable Static Blocks:</label>
+							<comment><![CDATA[In order to display custom content in a menu dropdown (images, html etc), create a new Static Block (CMS -> Static Blocks -> Add New Block) with an Identifier in the format "rokmage_megamenu_<b>12</b>", where "<b>12</b>" is the ID of the parent category you wish to display the content under.]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</blocksenabled>					
+					</fields>
+				</settings_megamenu>
+				<settings_sideleft translate="label">
+				<label>Side Menu Left Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>5</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<blocktitle translate="label, comment">
+							<label>Menu Title:</label>
+							<comment><![CDATA[Add a title to this menu block]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</blocktitle>
+						<catalog_cats translate="label, comment">
+							<label>Include Catalog Categories:</label>
+							<comment><![CDATA[Include Catalog Categories in menu]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menutree</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</catalog_cats>
+						<subcats translate="label, comment">
+							<label>Visible Categories Depth:</label>
+							<comment><![CDATA[Level of categories to show (for example 1, 2, 3, 4)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</subcats>
+						<collapse translate="label, comment">
+							<label>Collapse 1st level parents:</label>
+							<comment><![CDATA[Disable links, collapse sub-categories, and enable accordion effect (tree only)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</collapse>
+						<opendefault translate="label, comment">
+							<label>Default to open accordion state:</label>
+							<comment><![CDATA[Set the default accordion state to open (tree only)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</opendefault>
+						<itemcount translate="label, comment">
+							<label>Show Item Count:</label>
+							<comment><![CDATA[Show number of products in each category]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</itemcount>
+						<first_menu_item translate="label, comment">
+							<label>Slot #1 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first_menu_item>
+						<first_menu_item_subitems translate="label, comment">
+							<label> - Slot #1 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first_menu_item_subitems>
+						<second_menu_item translate="label, comment">
+							<label>Slot #2 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second_menu_item>
+						<second_menu_item_subitems translate="label, comment">
+							<label> - Slot #2 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second_menu_item_subitems>
+						<third_menu_item translate="label, comment">
+							<label>Slot #3 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third_menu_item>
+						<third_menu_item_subitems translate="label, comment">
+							<label> - Slot #3 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third_menu_item_subitems>
+						<fourth_menu_item translate="label, comment">
+							<label>Slot #4 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fourth_menu_item>
+						<fourth_menu_item_subitems translate="label, comment">
+							<label> - Slot #4 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fourth_menu_item_subitems>
+						<fifth_menu_item translate="label, comment">
+							<label>Slot #5 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fifth_menu_item>
+						<fifth_menu_item_subitems translate="label, comment">
+							<label> - Slot #5 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fifth_menu_item_subitems>
+						<sixth_menu_item translate="label, comment">
+							<label>Slot #6 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sixth_menu_item>
+						<sixth_menu_item_subitems translate="label, comment">
+							<label> - Slot #6 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sixth_menu_item_subitems>
+						<contact_link translate="label, comment">
+							<label>Include 'Contact' link:</label>
+							<comment><![CDATA[Include a link to the Contact page]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>18</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</contact_link>
+					</fields>
+				</settings_sideleft>
+				<settings_sideright translate="label">
+				<label>Side Menu Right Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>6</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<blocktitle translate="label, comment">
+							<label>Menu Title:</label>
+							<comment><![CDATA[Add a title to this menu block]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</blocktitle>
+						<catalog_cats translate="label, comment">
+							<label>Include Catalog Categories:</label>
+							<comment><![CDATA[Include Catalog Categories in menu]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menutree</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</catalog_cats>
+						<subcats translate="label, comment">
+							<label>Visible Categories Depth:</label>
+							<comment><![CDATA[Level of categories to show (for example 1, 2, 3, 4)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</subcats>
+						<collapse translate="label, comment">
+							<label>Collapse 1st level parents:</label>
+							<comment><![CDATA[Disable links, collapse sub-categories, and enable accordion effect (tree only)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</collapse>
+						<opendefault translate="label, comment">
+							<label>Default to open accordion state:</label>
+							<comment><![CDATA[Set the default accordion state to open (tree only)]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</opendefault>
+						<itemcount translate="label, comment">
+							<label>Show Item Count:</label>
+							<comment><![CDATA[Show number of products in each category]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</itemcount>
+						<first_menu_item translate="label, comment">
+							<label>Slot #1 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first_menu_item>
+						<first_menu_item_subitems translate="label, comment">
+							<label> - Slot #1 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</first_menu_item_subitems>
+						<second_menu_item translate="label, comment">
+							<label>Slot #2 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second_menu_item>
+						<second_menu_item_subitems translate="label, comment">
+							<label> - Slot #2 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</second_menu_item_subitems>
+						<third_menu_item translate="label, comment">
+							<label>Slot #3 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third_menu_item>
+						<third_menu_item_subitems translate="label, comment">
+							<label> - Slot #3 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</third_menu_item_subitems>
+						<fourth_menu_item translate="label, comment">
+							<label>Slot #4 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fourth_menu_item>
+						<fourth_menu_item_subitems translate="label, comment">
+							<label> - Slot #4 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>13</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fourth_menu_item_subitems>
+						<fifth_menu_item translate="label, comment">
+							<label>Slot #5 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>14</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fifth_menu_item>
+						<fifth_menu_item_subitems translate="label, comment">
+							<label> - Slot #5 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</fifth_menu_item_subitems>
+						<sixth_menu_item translate="label, comment">
+							<label>Slot #6 CMS page link:</label>
+							<comment><![CDATA[Select CMS page to show in this slot]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>magemenusmodel/Menucontent</source_model>
+							<sort_order>16</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sixth_menu_item>
+						<sixth_menu_item_subitems translate="label, comment">
+							<label> - Slot #6 sub-menu items:</label>
+							<comment><![CDATA[Add CMS page URL keys in a comma separated list (no spaces)]]></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</sixth_menu_item_subitems>
+						<contact_link translate="label, comment">
+							<label>Include 'Contact' link:</label>
+							<comment><![CDATA[Include a link to the Contact page]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>18</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</contact_link>
+					</fields>
+				</settings_sideright>
+            </groups>
+        </mage_menus>
+    </sections>
+</config>

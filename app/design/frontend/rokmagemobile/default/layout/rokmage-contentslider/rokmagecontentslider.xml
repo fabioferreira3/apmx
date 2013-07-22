@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @version    $Id: rokmagecontentslider.xml 47705 2012-01-18 21:55:02Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout version="0.1.0">
+	
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem" ifconfig="rokmage_mobile/slider_settings/enable"><type>skin_js</type><script>js/jquery.moodular.js</script></action>
+            <action method="addItem" ifconfig="rokmage_mobile/slider_settings/enable"><type>skin_js</type><script>js/jquery.moodular.controls.js</script></action>
+        </reference>
+        <reference name="root">
+            <block type="catalog/product_send" name="rokmage_content_slider">
+                     <action method="setTemplate" ifconfig="rokmage_mobile/slider_settings/enable">
+                        <template>rokmagemodules/rokmage-contentslider/rokmage-content-slider.phtml</template>
+                     </action>
+             </block>
+        </reference>
+    </cms_index_index>	
+
+</layout>

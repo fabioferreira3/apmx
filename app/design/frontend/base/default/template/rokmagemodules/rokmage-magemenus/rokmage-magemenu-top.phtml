@@ -1,0 +1,154 @@
+<?php
+/**
+ * @version   1.7.0.1 May 8, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/navigation/top.phtml
+ */
+?>
+
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+
+<?php	// Check if 'Home' link to be shown
+    $configData = Mage::getStoreConfig('mage_menus');
+	$homepage = $configData['settings']['home_page'];
+    // Check if Single or Double column layout
+	$columns = $configData['settings']['columns'];
+        if ($columns == 0) $_columns = '-single';
+        if ($columns == 1) $_columns = '';
+	// Check if Lavalamp effect enabled
+	$lavalamp = $configData['general']['enable_lavalamp'];
+	// Get animation settings from admin
+	$animation = $configData['settings_topanimation']['animation'];
+	// Get animation settings from admin
+	$offsetfix = $configData['settings']['offsetfix'];
+// ** AW Blog (http://ecommerce.aheadworks.com/free-stuff/blog.html) *//**
+	$bloginstalled = 'No'; // Set to NO until we check
+        $modules = Mage::getConfig()->getNode('modules')->children();
+        $modulesArray = (array)$modules;
+        if(isset($modulesArray['AW_Blog'])) { $bloginstalled = 'Yes'; }; // Check if AW Blog is installed
+        $blogcatlist = (0); // Set the blogcatlist to empty array incase we're not using AW Blog
+        if($bloginstalled == 'Yes' && $modulesArray['AW_Blog']->is('active')) {
+            $blogcatcollection= Mage::getModel('blog/cat')->getCollection(); // Get list of blog categories
+            $id= array(); foreach ($blogcatcollection as $blogcat) { $id[]= $blogcat->getIdentifier();}; $blogcatlist = implode(',', $id); // Put blog category collection in comma separated list
+            $blogtitle = Mage::getStoreConfig('blog/blog/title'); $blogurl = Mage::getUrl(Mage::helper('blog')->getRoute()); // Get blog title and url from admin settings
+        };
+?>
+
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    $j(document).ready( function() {
+        $j(document).magemenus({
+            mm_trigger: "ul.menu<?php echo $_columns; ?>",
+			mm_offsetfix: "<?php echo $offsetfix; ?>",
+            <?php echo $animation; ?> }); // Get animation settings from admin
+    });
+</script>
+
+<?php if ($lavalamp == 1): ?><div id="box"><div class="head"></div></div><?php endif; ?>
+	
+<ul id="magemenu-top" class="menu<?php echo $_columns; ?>">
+
+<?php if ($homepage == 1): // Show 'Home' link ?>
+        <li id="Home"><a href="<?php echo $this->getUrl('') ?>"><span><?php echo $this->__('Home') ?></span></a></li>
+<?php endif; ?>
+
+
+<?php	// Check if 'Catalog Categories' link to be shown
+        $configData = Mage::getStoreConfig('mage_menus');
+	$showcats = $configData['settings']['catalog_cats'];
+?>
+<?php if ($showcats == 'normal'): // Show 'Catalog Categories' as normal dropdowns ?>
+	<?php echo $this->renderCategoriesMenuHtml(0,'level-top'); ?>
+<?php endif; ?>
+
+<?php if ($showcats == 'megamenu'): // Show 'Catalog Categories' as MegaMenu ?>
+    <?php $_categories = $this->getStoreCategories() ?>
+	<?php foreach ($_categories as $_category): ?>
+        <?php echo $this->getRokMageMegaMenu($_category) ?>
+    <?php endforeach ?>
+<?php endif; ?>
+
+
+<?php // Get page title prefix/suffix
+    $configData = Mage::getStoreConfig('design');
+    $prefix = str_replace(" ", "", $configData['head']['title_prefix']);
+    $suffix = str_replace(" ", "", $configData['head']['title_suffix']);
+    // Get CMS Menu Items
+    $configData = Mage::getStoreConfig('mage_menus');
+    // Slot #1
+	$menuslot1 = $configData['settings']['first_menu_item'];
+	$menuslot1 = explode('|', $menuslot1);
+	$menuslot1 = $menuslot1[0];
+	$menuslot1subs = $configData['settings']['first_menu_item_subitems'];
+    // Slot #2
+	$menuslot2 = $configData['settings']['second_menu_item'];
+	$menuslot2 = explode('|', $menuslot2);
+	$menuslot2 = $menuslot2[0];
+	$menuslot2subs = $configData['settings']['second_menu_item_subitems'];
+    // Slot #3
+	$menuslot3 = $configData['settings']['third_menu_item'];
+	$menuslot3 = explode('|', $menuslot3);
+	$menuslot3 = $menuslot3[0];
+	$menuslot3subs = $configData['settings']['third_menu_item_subitems'];
+    // Slot #4
+	$menuslot4 = $configData['settings']['fourth_menu_item'];
+	$menuslot4 = explode('|', $menuslot4);
+	$menuslot4 = $menuslot4[0];
+	$menuslot4subs = $configData['settings']['fourth_menu_item_subitems'];
+    // Slot #5
+	$menuslot5 = $configData['settings']['fifth_menu_item'];
+	$menuslot5 = explode('|', $menuslot5);
+	$menuslot5 = $menuslot5[0];
+	$menuslot5subs = $configData['settings']['fifth_menu_item_subitems'];
+    // Slot #6
+	$menuslot6 = $configData['settings']['sixth_menu_item'];
+	$menuslot6 = explode('|', $menuslot6);
+	$menuslot6 = $menuslot6[0];
+	$menuslot6subs = $configData['settings']['sixth_menu_item_subitems'];
+	// Put slots in array
+	$slots_array = array($menuslot1, $menuslot2, $menuslot3, $menuslot4, $menuslot5, $menuslot6);
+	$slots_subs = array($menuslot1subs, $menuslot2subs, $menuslot3subs, $menuslot4subs, $menuslot5subs, $menuslot6subs);
+?>
+
+<?php foreach (array_map(null, $slots_array, $slots_subs) as $slots): list($menuslot, $menuslotsubs) = $slots; // Get our menu contents   ?>
+<?php if ($menuslot != 'disabled'): ?>
+    <?php
+    if($menuslot == 'blog') { $menuslottitle = $blogtitle; $menusloturl = $blogurl; $id1 = str_replace (" ", "", $menuslottitle); }
+    else { $menuslottitle = Mage::getModel('cms/page')->setStoreId(Mage::app()->getStore()->getId())->load($menuslot, 'identifier')->getTitle(); $id1 = str_replace (" ", "", $menuslottitle); $id1 = $prefix.$id1.$suffix; $menusloturl = $this->getUrl($menuslot); };
+    ?>
+    <li id="<?php echo $id1 ?>" class="level0<?php if ($menuslotsubs != ''): ?> parent<?php endif; ?>"><a href="<?php echo $menusloturl ?>"><span><?php echo $menuslottitle ?></span></a>
+    <?php if ($menuslotsubs != ''): ?>
+        <ul class="level0">
+            <?php $array = explode(',', $menuslotsubs); foreach($array as $item): ?>
+            <?php
+            if(stristr($blogcatlist, $item)) { $subitem = Mage::getModel('blog/cat')->load($item, 'identifier')->getTitle(); $idfull = str_replace (" ", "", $subitem); $id = Mage::getStoreConfig('blog/blog/title').'-'.$idfull; $url = Mage::getUrl(Mage::helper('blog')->getRoute().'/cat/'.$item); }
+            else { $subitem = Mage::getModel('cms/page')->setStoreId(Mage::app()->getStore()->getId())->load($item, 'identifier')->getTitle(); $id = str_replace (" ", "", $subitem); $id = $prefix.$id.$suffix; $url = $this->getUrl($item); };
+            ?>
+                <li id="<?php echo $id ?>" class="level1">
+                    <a href="<?php echo $url  ?>"><span><?php echo $subitem ?></span></a>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    <?php endif; ?>
+    </li>
+<?php endif; ?>
+<?php endforeach; ?>
+
+
+<?php	// Check if 'Contact' link to be shown
+    $configData = Mage::getStoreConfig('mage_menus');
+	$contactlink = $configData['settings']['contact_link'];
+?>
+<?php if ($contactlink == 1): // Show 'Contact' link ?>
+        <li id="Contact"><a href="<?php echo $this->getUrl('contacts') ?>"><span><?php echo $this->__('Contact') ?></span></a></li>
+<?php endif; ?>
+
+</ul>

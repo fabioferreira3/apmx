@@ -1,0 +1,56 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ * Moxy Style 10
+ */
+
+a, .link-cart { color:#1366A3; }
+
+.page { background:#E9E9E9 url(../images/header-bg.jpg) no-repeat 50% 0; }
+.header { background: url(../images/menu-bg.png) repeat-x 0 -53px; }
+.quick-access2 { background: #666 url(../images/welcome-bar-bg.png) repeat-x 0 100%; border-top:1px solid #555; border-bottom:1px solid #444; }
+.header-container .welcome-msg, .form-language label, .rokmage-cart-box-container, .top-links ul li.first, .top-links .links li a { color:#FFF !important; text-shadow:1px 1px #666 !important; }
+
+/* Menu */
+ul#magemenu-top > li.hover > a, ul#magemenu-top li.active > a { color:#111; }
+ul.menu li > a, ul.menu-single li > a { color:#555; text-shadow:1px 1px 0 #fff; }
+
+/* Welcome */
+.cms-index-index #welcome { color:#444 !important; text-shadow:1px 1px 0 #fff !important; }
+#homepage-contentslider-container .images h3 a { color:#444; text-shadow:1px 1px 0 #fff; }
+#homepage-contentslider-container .images { color:#444; }
+#homepage-contentslider-container .tabs a { background-image:url(../images/navigator.png); }
+
+/* Modal Windows */
+p.rokmage-forgot-pass a, #rokmage-header-cart span.button a:hover, #rokmage-header-cart h4 a { color: #1366A3; }
+
+/* Moxy Lavalamp Effect */
+.inner-header-container #box { background:url(../images/menutab-r.png) no-repeat 100% 0; }
+.inner-header-container #box .head { background:url(../images/menutab-l.png) no-repeat 0 0; }
+
+/* First Word Spans */
+span.color { color: #1366A3; }
+
+/* Homepage Slider */
+#homepage-contentslider-container { background:url(../images/homepage-slider-bg.png) no-repeat 0 0 !important; }
+
+/* Product Scroller Tooltip */
+.tooltip { color: #1366A3; }
+.tooltip span.price { color: #333; }
+
+/* Category View */
+span:hover.switch_thumb { color: #1366A3; }
+/* Filter */
+#rokmage-layered-nav ol li a:hover, #rokmage-layered-nav dt:hover, #rokmage-layered-nav .active { color:#1366A3; }
+
+/* Product View */
+ul.tabs li a:hover, ul.tabs li.active a { color: #1366A3; }
+
+/* OPC */
+.opc .active .step-title h2 { color: #1366A3; }
+.checkout-progress li.active { border-top-color:#1366A3; color:#1366A3; }
+
+/* Footer */
+.footer-wrapper { background-color: #262626; }

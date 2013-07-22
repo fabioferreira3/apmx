@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_ProductScroller>
+            <version>1.0.0</version>
+        </Rockettheme_ProductScroller>
+    </modules>
+	<default>
+        <product_scroller>
+            <general>
+                <enabled>1</enabled>
+				<enabledhomepage>1</enabledhomepage>
+				<scroll_by>Page</scroll_by>
+				<truncate>truncate</truncate>
+				<speed>1</speed>
+				<items>4</items>
+				<autoscroll>0</autoscroll>
+				<interval>3</interval>
+				<tooltip>1</tooltip>
+				<tooltipoffset>10,2</tooltipoffset>
+				<truncate_titlelength>36</truncate_titlelength>
+            </general>
+			<settingshomepage>
+                <filter_byhomepage>all</filter_byhomepage>
+				<no_of_productshomepage>16</no_of_productshomepage>
+            </settingshomepage>
+			<settings>
+                <filter_by>all</filter_by>
+                <no_of_products>16</no_of_products>
+            </settings>
+        </product_scroller>  
+    </default>
+    <global>
+        <helpers>
+            <productscroller>
+                <class>Rockettheme_ProductScroller_Helper</class>
+            </productscroller>
+        </helpers>
+        <models>
+            <productscrollermodel>
+                <class>Rockettheme_ProductScroller_Model</class>
+            </productscrollermodel>
+		</models>
+    </global>		
+    <frontend>
+        <layout>
+            <updates>
+                <productscroller>
+                    <file>rokmage-productscroller/rokmageproductscroller.xml</file>
+                </productscroller>
+            </updates>
+        </layout>
+    </frontend>
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <product_scroller translate="title" module="productscroller">
+                                            <title>ProductScroller Section</title>
+                                            <sort_order>60</sort_order>
+                                        </product_scroller>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

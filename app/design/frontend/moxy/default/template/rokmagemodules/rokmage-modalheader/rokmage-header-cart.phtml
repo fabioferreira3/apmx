@@ -1,0 +1,87 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php
+	// Check if modal cart disabled
+	$configData = Mage::getStoreConfig('modal_header');
+	$modalcart = $configData['general']['disablemodalcart'];
+?>
+
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    // Scroller
+    $j(function() {
+        $j("div.cart-scrollable").scrollable({speed: 400, size: 1});
+    });
+<?php if($modalcart == 0): ?>
+    // Remove sidebar cart
+    $j(document).ready(function(){
+        $j(".block-cart p.block-subtitle, #cart-sidebar").remove();
+    });
+<?php endif; ?>
+</script>
+
+<?php
+// Check if displaying subtotal with tax
+$configData = Mage::getStoreConfig('tax');
+$subtotal = $configData['cart_display']['subtotal'];
+if($subtotal == 1) {
+$total = Mage::helper('checkout')->formatPrice($this->getSubtotal()); 
+}else{
+$total = Mage::helper('checkout')->formatPrice($this->getSubtotalInclTax());
+};
+?>
+
+<?php $_cartQty = $this->getSummaryCount() ?>
+<div id="rokmage-header-cart" class="modalcontent">
+    <h6><?php echo $this->__('Cart Subtotal:') ?><?php echo "&nbsp;".$total; ?></h6>
+    <?php $_items = $this->getItems() ?>
+    <div class="cart-scrollable-container">
+        <a class="prev"></a>
+        <div class="cart-scrollable">
+            <div class="items">
+                <?php if($_cartQty == 1):  ?>
+                <script type="text/javascript">
+                    var $j = jQuery.noConflict();
+                    // Disable Scroller
+                    $j(function() {
+                        $j(".cart-scrollable-container a.next").addClass("disabled");
+                    });
+                </script>
+                    <?php foreach ($_items as $_item):  ?>
+                <ul class="scroll-item single">
+                            <?php echo $this->getItemHtml($_item) ?>
+                </ul>
+                    <?php endforeach; ?>
+                <?php else:  ?>
+                    <?php $counter = 0; ?>
+                    <?php foreach ($_items as $_item):  ?>
+                        <?php $counter++; // Count our items ?>
+                <ul class="scroll-item">
+                    <li><span class="small"><?php echo $counter ?> <?php echo $this->__('of') ?> <?php echo $_cartQty ?> <?php echo $this->__('items') ?></span></li>
+                            <?php echo $this->getItemHtml($_item) ?>
+                </ul>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <a class="next"></a>
+        <div class="clearfloat"></div>
+    </div>
+    <div class="actions" id="cart-buttons">
+        <?php if($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+        <span class="button"><a onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')">
+                    <?php echo $this->__('Checkout') ?>
+            </a></span>
+        <?php endif ?>
+        <span class="button f-right"><a onclick="setLocation('<?php echo  $this->getUrl('checkout/cart') ?>')">
+                <?php echo $this->__('Edit cart') ?>
+            </a></span>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.6.2.0 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_FeaturedProducts>
+            <version>1.0.0</version>
+        </Rockettheme_FeaturedProducts>
+    </modules>
+	<default>
+		<featured_products>
+			<settings>
+				<featuredattribute>featured</featuredattribute>
+				<featuredlist>null</featuredlist>
+                <filterbyroot>0</filterbyroot>
+			</settings>
+		</featured_products>		
+	</default>
+    <global>
+        <helpers>
+            <featuredproducts>
+                <class>Rockettheme_FeaturedProducts_Helper</class>
+            </featuredproducts>
+        </helpers>
+        <models>
+            <featuredproducts>
+				<class>Rockettheme_FeaturedProducts_Model</class>
+                <resourceModel>featuredproducts_mysql4</resourceModel>
+            </featuredproducts>
+			<featuredproducts_mysql4>
+                <class>Rockettheme_FeaturedProducts_Model_Mysql4</class>
+            </featuredproducts_mysql4>
+		</models>
+		<resources>
+            <featuredproducts_setup>
+                <setup>
+                    <module>Rockettheme_FeaturedProducts</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </featuredproducts_setup>
+            <featuredproducts_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </featuredproducts_write>
+            <featuredproducts_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </featuredproducts_read>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <featuredproducts>
+                    <file></file>
+                </featuredproducts>
+            </updates>
+        </layout>
+    </frontend>		
+	<adminhtml>
+        <acl>
+            <resources>
+				 <all>
+	                    <title>Allow everything</title>
+	                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <featured_products translate="title" module="featuredproducts">
+                                            <title>FeaturedProducts Section</title>
+                                            <sort_order>60</sort_order>
+                                        </featured_products>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

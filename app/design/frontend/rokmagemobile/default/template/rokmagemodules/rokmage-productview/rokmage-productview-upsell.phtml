@@ -1,0 +1,37 @@
+<?php
+/**
+ * @version   $Id: rokmage-productview-upsell.phtml 47705 2012-01-18 21:55:02Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/product/list/upsell.phtml
+ */
+?>
+<?php if(count($this->getItemCollection()->getItems())): ?>
+<h2 class="details ui-header ui-bar-a"><?php echo $this->__('You may also be interested in the following product(s)') ?></h2>
+
+<div class="upsell-products" data-content-theme="c">
+    
+        <?php $_iterator = 0; ?>
+    <ul data-role="listview" data-theme="c">
+        <?php $_productCollection = $this->getItemCollection(); foreach ($_productCollection as $_product): ?>
+        <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+        <li>
+            <a class="product-link" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>">    
+                <img class="thumb" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(80); ?>" alt="<?php echo $_productNameStripped; ?>" title="<?php echo $_productNameStripped; ?>" />
+                <h2 class="product-name"><?php echo $_productNameStripped; ?></h2>      
+                <div class="prices"><?php echo $this->getPriceHtml($_product, true); ?></div>
+                <?php if($ratingstars == 1): ?>
+                    <?php if($_product->getRatingSummary()): ?>    
+                        <?php echo $this->getReviewsSummaryHtml($_product) ?>
+                    <?php endif; ?> 
+                <?php endif; ?> 
+            </a>   
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    
+</div>
+<?php endif ?>
+
+

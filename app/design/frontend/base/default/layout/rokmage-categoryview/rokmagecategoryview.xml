@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout>
+
+    <default>
+        <reference name="root">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagelayouts/rokmage3column.phtml</template>
+            </action>
+            <action method="setTemplate" ifconfig="category_view/general/localoverride">
+                <template>rokmagelayouts/rokmage2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem" ifconfig="category_view/general/enablecategoryview">
+                <type>skin_css</type>
+                <name>rokmage-categoryview/css/rokmage-categoryview.css</name>
+            </action>
+            <action method="addItem" ifconfig="category_view/general/enablecategoryview">
+                <type>skin_js</type>
+                <script>rokmage-categoryview/js/jquery.cookie.plugin.js</script>
+            </action>
+        </reference>
+    </default>
+
+<!--
+Category default layout
+-->
+
+    <catalog_category_default>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_default>
+
+<!--
+Category layered navigation layout
+-->
+
+    <catalog_category_layered>
+        <reference name="catalog.leftnav">
+            <action method="setTemplate" ifconfig="category_view/settings/filteraccordion">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview-filter.phtml</template>
+            </action>
+        </reference>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+
+    <tag_product_list>
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+    </tag_product_list>
+
+<!--
+Set the category view template to show search results
+-->
+
+    <catalogsearch_result_index translate="label">
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+        <reference name="catalogsearch.leftnav">
+            <action method="setTemplate" ifconfig="category_view/settings/filteraccordion">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview-filter.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result translate="label">
+        <reference name="search_result_list">
+            <action method="setTemplate" ifconfig="category_view/general/enablecategoryview">
+                <template>rokmagemodules/rokmage-categoryview/rokmage-categoryview.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+</layout>

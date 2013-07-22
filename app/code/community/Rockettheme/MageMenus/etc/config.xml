@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.7.0.1 May 8, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_MageMenus>
+            <version>1.0.0</version>
+        </Rockettheme_MageMenus>
+    </modules>
+	<default>
+        <mage_menus>
+            <general>
+                <enable_top>1</enable_top>
+				<enable_side_left>1</enable_side_left>
+				<enable_side_right>1</enable_side_right>
+            </general>
+			<settings>
+                <columns>1</columns>
+				<home_page>1</home_page>
+				<catalog_cats>normal</catalog_cats>
+				<contact_link>1</contact_link>
+				<first_menu_item>disabled</first_menu_item>
+				<second_menu_item>disabled</second_menu_item>
+				<third_menu_item>disabled</third_menu_item>
+				<fourth_menu_item>disabled</fourth_menu_item>
+				<fifth_menu_item>disabled</fifth_menu_item>
+				<sixth_menu_item>disabled</sixth_menu_item>
+            </settings>
+			<settings_topanimation>
+                <animation>mm_slidedownspeed: 250,mm_slideupspeed: 150,mm_css_pre: {left: 100, opacity: 0 },mm_animatein: {left: 165, opacity: 1},mm_animateout: {opacity: 0, left: 180},mm_animate_speed: 200,mm_pause: 200</animation>
+            </settings_topanimation>
+			<settings_megamenu>
+				<width>400</width>
+				<subcats>4</subcats>
+				<cols>3</cols>
+				<colswidth>120</colswidth>
+				<blocksenabled>1</blocksenabled>
+			</settings_megamenu>
+			<settings_sideleft>
+                <blocktitle>Categorias</blocktitle>
+				<home_page>0</home_page>
+				<catalog_cats>normal</catalog_cats>
+                <subcats>4</subcats>
+				<itemcount>1</itemcount>
+				<contact_link>0</contact_link>
+				<first_menu_item>disabled</first_menu_item>
+				<second_menu_item>disabled</second_menu_item>
+				<third_menu_item>disabled</third_menu_item>
+				<fourth_menu_item>disabled</fourth_menu_item>
+				<fifth_menu_item>disabled</fifth_menu_item>
+				<sixth_menu_item>disabled</sixth_menu_item>
+            </settings_sideleft>
+			<settings_sideright>
+                <blocktitle>Informações ao Cliente</blocktitle>
+				<home_page>0</home_page>
+				<catalog_cats>0</catalog_cats>
+                <subcats>4</subcats>
+				<itemcount>1</itemcount>
+				<contact_link>1</contact_link>
+				<first_menu_item>disabled</first_menu_item>
+				<second_menu_item>disabled</second_menu_item>
+				<third_menu_item>disabled</third_menu_item>
+				<fourth_menu_item>disabled</fourth_menu_item>
+				<fifth_menu_item>disabled</fifth_menu_item>
+				<sixth_menu_item>disabled</sixth_menu_item>
+            </settings_sideright>
+        </mage_menus>  
+    </default>
+    <global>
+        <helpers>
+            <magemenus>
+                <class>Rockettheme_MageMenus_Helper</class>
+            </magemenus>
+        </helpers>
+        <models>
+            <magemenusmodel>
+                <class>Rockettheme_MageMenus_Model</class>
+            </magemenusmodel>
+		</models>
+		<blocks>
+            <catalog>
+                <rewrite>
+                    <navigation>Rockettheme_MageMenus_Block_Navigation</navigation>
+                </rewrite>
+            </catalog>
+        </blocks>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <magemenus>
+                    <file>rokmage-magemenus/rokmagemagemenus.xml</file>
+                </magemenus>
+            </updates>
+        </layout>
+    </frontend>		
+	<adminhtml>
+        <acl>
+            <resources>
+				<all>
+	            	<title>Allow everything</title>
+	            </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mage_menus translate="title" module="magemenus">
+                                            <title>MageMenus Section</title>
+                                            <sort_order>60</sort_order>
+                                        </mage_menus>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

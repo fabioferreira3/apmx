@@ -1,0 +1,5 @@
+// HTML Truncator for jQuery
+// by Henrik Nyh <http://henrik.nyh.se> 2008-02-28.
+// Free to modify and redistribute with credit.
+
+(function(a){function h(b){var c=a(b);var d=c.children(":last");if(d&&d.is("p"))return d;return b}function g(b){var c=a(b);var d=c.children(":last");if(!d)return b;var e=d.css("display");if(!e||e=="inline")return c;return g(d)}function f(a){return a.replace(/\s+/g," ")}function e(b,c){var d=f(b.data);var d=a.trim(d.slice(0,c).replace(/\w+$/,""));d=a("<div/>").text(d).html();return d}function d(b,d){var b=a(b);var e=b.clone().empty();var f;b.contents().each(function(){var a=d-e.text().length;if(a==0)return;f=c(this,a);if(f)e.append(f)});return e}function c(a,b){return a.nodeType==3?e(a,b):d(a,b)}var b=true;a.fn.truncate=function(b){var d=a.extend({},a.fn.truncate.defaults,b);a(this).each(function(){var b=a.trim(f(a(this).text())).length;if(b<=d.max_length)return;var e=d.max_length-d.more.length-4;var i=c(this,e);var j=a(this).hide();i.insertAfter(j);g(i).append("...");h(j).append("")})};a.fn.truncate.defaults={max_length:100,more:"…",less:""};})(jQuery)

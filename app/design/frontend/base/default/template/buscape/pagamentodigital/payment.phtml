@@ -1,0 +1,49 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to suporte.developer@buscape-inc.com so we can send you a copy immediately.
+ *
+ * @category   design_default
+ * @package    Mage
+ * @copyright  Copyright (c) 2010 Buscapé Company (http://www.buscapecompany.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+
+<div class="page-head">
+    <h2 class="sub-title">Finalizando sua compra com Pagamento Digital</h2>
+</div>
+<table style="width:100%;">
+    <tr>
+        <td style="width:100%">
+            Sua compra est&aacute; em processo de finaliza&ccedil;&atilde;o.<br />
+            Caso a p&aacute;gina de finaliza&ccedil;&atilde;o de pagamento n&atilde;o se inicie automaticamente, <a href="#" id="pd_lightbox">Clique Aqui</a><br /><br />
+            <object type="application/x-shockwave-flash" data="https://www.pagamentodigital.com.br/site/banner/campanhas/_24x/05/PD_Institucional_468x60.swf?oas=https://www.pagamentodigital.com.br" width="468" height="60">
+                <param name="movie" value="https://www.pagamentodigital.com.br/site/banner/campanhas/_24x/05/PD_Institucional_468x60.swf?oas=https://www.pagamentodigital.com.br" />
+                <param name="wmode" value="transparent"/>
+            </object>
+            <?php  $this->getPayment(); ?>
+        </td>
+    </tr>
+</table>
+
+
+<script type="text/javascript">
+    document.getElementById('pd_form').setAttribute("target", "pd_frame");
+    document.getElementById('pd_form').submit();
+    document.getElementById('overlay-pd').onclick = function (){
+        this.style.display = "none";
+    };
+    document.getElementById('pd_lightbox').onclick = function (){
+        document.getElementById('overlay-pd').style.display = "block";
+    };
+</script>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @version    1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<layout version="0.1.0">
+	
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem" ifconfig="homepage_grid/general/enabled"><type>skin_css</type><name>rokmage-homepagegrid/css/rokmage-homepagegrid.css</name></action>
+        </reference>
+        <update handle="MAP_popup" />
+    </cms_index_index>
+
+    <default>
+        <reference name="catalog_product_price_template">
+            <action method="addPriceBlockType"><type>msrp</type><block>catalog/product_price</block><template>catalog/product/price_msrp.phtml</template></action>
+            <action method="addPriceBlockType"><type>msrp_item</type><block>catalog/product_price</block><template>catalog/product/price_msrp_item.phtml</template></action>
+            <action method="addPriceBlockType"><type>msrp_noform</type><block>catalog/product_price</block><template>catalog/product/price_msrp_noform.phtml</template></action>
+        </reference>
+    </default>
+
+</layout>

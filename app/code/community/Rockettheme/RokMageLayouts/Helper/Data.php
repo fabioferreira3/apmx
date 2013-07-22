@@ -1,0 +1,26 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+
+class Rockettheme_RokMageLayouts_Helper_Data extends Mage_Core_Helper_Abstract
+{
+    public function isActive($attribute, $value){
+
+	    $col = Mage::getModel('cms/block')->getCollection();
+	    $col->addFieldToFilter($attribute, $value);
+	    $item = $col->getFirstItem();
+	    $id = $item->getData('is_active');
+
+	    if($id == 1){
+	        return true;
+	    }else{
+	        return false;
+	    }
+
+	}
+
+}

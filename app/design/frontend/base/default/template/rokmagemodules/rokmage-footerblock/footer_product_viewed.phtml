@@ -1,0 +1,45 @@
+<?php
+/**
+ * @version   1.6.2.0 March 14, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();
+// Truncate
+$j(function() {
+      $j('.truncate_list_title').truncate({max_length: 45});
+ });
+</script>
+
+<?php if ($_products = $this->getRecentlyViewedProducts()): ?>
+<div class="footer-viewed-wrapper">
+<div class="footer-viewed block">
+    <div class="toptab">
+        <div class="toptab2">
+            <div class="footer-viewed-title block-title">
+                <strong><span><?php echo $this->__('Recently Viewed Products') ?></span></strong>
+            </div>  
+        </div>
+    </div>
+    <div class="footer-viewed-content">
+        <ol id="recently-viewed-items" class="block-related">
+        <?php foreach ($_products as $_product): ?>
+            <li class="item">
+	            <a href="<?php echo $this->getProductUrl($_product) ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(50); ?>" width="50" height="50" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" /></a>
+	            <div class="product-details">
+	                <p class="product-name"><a href="<?php echo $this->getProductUrl($_product) ?>" class="truncate_list_title"><?php echo $this->htmlEscape($_product->getName()) ?></a></p>
+	                <?php echo $this->getPriceHtml($_product) ?>
+	                
+	            </div>
+	        </li>
+        <?php endforeach; ?>
+        </ol>
+		<div class="clearfloat"></div>
+    </div>
+</div>
+</div>
+<?php endif; ?>

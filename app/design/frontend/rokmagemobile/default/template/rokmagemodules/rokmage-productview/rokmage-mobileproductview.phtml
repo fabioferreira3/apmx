@@ -1,0 +1,287 @@
+<?php
+/**
+ * @version   $Id: rokmage-mobileproductview.phtml 53681 2012-06-13 20:13:29Z sam $
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ * Overrides template/catalog/product/view.phtml
+ */
+?>
+
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<?php
+// Get Quick Info attribute and content
+$configData = Mage::getStoreConfig('product_view');
+$quick_info_slot = $configData['info_settings']['quick_info_slot'];
+$quick_info_content = $configData['info_settings']['quick_info_content'];
+if ($quick_info_slot == 'disabled') {
+    $quick_info_title = 'disabled';
+    $quick_info_content = 'disabled';
+} elseif (substr($quick_info_slot, 0, 4) == 'ATT_') {
+    $quick_info_slot = substr($quick_info_slot, 4);
+    $quick_info_title = $_product->getResource()->getAttribute($quick_info_slot)->getFrontendLabel();
+    $quick_value = $_product->getResource()->getAttribute($quick_info_slot)->getFrontend()->getValue($_product);
+    $quick_info_content = str_replace('{{value}}', $quick_value, $quick_info_content);
+} elseif (substr($quick_info_slot, 0, 4) != 'ATT_') {
+    $staticBlock = Mage::getModel('cms/block')->load($quick_info_slot);
+    $quick_info_title = $staticBlock->getTitle();
+    $quick_value = $staticBlock->getContent();
+    $quick_info_content = str_replace('{{value}}', $quick_value, $quick_info_content);
+};
+// Get tab#1 attribute and content
+$first_attribute_slot = $configData['info_settings']['first_attribute_slot'];
+$first_attribute_content = $configData['info_settings']['first_attribute_content'];
+// Get tab#2 attribute and content
+$second_attribute_slot = $configData['info_settings']['second_attribute_slot'];
+$second_attribute_content = $configData['info_settings']['second_attribute_content'];
+// Get tab#3 attribute and content
+$third_attribute_slot = $configData['info_settings']['third_attribute_slot'];
+$third_attribute_content = $configData['info_settings']['third_attribute_content'];
+// Get tab#4 attribute and content
+$fourth_attribute_slot = $configData['info_settings']['fourth_attribute_slot'];
+$fourth_attribute_content = $configData['info_settings']['fourth_attribute_content'];
+// Get tab#5 attribute and content
+$fifth_attribute_slot = $configData['info_settings']['fifth_attribute_slot'];
+$fifth_attribute_content = $configData['info_settings']['fifth_attribute_content'];
+// Put tabs in array
+$tabs_array = array($first_attribute_slot, $second_attribute_slot, $third_attribute_slot, $fourth_attribute_slot, $fifth_attribute_slot);
+$tabs_content = array($first_attribute_content, $second_attribute_content, $third_attribute_content, $fourth_attribute_content, $fifth_attribute_content);
+// Check if reviews globally enabled
+$configData = Mage::getStoreConfig('advanced');
+$reviewsenabled = $configData['modules_disable_output']['Mage_Review'];
+// Check if reviews enabled in extension
+$configData = Mage::getStoreConfig('product_view');
+$reviews = $configData['info_settings']['reviews'];
+?>
+
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<div id="mobileproductview">
+
+<div class="product-name" data-role="header">
+    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+</div>
+
+<div class="crumbcontainer">
+    <?php echo $this->getLayout()->getBlock('breadcrumbs')->toHtml() ?><strong class="crumbname"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></strong>
+</div>
+
+<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+
+            <div class="product-shop ui-body ui-body-b">
+
+                <div class="product-img-box">
+                    <?php echo $this->getChildHtml('media') ?>
+                </div>
+
+                <?php if ($this->canEmailToFriend()): ?>
+                    <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+                <?php endif; ?>
+
+                <?php echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+                <?php echo $this->getChildHtml('alert_urls') ?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <?php echo $this->getTierPriceHtml() ?>
+                <?php echo $this->getChildHtml('extrahint') ?>
+
+                <?php if (!$this->hasOptions()): ?>
+                    <div class="add-to-box">
+                        <?php if ($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                            <?php if ($this->helper('wishlist')->isAllow() || $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product)): ?>
+                                <span class="or"><?php echo $this->__('OR') ?></span>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php echo $this->getChildHtml('other'); ?>
+
+                <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif; ?>
+
+            <div class="clearer"></div>
+            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+            <?php endif; ?>
+
+            </div>
+</form>
+<script type="text/javascript">
+            //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                        form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+            //]]>
+</script>
+
+<h2 class="details ui-header ui-bar-a"><?php echo $this->__('Product Details') ?></h2>
+
+<?php if ($quick_info_title != 'disabled' && $quick_value != ''): ?> 
+    <div id="quick-info">
+        <h2><?php echo $this->__($quick_info_title) ?></h2>
+        <p><?php echo $quick_info_content ?></p>
+    </div>
+<?php endif; ?>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+<div class="product-view">
+   
+    <div id="product-tabs" data-role="collapsible-set" data-content-theme="c">
+        <?php foreach (array_map(null, $tabs_array, $tabs_content) as $tabs): // Get our tab contents   ?>
+            <?php
+            list($tabs1, $tabs2) = $tabs;
+            $code = substr($tabs1, 0, 4);
+            if ($tabs1 != 'disabled'): // If tab isn't disabled
+                ?>
+                <?php if ($code == 'ATT_'): // If attribute  ?>
+                    <?php
+                    $tabs1 = substr($tabs1, 4);
+                    if($tabs1 == 'short_description'){
+                            $attvalue = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+                        }
+                        elseif($tabs1 == 'description'){
+                            $attvalue = $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'description'); 
+                        }
+                        else{
+                            $attvalue = $_product->getResource()->getAttribute($tabs1)->getFrontend()->getValue($_product);
+                    };
+                    if ($attvalue != ''):
+                        ?>
+                        <div class="product-tab" data-role="collapsible">
+                            <h2><?php $tabtitle = $_product->getResource()->getAttribute($tabs1)->getStoreLabel();
+                            echo $this->__($tabtitle) ?></h2>
+                            <?php
+                            $tab_content = str_replace('{{value}}', $attvalue, $tabs2);
+                            // Check for video link
+                            if ($_product->getVideoLink()) {
+                                $productvideo = $this->getLayout()->getBlock('rokmage_product_video')->toHtml();
+                                $tab_content = str_replace('{{video}}', $productvideo, $tab_content);
+                            } else {
+                                $novidtext = $this->__('There is currently no video available for this product');
+                                $tab_content = str_replace('{{video}}', $novidtext, $tab_content);
+                            };
+                            // Display content
+                            echo $tab_content
+                            ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?> 
+
+                <?php if ($code == 'addi'): // If "additional info"  ?>
+                        <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html): ?>
+                            <div class="product-tab <?php echo 'box-'.$alias; ?>" data-role="collapsible">
+                                <?php if ($title = $this->getChildData($alias, 'title')): ?>
+                                    <h2><?php echo $this->escapeHtml($title); ?></h2>
+                                <?php endif; ?>
+                                <?php echo $html; ?>
+                            </div>
+                        <?php endforeach; ?>  
+                <?php endif; ?>
+
+                <?php if ($code != 'ATT_' && $code != 'addi'): // If cms block  ?>
+                    <?php $staticBlock = Mage::getModel('cms/block')->load($tabs1);
+                    $tabtitle = $staticBlock->getTitle(); ?>
+                    <div class="product-tab" data-role="collapsible">
+                        <h2><?php echo $this->__($tabtitle) ?></h2>
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($tabs1)->toHtml() ?>
+                    </div>
+                <?php endif; ?>
+
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+        <?php if ($reviewsenabled == 0): ?>
+            <?php if ($reviews == 1): ?>
+                <script type="text/javascript">/* <![CDATA[ */
+                    var $j = jQuery.noConflict();
+                    $j(document).ready(function(){
+                        $j("#customer-reviews a").contents().unwrap().wrap("<h3></h3>");
+                        $j("#customer-reviews dd").after("<br/>");
+                        $j(".rating-links a, .no-rating a").attr("href", "javascript:;");
+                        $j(".rating-links a, .no-rating a").click(function(){ 
+                            $j('html, body').animate({scrollTop: $j("#reviews").offset().top}, 'normal');
+                            $j('#reviews').trigger('expand');
+                        });
+                    }); /* ]]> */
+                </script>
+                <div id="reviews" class="product-tab" data-role="collapsible">
+                        <h2><?php echo $this->__('Reviews') ?></h2>
+                    <?php echo $this->getLayout()->getBlock('product.info.product_additional_data')->toHtml() ?>
+                    <?php echo $this->getLayout()->getBlock('product.review.form')->toHtml() ?>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+
+    <?php echo $this->getChildHtml('upsell_products') ?>
+    <?php echo $this->getChildHtml('product_additional_data') ?>
+</div>
+
+<script type="text/javascript">
+var $j = jQuery.noConflict();
+$j('.box-tags h2').addClass("ui-header ui-bar-a");
+</script>
+
+</div>

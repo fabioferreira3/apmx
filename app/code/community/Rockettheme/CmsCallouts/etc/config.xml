@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @version    1.5.1.1 September 1, 2011
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2011 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+-->
+<config>
+    <modules>
+        <Rockettheme_CmsCallouts>
+            <version>1.0.0</version>
+        </Rockettheme_CmsCallouts>
+    </modules>
+	<default>
+		<cms_callouts>
+            <general>
+                <enableleft>1</enableleft>
+                <enableright>1</enableright>
+            </general>
+            <settings>
+                <leftcallouttitle>Left CMS Callout</leftcallouttitle>
+                <leftcallouttext>You can add your content here by going to Admin -&gt; Config -&gt; CmsCallouts -&gt; Left Callout Text. You can also disable this box entirely.</leftcallouttext>
+                <rightcallouttitle>Right CMS Callout</rightcallouttitle>
+				<rightcallouttext>You can add your content here by going to Admin -&gt; Config -&gt; CmsCallouts -&gt; Right Callout Text. You can also disable this box entirely.</rightcallouttext>
+            </settings>
+        </cms_callouts>
+    </default>
+    <global>
+        <helpers>
+            <cmscallouts>
+                <class>Rockettheme_CmsCallouts_Helper</class>
+            </cmscallouts>
+        </helpers>
+		<models>
+            <cmscalloutsmodel>
+                <class>Rockettheme_CmsCallouts_Model</class>
+            </cmscalloutsmodel>
+		</models>
+    </global>		
+    <frontend>
+        <layout>
+            <updates>
+                <cmscallouts>
+                    <file>rokmage-cmscallouts/rokmagecmscallouts.xml</file>
+                </cmscallouts>
+            </updates>
+        </layout>
+    </frontend>
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <cms_callouts translate="title" module="cmscallouts">
+                                            <title>CmsCallouts Section</title>
+                                            <sort_order>60</sort_order>
+                                        </cms_callouts>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

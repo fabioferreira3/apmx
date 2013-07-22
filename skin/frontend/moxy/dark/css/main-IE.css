@@ -1,0 +1,14 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ */
+
+/* ModalHeader */
+#rokmage-header-cart { background-image: url(../images/modal-bg-IE.gif) !important; }
+#rokmage-login-content { background-image: url(../images/modal-bg-IE.gif) !important; }
+#video, #video-flow { background-image: url(../../default/rokmage-productview/images/modal-vid-bg-IE.gif) !important;  }
+
+/* Menu */
+ul#magemenu-top li ul li a { color: #ccc !important; }

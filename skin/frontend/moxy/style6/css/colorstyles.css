@@ -1,0 +1,43 @@
+/**
+ * @version    1.7.0.0 May 15, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright   Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license    http://www.rockettheme.com/legal/license.php RocketTheme Proprietary Use License
+ * Moxy Style 6
+ */
+
+a, .link-cart { color:#82003A; }
+
+.page { background:#18010B url(../images/header-bg.jpg) no-repeat 50% 0; }
+.header { background: url(../images/menu-bg.png) repeat-x 0 -53px; }
+.quick-access2 { background: #EA4668 url(../images/welcome-bar-bg.png) repeat-x 0 100%; border-top:1px solid #FFF; }
+.header-container .welcome-msg, .form-language label, .rokmage-cart-box-container, .top-links ul li.first, .top-links .links li a { color:#FFF !important; text-shadow:1px 1px #5F0221 !important; }
+
+/* Modal Windows */
+p.rokmage-forgot-pass a, #rokmage-header-cart span.button a:hover, #rokmage-header-cart h4 a { color: #82003A; }
+
+/* Moxy Lavalamp Effect */
+.inner-header-container #box { background:url(../images/menutab-r.png) no-repeat 100% 0; }
+.inner-header-container #box .head { background:url(../images/menutab-l.png) no-repeat 0 0; }
+
+/* First Word Spans */
+span.color { color: #82003A; }
+
+
+/* Product Scroller Tooltip */
+.tooltip { color: #82003A; }
+.tooltip span.price { color: #333; }
+
+/* Category View */
+span:hover.switch_thumb { color: #82003A; }
+/* Filter */
+#rokmage-layered-nav ol li a:hover, #rokmage-layered-nav dt:hover, #rokmage-layered-nav .active { color:#82003A; }
+
+/* Product View */
+ul.tabs li a:hover, ul.tabs li.active a { color: #82003A; }
+
+/* OPC */
+.opc .active .step-title h2 { color: #82003A; }
+
+/* Footer */
+.footer-wrapper { background-color: #FFF; }

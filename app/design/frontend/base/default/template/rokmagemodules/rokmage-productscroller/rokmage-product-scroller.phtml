@@ -1,0 +1,256 @@
+<?php
+/**
+ * @version   1.7.0.0 May 5, 2012
+ * @author    RocketTheme http://www.rockettheme.com
+ * @copyright Copyright (C) 2007 - 2012 RocketTheme, LLC
+ * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
+ */
+?>
+
+<?php 
+// Check which CMS page we're on, if any
+	$page = Mage::getSingleton('cms/page')->getIdentifier();
+// Check for default homepage
+	$configData = Mage::getStoreConfig('web');
+	$defaulthomepage = $configData['default']['cms_home_page'];
+	$defaulthomepage = explode('|', $defaulthomepage);
+	$defaulthomepage = $defaulthomepage[0];
+?>
+
+<?php if($page == $defaulthomepage) : // Check if we're on the Homepage '?>
+    <?php // HOMEPAGE SETTINGS
+    // Get the number of items to show from admin
+    $configData = Mage::getStoreConfig('product_scroller');
+    $no_of_items = $configData['settingshomepage']['no_of_productshomepage'];
+    // Get the attribute to filter from admin
+    $filter_by = $configData['settingshomepage']['filter_byhomepage'];
+    // Check if Randomize is ON or OFF
+    $randomize = $configData['settingshomepage']['randomizehomepage'];
+    ?>
+<?php // if NOT the homepage
+else: ?>
+    <?php // CATEGORY SETTINGS
+    // Get the number of items to show from admin
+	$configData = Mage::getStoreConfig('product_scroller');
+    $no_of_items = $configData['settings']['no_of_products'];
+    // Get the attribute to filter from admin
+    $filter_by = $configData['settings']['filter_by'];
+    // Check if Randomize is ON or OFF
+    $randomize = $configData['settings']['randomize'];
+    ?>
+<?php endif; ?>
+<?php // Misc settings that apply to both
+// Check if Button Fade is ON or OFF
+$scrollbuttonfade = $configData['general']['scrollbuttonfade'];
+// Check if Truncate is ON or OFF
+$truncate = $configData['general']['truncate'];
+// Get Truncate Title Length
+$titlelength = $configData['general']['truncate_titlelength'];
+// If featured list being used
+if ($filter_by == 'featured') {
+// Get Featured category type from backend
+    $configData = Mage::getStoreConfig('featured_products');
+    $featuredtype = $configData['general']['featuredtype'];
+    // Get Featured category from backend
+    $featuredcategory = $configData['settings']['featuredcategory'];
+    // Get Featured attribute from backend
+    $featuredattribute = $configData['settings']['featuredattribute'];
+    // Get Featured Products from list
+    $featuredlist = $configData['settings']['featuredlist'];
+	$featuredlist = explode(',', $featuredlist); };
+// Check if Loop is ON or OFF
+$configData = Mage::getStoreConfig('product_scroller');
+$circular = $configData['general']['circular'];
+// Set function of PrevNext buttons
+$scrollby = $configData['general']['scroll_by'];
+// Set the scroll speed
+$speed = $configData['general']['speed'] * 1000;
+// Set the number of items to scroll
+$items_per_page = $configData['general']['items'];
+// Check if autoscroll on
+$autoscroll = $configData['general']['autoscroll'];
+// Set the autoscroll interval
+$interval = $configData['general']['interval'] * 1000;
+// Check if Tooltip is ON
+$tooltip = $configData['general']['tooltip'];
+if ($tooltip == '1') { $smallerize4tooltip = 'smallerize';} else { $smallerize4tooltip = '';};
+// Check if Tooltip Effect is enabled
+$tooltipeffect = $configData['general']['tooltipeffect'];
+// Get Tooltip Offset
+$tooltipoffset = $configData['general']['tooltipoffset'];
+// Check if Ribbon is disabled
+$ribbon = $configData['general']['ribbons'];
+// Check if ImageBorders is enabled
+$configData = Mage::getStoreConfig('image_borders');
+$imageborders = $configData['general']['enableimageborders'];
+?>
+
+<?php
+// Check product visibility
+$visibility = array(
+    Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
+    Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
+);
+
+// Check if root filter is ON
+$configData = Mage::getStoreConfig('featured_products');
+$filterbyroot = $configData['settings']['filterbyroot'];
+
+// Get the current category
+if ($page == $defaulthomepage) { // If this is homepage, use root id as current category
+    if ($filterbyroot == 1) { // If filter by root is enabled
+        $_currcat = Mage::app()->getStore()->getRootCategoryId();
+    } else {
+        $_currcat = 0;
+    };
+} 
+else {
+    $_currcat = Mage::app()->getRequest()->getParam('id', false); 
+};
+$_category = Mage::getModel('catalog/category')->load($_currcat);
+
+// Select attributes
+$_attributes = array('name', 'price', 'small_image', 'msrp_enabled', 'msrp_display_actual_price_type', 'msrp', 'apply_to');
+
+// Get Product Collection Model
+$_productCollection = Mage::getResourceModel('featuredproducts/product_collection')->addAttributeToFilter('status', 1);
+
+//** All Products **//
+if ($filter_by == 'all') {
+    $_productCollection->filterbyFullCollection($_attributes,$visibility,$_category,$no_of_items,$randomize, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize(); }
+
+//** Best-Selling - load a product collectionfiltered by best-selling **//
+elseif($filter_by == 'bestselling') {
+    $_productCollection->filterbyBestSelling($_attributes,$visibility,$_category,$no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize(); }
+
+    //** Featured **//
+    elseif($filter_by == 'featured') {
+        if($featuredtype == 'list') {
+        //** Featured - load a product collection selected in the admin **//
+            $_productCollection->filterbyFullCollection($_attributes,$visibility,$_category,'',$randomize, $_currcat)->addAttributeToFilter('entity_id', array('in'=>array($featuredlist)))->setPageSize($no_of_items);
+            // Get size of collection
+            $size = $_productCollection->getSize(); }
+        elseif($featuredtype == 'attribute') {
+        //** Featured - load a product collection filtered by featured attribute **//
+            $_productCollection->filterbyFeaturedAttribute($_attributes,$visibility,$featuredattribute,$_category,$no_of_items,$randomize, $_currcat);
+            // Get size of collection
+            $size = $_productCollection->getSize(); }
+        elseif($featuredtype == 'category') {
+        if($page != $defaulthomepage) { echo "<ul class=\"messages\"><li class=\"error-msg\"><ul><li>Change your ProductScroller/FeaturedProducts settings. Unable to filter by featured category AND current category.</li></ul></li></ul>"; } else {
+        //** Featured - load a product collection filtered by featured category **//
+            $_featcategory = Mage::getModel('catalog/category')->load($featuredcategory); // Load featured category
+            $_productCollection->filterbyFeaturedCategory($_attributes,$visibility,$_featcategory,$no_of_items,$randomize, $_currcat); // Get collection filtered by featured category
+            // Get size of collection
+            $size = $_productCollection->getSize(); }; }
+    }
+
+//** Recently Added - load a product collection filtered by recently added **//
+elseif($filter_by == 'recent') {
+    $_productCollection->filterbyRecentlyAdded($_attributes,$visibility,$_category,$no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize(); }
+
+//** Most Viewed - load a product collection filtered by most views **//
+elseif($filter_by == 'viewed') {
+    $_productCollection->filterbyMostViewed($_attributes,$visibility,$_category,$no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize(); }
+
+//** Highest Rated - load a product collection filtered by ratings **//
+elseif($filter_by == 'rated') {
+    $_productCollection->filterbyHighestRated($_attributes,$visibility,$_category,$no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize(); }
+
+//** Special Price - load a collection of products currently with Special Price **//
+elseif($filter_by == 'specialprice') {
+    $_productCollection->filterbySpecialPrice($_attributes,$visibility,$_category,$no_of_items, $_currcat);
+    // Get size of collection
+    $size = $_productCollection->getSize(); }
+?>
+
+<?php if ($size >= $items_per_page): // If there are enough products to fill a page, show our scroller ?>
+
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    // Scroller
+    $j(function() {
+        $j("div.scrollable").scrollable({speed: <?php echo $speed ?>, size: <?php echo $items_per_page ?>})<?php if($autoscroll == 1): ?>.autoscroll({ autoplay: true, interval : <?php echo $interval ?> })<?php endif; ?><?php echo $circular ?>;
+    });
+    // Scroller Next Prev Animation
+<?php if ($scrollbuttonfade == '1') : ?>
+    $j(function(){
+        $j("a.prev<?php echo $scrollby ?>, a.next<?php echo $scrollby ?>").hover(function(){
+            $j(this).stop();
+            $j(this).animate({"opacity":1}, "normal");
+        }, function(){
+            $j(this).stop();
+            $j(this).animate({"opacity":0}, "normal");
+        });
+    });
+<?php endif; ?>
+    // Truncate
+    $j(function() {
+        $j('.truncate').truncate({max_length: <?php echo $titlelength ?>});
+    });
+</script>
+
+    <?php if ($tooltip == '1') : ?>
+<script type="text/javascript">
+    var $j = jQuery.noConflict();
+    // Tooltip
+    $j(document).ready(function() {
+        <?php if ($imageborders == '1') : ?>
+                // Add tooltip
+                $j(".scrollable .product-image span[title]").tooltip({offset: [<?php echo $tooltipoffset ?>]<?php echo $tooltipeffect ?>});
+        <?php else: ?>
+                // Add tooltip
+                $j(".scrollable .product-image img[title]").tooltip({offset: [<?php echo $tooltipoffset ?>]<?php echo $tooltipeffect ?>});
+        <?php endif; ?>
+                // IE fixes
+                if (jQuery.browser.msie) {
+                    // IE fix to remove original title and alt
+                    $j('img.tooltipped').attr("alt","");
+                    $j("img.tooltipped").hover(
+                    function() { $j(this).attr("title",""); });
+                    // IE fix to stop title from tooltip being shown
+                    $j(".scrollable .product-image span").hover(
+                    function() { $j(this).attr("title",""); });
+                };
+            });
+</script>
+    <?php endif; ?>
+
+<div class="scrollable-container <?php echo $smallerize4tooltip ?> <?php if ($ribbon == '0'): ?><?php echo $filter_by ?><?php endif; ?>">
+    <a class="prev<?php echo $scrollby ?>"></a>
+    <div class="scrollable">
+        <div class="items">
+                    <?php foreach ($_productCollection as $_product):  ?>
+					<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+            <div class="scroll-item-middle">
+                <div class="scroll-item-top">
+                    <div class="scroll-item-bottom">
+                                    <?php if ($tooltip == '0'): ?><span class="product-name <?php echo $truncate ?>"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>"><?php echo $_productNameStripped ?></a></span><?php endif; ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" class="product-image">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(90, 90); ?>" <?php if ($tooltip == '1'): ?> class="tooltipped" <?php endif; ?> alt="<?php echo $_productNameStripped ?>" <?php if ($tooltip == '1' && $imageborders == '0'): ?>title="<?php echo $_productNameStripped ?>&lt;br/&gt;&lt;strong&gt;<?php echo $this->htmlEscape($this->getPriceHtml($_product, true)) ?>&lt;/strong&gt;" <?php endif; ?>/>
+                                        <?php if ($imageborders == '1'): ?><span class="round-m" <?php if ($tooltip == '1' ): ?>title="<?php echo $_productNameStripped ?>&lt;br/&gt;&lt;strong&gt;<?php echo $this->htmlEscape($this->getPriceHtml($_product, true)) ?>&lt;/strong&gt;"<?php endif; ?>></span><?php endif; ?>
+                        </a>
+                        <div class="clearfloat"></div>
+                                    <?php if ($tooltip == '0'): ?><span class="productPrice"><?php echo $this->getPriceHtml($_product, true) ?></span><?php endif; ?>
+                        <button class="button" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Read More') ?></span></span></button>
+                        <div class="clearfloat"></div>
+                    </div>
+                </div>
+            </div>
+                    <?php endforeach; ?>
+        </div>
+    </div>
+    <a class="next<?php echo $scrollby ?>"></a>
+    <div class="clearfloat"></div>
+<?php if ($ribbon == '0'): ?><span class="ribbon"></span><?php endif; ?>
+</div>
+<?php endif; ?>

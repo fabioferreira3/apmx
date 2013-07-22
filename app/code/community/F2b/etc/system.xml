@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Kleber Vieira
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL).
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Payment Gateway
+ * @package    F2b
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<sections>
+		<!-- payment tab -->
+	      	<payment translate="label" module="payment">
+			<groups>
+				<!-- f2b fieldset -->
+	      		<f2b_standard translate="label">
+					<!-- will have title 'New Module' -->
+					<label>F2b</label>
+		
+					<!-- position between other payment methods -->
+					<sort_order>1</sort_order>
+
+					<!-- do not show this configuration options in store scope -->
+					<show_in_default>1</show_in_default>
+				  	<show_in_website>1</show_in_website>
+				  	<show_in_store>0</show_in_store>
+				  	
+					<fields>
+						<!-- is this payment method active for the website? -->
+				      		<active translate="label">
+								<!-- label for the field -->
+								<label>Enabled</label>
+					
+								<!-- input type for configuration value -->
+								<frontend_type>select</frontend_type>
+					
+								<!-- model to take the option values from -->
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+	
+								<!-- field position -->
+								<sort_order>1</sort_order>
+	
+								<!-- do not show this field in store scope -->
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+						  		<show_in_store>0</show_in_store>
+					      	</active>
+
+					      	<title translate="label">
+						  		<label>Nome do meio de pagamento</label>
+						  		<frontend_type>text</frontend_type>
+						  		<sort_order>2</sort_order>
+						  		<show_in_default>1</show_in_default>
+						  		<show_in_website>1</show_in_website>
+						  		<show_in_store>0</show_in_store>
+			      	      	</title>
+
+					      	<order_status translate="label">
+								<label>Status dos novos pedidos</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_order_status_processing</source_model>
+						  		<sort_order>3</sort_order>
+						  		<show_in_default>2</show_in_default>
+						  		<show_in_website>2</show_in_website>
+						  		<show_in_store>0</show_in_store>
+			      	      	</order_status>
+
+							<conta translate="label">
+								<label>Número da Conta F2b</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>4</sort_order>
+								<comment>(16 dígitos sem espaços)</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</conta>
+
+							<tipo_cobranca translate="label">
+								<label>Meios de Pagto Aceitos</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>6</sort_order>
+								<comment>B - Boleto; C - Cartão de crédito; D - Cartão de débito; T - Transferência On-line. Ex.: BCD (Aceitar Boleto, Crédito e Débito)</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</tipo_cobranca>
+
+							<prazo_vencimento translate="label">
+								<label>Prazo de vencimento</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>7</sort_order>
+								<comment>Informar a quantidade de dias após a compra para o vcto da Cobrança</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</prazo_vencimento>
+
+							<taxa translate="label">
+								<label>Taxa de Cobrança</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>8</sort_order>
+								<comment>Formato 0,00</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</taxa>
+
+							<tipo_taxa translate="label">
+								<label>Tipo de taxa</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>9</sort_order>
+								<comment>0 = R$ (Reais) e 1 = % (Porcentagem)</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</tipo_taxa>
+
+							<demonstrativo_1 translate="label">
+								<label>Demonstrativo 1</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>10</sort_order>
+								<comment>Informar o texto a ser exibido na 1ª linha de Demonstrativo</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</demonstrativo_1>
+							
+							<demonstrativo_2 translate="label">
+								<label>Demonstrativo 2</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>11</sort_order>
+								<comment>Informar o texto a ser exibido na 2ª linha de Demonstrativo</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</demonstrativo_2>
+
+							<demonstrativo_3 translate="label">
+								<label>Demonstrativo 3</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>12</sort_order>
+								<comment>Informar o texto a ser exibido na 3ª linha de Demonstrativo</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</demonstrativo_3>
+
+							<envio translate="label">
+								<label>Tipo de envio</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>13</sort_order>
+								<comment>Preencha como deseja o envio da Cobrança F2b. e - Email; p - Correios; b - Ambos; n - Nenhum (Padrão)</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</envio>
+							
+							<allowspecific translate="label">
+								<label>Payment from applicable countries</label>
+								<frontend_type>allowspecific</frontend_type>
+								<sort_order>14</sort_order>
+								<source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</allowspecific>
+
+							<specificcountry translate="label">
+								<label>Payment from Specific countries</label>
+								<frontend_type>multiselect</frontend_type>
+								<sort_order>15</sort_order>
+								<source_model>adminhtml/system_config_source_country</source_model>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</specificcountry>
+							
+							<encoding translate="label">
+								<label>Encoding</label>
+								<frontend_type>text</frontend_type>
+								<sort_order>16</sort_order>
+								<comment>Preencha com o encoding de seu site. Ex: "UTF-8", "ISO-8859-1", etc</comment>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+							</encoding>
+							
+							<sort_order translate="label">
+							    <label>Sort order</label>
+							    <frontend_type>text</frontend_type>
+							    <sort_order>100</sort_order>
+							    <show_in_default>1</show_in_default>
+							    <show_in_website>1</show_in_website>
+							    <show_in_store>1</show_in_store>
+							</sort_order>
+			  	      </fields>
+	      	      </f2b_standard>
+		      </groups>
+		</payment>
+	</sections>
+</config>
