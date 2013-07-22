@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Yoast_MetaRobots</name>
+    <version>1.4</version>
+    <stability>stable</stability>
+    <license>Open Software License OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>There is no easy way to add meta robots tags to Magento pages, unless of course, when you install this plugin.</summary>
+    <description>There is no easy way to add meta robots tags to Magento pages, unless of course, when you install this plugin.</description>
+    <notes>There is no easy way to add meta robots tags to Magento pages, unless of course, when you install this plugin.</notes>
+    <authors><author><name>Yoast</name><user>auto-converted</user><email>magento@yoast.com</email></author></authors>
+    <date>2010-04-26</date>
+    <time>09:18:54</time>
+    <contents><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="metarobots.xml" hash="a7b02aaee82e5bc419f3a1998fc4616e"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Yoast_MetaRobots.xml" hash="a46ee5dcc8151a7af13f55cc9d69a6d0"/></dir></target><target name="magecommunity"><dir name="Yoast"><dir name="MetaRobots"><dir name="Block"><dir name="Catalog"><dir name="Product"><file name="View.php" hash="2310cd0c07b910c34723976b33166e21"/></dir></dir><dir name="Cms"><dir name="Adminhtml"><dir name="Page"><dir name="Edit"><dir name="Tab"><file name="Meta.php" hash="c667cd5bb947b1e45790a60fbae94afc"/></dir></dir></dir></dir><file name="Page.php" hash="c3ebcdcd8dfee5b5f3b36a23b70e307d"/></dir></dir><dir name="etc"><file name="config.xml" hash="daaff4260d00c8967dcbeff1d265b91d"/><file name="system.xml" hash="b4b9da2fd0efd850e912df53b7a442f7"/></dir><dir name="Model"><dir name="Product"><dir name="Attribute"><dir name="Source"><file name="Unit.php" hash="718ef031b515983a34c97ec13fb80453"/></dir></dir></dir><dir name="Resource"><dir name="Eav"><dir name="Mysql4"><file name="Setup.php" hash="96f98278cd3812704c95fb24b45c7237"/></dir></dir></dir></dir><dir name="sql"><dir name="metarobots_setup"><file name="mysql4-install-0.1.0.php" hash="5ac1cd654d22d161f2237ff1e2eb23f9"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><package><name>Mage_Core_Modules</name><channel>magento-core</channel><min>1.4</min><max></max></package></required></dependencies>
+</package>

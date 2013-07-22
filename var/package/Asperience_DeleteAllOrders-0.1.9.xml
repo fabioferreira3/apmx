@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+    <name>Asperience_DeleteAllOrders</name>
+    <version>0.1.9</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">Open Software License (OSL 3.0)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Extension allowing to delete orders</summary>
+    <description>This extension allows to delete either selected sales orders WITHOUT invoices, shipments and credit memos or selected sales orders WITH invoices, shipments and credit memos.&#xD;
+You can set the status of orders you want to delete in the configuration section.&#xD;
+Warning: It's  preferable to delete only the testing orders during the development of your local website. Orders deletion is at your own risk.</description>
+    <notes>If you have ideas for improvements or find bugs, please send them to Jean-S&#xE9;bastien Hederer  at contact@asperience.fr, with ASPerience_DeleteAllOrders  as part of the subject line.</notes>
+    <authors><author><name>Jean-S&#xE9;bastien Hederer</name><user>hedererjs</user><email>hedererjs@asperience.fr</email></author></authors>
+    <date>2012-06-01</date>
+    <time>22:01:35</time>
+    <contents><target name="magecommunity"><dir name="Asperience"><dir name="DeleteAllOrders"><dir name="Helper"><file name="Data.php" hash="747caa90dd55fd313f5aa0a642f89b28"/></dir><dir name="Model"><file name="Observer.php" hash="ae9890811c2411ebe791bc3dce72d6c0"/><file name="Order.php" hash="f6372db58a485c14fecf55fc3c676888"/></dir><dir name="controllers"><file name="IndexController.php" hash="c496b80e6cee4c19cdce016ecbfb3e6e"/></dir><dir name="etc"><file name="config.xml" hash="6eb50b102037c865253184eba7cb7dc0"/><file name="system.xml" hash="02f4c05514bc9b3f1c92cce9e2c16681"/></dir></dir></dir></target><target name="magelocale"><dir><dir name="de_DE"><file name="Asperience_DeleteAllOrders.csv" hash="3b17c8b23f90a9ade272559da0bc3ce0"/></dir><dir name="en_US"><file name="Asperience_DeleteAllOrders.csv" hash="9529fa6e4e87db30bca48ce104cb0d05"/></dir><dir name="fr_FR"><file name="Asperience_DeleteAllOrders.csv" hash="8334e497eb99d7496ab770e5311ef70e"/></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Asperience_DeleteAllOrders.xml" hash="564d484d06362fee6d4f0b42660bfa85"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+    <name>ArtsOnIT_OfflineMaintenance</name>
+    <version>1.5.0</version>
+    <stability>stable</stability>
+    <license uri="http://www.artson.it/licence/magento/omp">Commercial</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Allow administrators to switch off any store view during mantenance operation.</summary>
+    <description>Allow administrators to switch off any store view during maintenance operations. 
+
+
+- Administrators are able use all Magento functions during maintenance operations
+- Message is customizable (Global or each store view)
+- Visual reminder of maintenance mode
+- SEO Build-in optimization: page status is set as 503
+- Courtesy page is showed in every single front page</description>
+    <notes>Commercial edition.</notes>
+    <authors><author><name>Luca</name><user>auto-converted</user><email>l.calore@artson.it</email></author></authors>
+    <date>2009-01-14</date>
+    <time>10:36:30</time>
+    <contents><target name="magecommunity"><dir name="ArtsOnIT"><dir name="OfflineMaintenance"><dir name="Controller"><dir name="Router"><file name="Standard.php" hash="9e24574cee4524ebb8e2d2016f5d472c"/></dir></dir><dir name="etc"><file name="config.xml" hash="4c4566884411b3d79d74025d84f2e958"/><file name="system.xml" hash="847b560b840e1eded9202150a38185df"/></dir><dir name="Helper"><file name="Data.php" hash="b49a99931f1def5d422bb382a60c343f"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="ArtsOnIT_OfflineMaintenance.xml" hash="156b2a9b03f92e88b31891fd5099aa7f"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><package><name>ArtsOnIT_OfflineMaintenance</name><channel>magento-communityv</channel><min>0.0.0</min><max>1.0.4</max></package></required></dependencies>
+</package>

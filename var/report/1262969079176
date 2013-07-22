@@ -1,0 +1,9 @@
+a:5:{i:0;s:273:"Error in file: "/home/applemax/public_html/app/code/local/MW/Onestepcheckout/sql/onestepcheckout_setup/mysql4-install-0.1.0.php" - SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '5-162' for key 'UNQ_EAV_ENTITY_ATTRIBUTE_ATTRIBUTE_SET_ID_ATTRIBUTE_ID'";i:1;s:964:"#0 /home/applemax/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(645): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 /home/applemax/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(421): Mage_Core_Model_Resource_Setup->_modifyResourceDb('install', '', '0.1.7')
+#2 /home/applemax/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(327): Mage_Core_Model_Resource_Setup->_installResourceDb('0.1.7')
+#3 /home/applemax/public_html/app/code/core/Mage/Core/Model/Resource/Setup.php(235): Mage_Core_Model_Resource_Setup->applyUpdates()
+#4 /home/applemax/public_html/app/code/core/Mage/Core/Model/App.php(417): Mage_Core_Model_Resource_Setup::applyAllUpdates()
+#5 /home/applemax/public_html/app/code/core/Mage/Core/Model/App.php(343): Mage_Core_Model_App->_initModules()
+#6 /home/applemax/public_html/app/Mage.php(683): Mage_Core_Model_App->run(Array)
+#7 /home/applemax/public_html/index.php(86): Mage::run('', 'store')
+#8 {main}";s:3:"url";s:203:"/catalog/product_compare/add/product/358/uenc/aHR0cDovL3d3dy5hcHBsZW1heC5jb20uYnIvY2F0YWxvZ3NlYXJjaC9yZXN1bHQvaW5kZXgvP2NhdD00MiZkaXI9YXNjJmxpbWl0PTkmb3JkZXI9cHJvbnRhX2VudHJlZ2EmcD0zJnE9Y2FwYSt0ZWNsYWRv/";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:7:"default";}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>BusinessKing_OutofStockSubscription</name>
+    <version>0.0.1</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Product Out of Stock Subscription</summary>
+    <description>This extension will allow your customers to subscribe for product stock notifications.</description>
+    <notes>Stable version release</notes>
+    <authors><author><name>Business King</name><user>businessking</user><email>inquiry@businessapplicationking.com</email></author></authors>
+    <date>2012-03-22</date>
+    <time>11:59:58</time>
+    <contents><target name="magelocal"><dir name="BusinessKing"><dir name="OutofStockSubscription"><dir name="Block"><dir name="Adminhtml"><dir name="Subcriber"><file name="Grid.php" hash="b8c57bde210ac8d199228d1cf40f438a"/></dir><file name="Subcriber.php" hash="7be80f7f3e67fa4ff2c2046cb0bf8777"/></dir></dir><dir name="Helper"><file name="Data.php" hash="44d70385e23c5f6d114b922018e85754"/></dir><dir name="Model"><file name="Info.php" hash="2c9d3c89fbaed0aad0e339eceb86a3c4"/><dir name="Mysql4"><file name="Info.php" hash="4906aa25e18a910fdf3c7a9cfbd37f5f"/><dir name="Subscriber"><file name="Collection.php" hash="fb5bcb7e9aafae628d3fc46207977ab7"/></dir><file name="Subscriber.php" hash="781bce94674753c2081e5076ba0ee47e"/></dir><file name="Observer.php" hash="3c0ee77db47ab6929391d5b78e113e5e"/><file name="Subscriber.php" hash="9f0939bc3aea6622c3fbe06fcf51b5f9"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="SubscriberController.php" hash="bbc0d99ff9ffe9b1e32beb2d99060f6c"/></dir><file name="IndexController.php" hash="2db5fb5ab6c23ce5bfa82139a9ea1a13"/></dir><dir name="etc"><file name="config.xml" hash="0ee0088e604306a22222110353306830"/><file name="system.xml" hash="d5be0ebee7493694e31971a602f1cdd9"/></dir><dir name="sql"><dir name="outofstocksubscription_setup"><file name="mysql4-install-0.1.0.php" hash="520def5968f83a974b59a94e9ec7f043"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="BusinessKing_OutofStockSubscription.xml" hash="d155d66dc0c7938c594fef3cf0b72e8b"/></dir></target><target name="magelocale"><dir name="en_US"><dir name="template"><dir name="email"><file name="outofstock_subscription.html" hash="d179b8ac5ba5ce7786916d1b53149f8a"/></dir></dir></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="outofstocksubscription"><dir name="widget"><file name="grid.phtml" hash="ce924354c4c94be46de6789435e531b1"/></dir></dir></dir></dir></dir></dir><dir name="frontend"><dir name="default"><dir name="default"><dir name="layout"><file name="outofstocksubscription.xml" hash="e2c047ad07a8a4ed7fbd853c014de265"/></dir><dir name="template"><dir name="outofstocksubscription"><dir name="catalog"><dir name="product"><file name="view.phtml" hash="deeb5adc2910521548e04aa9f56b77dd"/></dir></dir></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

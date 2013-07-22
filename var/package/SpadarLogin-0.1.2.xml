@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+    <name>SpadarLogin</name>
+    <version>0.1.2</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">OSL v3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Login as Customer</summary>
+    <description>Allows admin users login as customers from admin</description>
+    <notes>* Login on the "order view" pages is allowed by default, but can be turned off in configs
+
+* Customer view window is changed
+
+!!! 1.4.x branch compatibility fix</notes>
+    <authors><author><name>Yury Ksenevich</name><user>auto-converted</user><email>yury@spadar.com</email></author></authors>
+    <date>2012-06-14</date>
+    <time>20:51:12</time>
+    <contents><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="spadarlogin.xml" hash="f470c1380305439bf686d7059aab80fa"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Spadar_Login.xml" hash="f785705a056d3d219ca3b8d0def2236a"/></dir></target><target name="magecommunity"><dir name="Spadar"><dir name="Login"><dir name="controllers"><dir name="Adminhtml"><file name="IndexController.php" hash="c92575e25cf74732e384c9c6bc32d3c0"/></dir><file name="IndexController.php" hash="b07532165c256e0c7ac7098ba04651dd"/></dir><dir name="etc"><file name="config.xml" hash="108622d6fa79f87557de79ff1f72c6d7"/><file name="system.xml" hash="2885913865982dbee80712c4584c3562"/></dir><dir name="Helper"><file name="Button.php" hash="01ea50e464d5fe588e947d65e663b542"/><file name="Data.php" hash="fe708d7516fddc793b2451446b9d3c61"/></dir><dir name="Model"><dir name="Mysql4"><file name="Login.php" hash="9d5d6edb171a4110faa474e238f6f7cc"/></dir><file name="Login.php" hash="f5023f50d57c0eb6c6b88f380752b14d"/></dir><dir name="sql"><dir name="spadarlogin_setup"><file name="mysql4-install-0.1.0.php" hash="25af0280aa8fc427d93a352aad6f4315"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies/>
+</package>
