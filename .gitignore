@@ -1,8 +1,7 @@
 /app/etc/local.xml
-/var
+/var/cache
+/var/session
 /media
-/errors
-error_log
 .htaccess
 *.tar.gz
 *.gz
