@@ -30,10 +30,10 @@
 
 /* Ribbons */
 ul.display li { position: relative; }
-div.category-products span.ribbon { display: none; position: absolute; width: 127px; height: 52px; top: -4px; left: -5px; }
-div.category-products.bestselling span.ribbon { display: block; background: url(../images/bestselling_sm.png); }
-div.category-products.featured span.ribbon { display: block; background: url(../images/featured_sm.png); }
-div.category-products.recent span.ribbon { display: block; background: url(../images/new_sm.png); }
-div.category-products.viewed span.ribbon { display: block; background: url(../images/popular_sm.png); }
-div.category-products.rated span.ribbon { display: block; background: url(../images/highestrated_sm.png); }
-div.category-products.specialprice span.ribbon { display: block; background: url(../images/sale_sm.png); }
+.category-products span.ribbon { display: none; position: absolute; width: 127px; height: 52px; top: -4px; left: -5px; }
+.category-products.bestselling span.ribbon { display: block; background: url(../images/bestselling_sm.png); }
+.category-products.featured span.ribbon { display: block; background: url(../images/featured_sm.png); }
+.category-products.recent span.ribbon { display: block; background: url(../images/new_sm.png); }
+.category-products.viewed span.ribbon { display: block; background: url(../images/popular_sm.png); }
+.category-products.rated span.ribbon { display: block; background: url(../images/highestrated_sm.png); }
+.category-products.specialprice span.ribbon { display: block; background: url(../images/sale_sm.png); }

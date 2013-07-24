@@ -212,13 +212,13 @@ elseif($filter_by == 'specialprice') {
 ?>
 
 <div class="bg-container">
-    <div class="category-title page-title">
+    <header class="category-title page-title">
         <h1><?php echo $gridtitle; ?></h1>
-    </div>
+    
     <div class="grid-text">
         <?php if(stristr($gridtext, 'type="blog/blog"')) { } else { echo $gridtext; }; ?>
     </div>
-
+	</header>
     <?php if($no_of_items == 0) : // If product list disabled ?>
 
 	        <?php if(stristr($gridtext, 'type="blog/blog"')) { // If grid text is set to display AW Blog posts
@@ -229,17 +229,20 @@ elseif($filter_by == 'specialprice') {
 
 	<?php else: ?>
         <?php // Mixed mode ?>
-    <div class="category-products <?php if ($ribbon == '0'): ?><?php echo $filter_by ?><?php endif; ?>">
+    <section class="category-products <?php if ($ribbon == '0'): ?><?php echo $filter_by ?><?php endif; ?>">
         <span id="switch_thumb" class="switch_thumb"><?php echo $this->__('Switch View') ?></span>
             <?php $_iterator = 0; ?>
         <ul class="display list" id="products-list">
                     <?php foreach ($_productCollection as $_product):  ?>
 					<?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); $_is_saleable = $_product->getData('is_salable'); ?>
-            <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+            <li itemscope itemtype="http://schema.org/Product" class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
                 <div class="product-container">
                     <div class="product-image-col">
                         <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>">
-                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($listimagewidth, $listimageheight); ?>" width="<?php echo 213//$listimagewidth ?>" height="<?php echo 220//$listimageheight ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                            <figure>                                
+                                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($listimagewidth, $listimageheight); ?>" width="<?php echo 213//$listimagewidth ?>" height="<?php echo 220//$listimageheight ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                            </figure>
+                        </a>
                                     <?php if($_is_saleable == 1): ?>
                                         <?php
                                         $qty = 1;
@@ -247,11 +250,11 @@ elseif($filter_by == 'specialprice') {
                                         ?>
                         <button class="button" onclick="setLocation('<?php echo $url ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
                                     <?php else: ?>
-                        <div class="availability"><span class="out-of-stock"><?php echo $this->__('Out of stock') ?></span></div>
+                        <div class="availability"><span itemprop="availability" class="out-of-stock"><?php echo $this->__('Out of stock') ?></span></div>
                                     <?php endif; ?>
                     </div>
                     <div class="product-info-col">
-                        <h2 class="product-name <?php echo $truncatetitle ?>"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>"><?php echo $_productNameStripped ?></a></h2>
+                        <h2 itemprop="name" class="product-name <?php echo $truncatetitle ?>"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>"><?php echo $_productNameStripped ?></a></h2>
                                     <?php // Check if reviews tab enabled for productview
                                     $configData = Mage::getStoreConfig('product_view');
                                     $reviews = $configData['info_settings']['reviews'];
@@ -287,7 +290,7 @@ elseif($filter_by == 'specialprice') {
             </li>
                     <?php endforeach; ?>
         </ul>
-    </div>
+    </section>
     <?php endif; ?>
     <div class="clearfloat"></div>
 </div>

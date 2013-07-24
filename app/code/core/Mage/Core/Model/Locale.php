@@ -588,6 +588,7 @@ class Mage_Core_Model_Locale
             self::$_currencyCache[$this->getLocaleCode()][$currency] = $currencyObject;
         }
         Varien_Profiler::stop('locale/currency');
+		
         return self::$_currencyCache[$this->getLocaleCode()][$currency];
     }
 

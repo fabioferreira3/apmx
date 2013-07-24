@@ -13,7 +13,7 @@
  */
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
 <head>
 <?php echo $this->getChildHtml('head') ?>
@@ -67,16 +67,17 @@
         <?php echo $this->getChildHtml('header') ?>
 
 		<!-- Add ContentSlider -->
-                        <?php if($page == $defaulthomepage) : ?><div id="slider_welcome">
+                        <?php if($page == $defaulthomepage) : ?>
+                <section id="slider_welcome">
                             <?php if($sliderpowerhome == '1') : ?>
                                 <?php echo $this->getChildHtml('rokmage_content_slider') ?>
                             <?php endif; ?>
 		<!-- End ContentSlider -->
         <!-- Add WelcomeMessage -->
-                        <div id="welcome">
+                        <header id="welcome">
 		            <?php echo $welcome ?>
-                        </div>
-		        </div>
+                        </header>
+		        </section>
                         <?php endif; ?>
 		<!-- End WelcomeMessage -->
 
@@ -89,12 +90,12 @@
 			        <?php endif; ?>
                             <?php endif; ?>
 			<!-- End Product Scroller -->
-            <div class="col-main">
+            <section class="col-main">
 				<div class="container">
                 <?php echo $this->getChildHtml('global_messages') ?>
                 <?php echo $this->getChildHtml('content') ?>
 				</div>
-            </div>
+            </section>
         </div>
         <?php echo $this->getChildHtml('footer') ?>
         <?php echo $this->getChildHtml('before_body_end') ?>

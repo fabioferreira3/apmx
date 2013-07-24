@@ -18,7 +18,7 @@ $date = $configData['general']['disabledate'];
 ?>
 
 <div class="header-container">
-    <div class="header">
+    <header class="header">
 		<?php if ($date != 1): ?>
 			<?php $day = date("l", Mage::getModel('core/date')->timestamp(time())); $month = date("F", Mage::getModel('core/date')->timestamp(time()));
 			 $date = date("d", Mage::getModel('core/date')->timestamp(time())); $year = date("Y", Mage::getModel('core/date')->timestamp(time())); ?>
@@ -39,7 +39,7 @@ $date = $configData['general']['disabledate'];
             
         </div>
         <?php echo $this->getChildHtml('topContainer'); ?>
-    </div>
+    </header>
     <?php echo $this->getChildHtml('topMenu') ?>
 </div>
 

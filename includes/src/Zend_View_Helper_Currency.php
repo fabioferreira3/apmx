@@ -67,6 +67,7 @@ class Zend_View_Helper_Currency extends Zend_View_Helper_Abstract
      */
     public function currency($value = null, $currency = null)
     {
+    	
         if ($value === null) {
             return $this;
         }

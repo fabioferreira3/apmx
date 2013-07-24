@@ -70,16 +70,16 @@
 
         <?php if($page == $defaulthomepage) : ?>
         <!-- Add WelcomeMessage -->
-        <div id="slider_welcome">
-                        <div id="welcome">
+        <section id="slider_welcome">
+                        <header id="welcome">
 		            <?php echo $welcome ?>
-                        </div>
+                        </header>
 	<!-- End WelcomeMessage -->
         <!-- Add ContentSlider -->
                             <?php if($sliderpowerhome == '1') : ?>
                                 <?php echo $this->getChildHtml('rokmage_content_slider') ?>
                             <?php endif; ?>
-        </div>
+        </section>
 	<!-- End ContentSlider -->
         <?php endif; ?>
 
