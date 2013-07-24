@@ -327,8 +327,11 @@ $j(function() {
                             	<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(250, 250); ?>" alt="<?php echo $_productNameStripped; ?>" title="<?php echo $_productNameStripped; ?>" />
                         	</figure>
                         </a>
-                        <div class="slider-productinfo">
+                        
+                        <section class="slider-productinfo">
+                        	<header>
                             <h3 itemprop="name"><a href="<?php echo $_product->getProductUrl() ?>" class="<?php echo $truncatetitle ?>"><?php echo $_productNameStripped ?></a></h3>
+                           </header>
                             <?php
                             $storeId = Mage::app()->getStore()->getId();
                             $summaryData = Mage::getModel('review/review_summary')
@@ -342,7 +345,7 @@ $j(function() {
                         <?php if ($hidedesc == 0) : ?><p class="<?php echo $truncatedesc ?>"><?php echo $_product->getShortDescription() ?></p><?php endif; ?>
                         <?php echo $this->getPriceHtml($_product, true) ?><br/>
                             <button class="button" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Read More') ?></span></span></button>
-                        </div>
+                        </section>
                     </div>
                     <?php endforeach; ?>
     <?php endif; // END PRODUCT SLIDES  ?>
