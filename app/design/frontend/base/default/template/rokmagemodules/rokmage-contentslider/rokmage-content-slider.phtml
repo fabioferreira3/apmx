@@ -309,7 +309,7 @@ $j(function() {
 
                 <?php if ($size >= $no_of_items): // Show slider ?>
 
-    <div id="<?php if ($page == $defaulthomepage)
+    <section itemscope itemtype="http://schema.org/Product" id="<?php if ($page == $defaulthomepage)
                     echo 'homepage-' ?>contentslider-container" <?php if ($ribbon == '0' && $homecontenttype == 'products'): ?>class="<?php echo $filter_by ?>"<?php endif; ?><?php if($homecontenttype == 'custom'): ?>class="custom"<?php endif; ?>>
 
         <!-- "previous slide" button -->
@@ -323,10 +323,12 @@ $j(function() {
                         <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>	
                     <div>
                         <a class="product-image" href="<?php echo $_product->getProductUrl() ?>">
-                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(250, 250); ?>" alt="<?php echo $_productNameStripped; ?>" title="<?php echo $_productNameStripped; ?>" />
+                        	<figure>
+                            	<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(250, 250); ?>" alt="<?php echo $_productNameStripped; ?>" title="<?php echo $_productNameStripped; ?>" />
+                        	</figure>
                         </a>
                         <div class="slider-productinfo">
-                            <h3><a href="<?php echo $_product->getProductUrl() ?>" class="<?php echo $truncatetitle ?>"><?php echo $_productNameStripped ?></a></h3>
+                            <h3 itemprop="name"><a href="<?php echo $_product->getProductUrl() ?>" class="<?php echo $truncatetitle ?>"><?php echo $_productNameStripped ?></a></h3>
                             <?php
                             $storeId = Mage::app()->getStore()->getId();
                             $summaryData = Mage::getModel('review/review_summary')
@@ -351,7 +353,9 @@ $j(function() {
                     <div <?php if ($slideoneimageasbg == 1) : ?>class="slide one" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slideoneimage; ?>) no-repeat 0 0;"<?php endif; ?>>
                         <?php if ($slideoneimageasbg == 0) : ?>
                             <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slideonebuttonurl; ?>">
-                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slideoneimage; ?>" alt="" />
+                                <figure>
+                                	<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slideoneimage; ?>" alt="" />
+                            	</figure>
                             </a>
                     <?php endif; ?>
                         <div class="slider-productinfo">
@@ -369,7 +373,9 @@ $j(function() {
                     <div <?php if ($slidetwoimageasbg == 1) : ?>class="slide two" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slidetwoimage; ?>) no-repeat 0 0;"<?php endif; ?>>
                         <?php if ($slidetwoimageasbg == 0) : ?>
                             <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidetwobuttonurl; ?>">
-                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidetwoimage; ?>" alt="<?php echo $slidetwotitle ?>" />
+                                <figure>
+                                	<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidetwoimage; ?>" alt="<?php echo $slidetwotitle ?>" />
+                            	</figure>
                             </a>
                     <?php endif; ?>
                         <div class="slider-productinfo">
@@ -387,7 +393,9 @@ $j(function() {
                     <div <?php if ($slidethreeimageasbg == 1) : ?>class="slide three" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slidethreeimage; ?>) no-repeat 0 0;"<?php endif; ?>>
                         <?php if ($slidethreeimageasbg == 0) : ?>
                             <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidethreebuttonurl; ?>">
-                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidethreeimage; ?>" alt="<?php echo $slidethreetitle ?>" />
+                                <figure>
+                                	<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidethreeimage; ?>" alt="<?php echo $slidethreetitle ?>" />
+                            	</figure>
                             </a>
                     <?php endif; ?>
                         <div class="slider-productinfo">
@@ -405,7 +413,9 @@ $j(function() {
                     <div <?php if ($slidefourimageasbg == 1) : ?>class="slide four" style="background: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'rokmage-contentslider-images/' . $slidefourimage; ?>) no-repeat 0 0;"<?php endif; ?>>
                     <?php if ($slidefourimageasbg == 0) : ?>
                             <a class="product-image" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $slidefourbuttonurl; ?>">
-                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidefourimage; ?>" alt="<?php echo $slidefourtitle ?>" />
+                                <figure>	
+                                	<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/rokmage-contentslider-images/' . $slidefourimage; ?>" alt="<?php echo $slidefourtitle ?>" />
+                            	</figure>
                             </a>
                     <?php endif; ?>
                         <div class="slider-productinfo">
@@ -454,7 +464,7 @@ $j(function() {
 
         <div class="clearfloat"></div>
     <?php if ($ribbon == '0'): ?><span class="ribbon"></span><?php endif; ?>
-    </div>
+    </section>
 
     <script type="text/javascript">
         var $j = jQuery.noConflict();
