@@ -37,16 +37,16 @@
     var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
-<div class="product-view">
+<section class="product-view" itemscope itemtype="http://schema.org/Product">
     <div class="product-essential">
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
         <div class="no-display">
             <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
             <input type="hidden" name="related_product" id="related-products-field" value="" />
         </div>
-		<div class="product-name">
-                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
-            </div>
+		<header class="product-name">
+                <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+            </header>
 		<p class="sku-display"><?php echo 'C&oacute;d. Produto: ' . $this->htmlEscape($_product->getSku()); ?></p>
         <div class="product-shop2">
             
@@ -173,7 +173,7 @@
             <?php echo $html; ?>
         </div>
 <?php endforeach;?>
-        <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php echo $this->getChildHtml('upsell_products'); ?>
         <?php echo $this->getChildHtml('product_additional_data') ?>
     </div>
-</div>
+</section>

@@ -114,7 +114,7 @@ if ($originalsize == 1) { // If Zoom is disabled, use small image sizes
                 <?php endif; ?>
  
                 <?php foreach ($this->getGalleryImages() as $_image): $panelId++; ?>
-                    <div id="photo_<?php echo $panelId; ?>" style="display:none;" class="zoomer"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></div>
+                    <div id="photo_<?php echo $panelId; ?>" style="display:none;" class="zoomer"><figure><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></figure></div>
                 <?php endforeach;
                 $panelId++; ?>
  
@@ -131,7 +131,7 @@ if ($originalsize == 1) { // If Zoom is disabled, use small image sizes
                                 <ul class="thumbs">
                                     <?php if (count($this->getGalleryImages()) > 0): ?>
                                         <?php foreach ($this->getGalleryImages() as $_image): $panelId2++; ?>
-                                            <li style="width:<?php echo $thumbnailwidth ?>px;height:<?php echo $thumbnailheight ?>px"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($thumbnailwidth, $thumbnailheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a></li>
+                                            <li style="width:<?php echo $thumbnailwidth ?>px;height:<?php echo $thumbnailheight ?>px"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>"><figure><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($thumbnailwidth, $thumbnailheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></figure></a></li>
             <?php endforeach;
             $panelId2++; ?>
         <?php endif; ?>
@@ -182,7 +182,7 @@ if ($originalsize == 1) { // If Zoom is disabled, use small image sizes
         <ul class="thumbnails">
                     <?php if (count($this->getGalleryImages()) > 0): ?>
                         <?php foreach ($this->getGalleryImages() as $_image): $panelId2++; ?>
-                    <li style="width:<?php echo $thumbnailwidth ?>px;height:<?php echo $thumbnailheight ?>px"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>"><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($thumbnailwidth, $thumbnailheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a></li>
+                    <li style="width:<?php echo $thumbnailwidth ?>px;height:<?php echo $thumbnailheight ?>px"><a class="lightbox" href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>"><figure><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($thumbnailwidth, $thumbnailheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></figure></a></li>
             <?php endforeach;
             $panelId2++; ?>
         <?php endif; ?>
