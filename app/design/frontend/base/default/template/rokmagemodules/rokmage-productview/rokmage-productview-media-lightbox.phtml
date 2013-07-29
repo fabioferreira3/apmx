@@ -114,7 +114,7 @@ if ($originalsize == 1) { // If Zoom is disabled, use small image sizes
                 <?php endif; ?>
  
                 <?php foreach ($this->getGalleryImages() as $_image): $panelId++; ?>
-                    <div id="photo_<?php echo $panelId; ?>" style="display:none;" class="zoomer"><figure><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></figure></div>
+                    <div id="photo_<?php echo $panelId; ?>" style="display:none;" class="zoomer"><div><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></figure></div>
                 <?php endforeach;
                 $panelId++; ?>
  

@@ -106,13 +106,20 @@ if ($zoom == 1) { // If Zoom is disabled, use small image sizes
         <div id="zoomable" class="rounded_bg" ><!--style="width:<?php echo round($smallwidth + (($smallwidth / 100) * 1.6)) ?>px;height:<?php echo round($smallheight + (($smallheight / 100) * 14)) ?>px;padding:<?php echo round($bgwidth *= 0.032) ?>px;"-->
             <div class="photo-container" style="width:<?php echo $smallwidth + 1 ?>px;height:<?php echo $smallheight ?>px;">
                 <?php if ($_product->getImage() != 'no_selection' && $_product->getImage()): ?>
-                    <div id="photo_1" class="zoomer"><figure><img id="productImgDefault" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($largewidth, $largeheight); ?>" alt="<?php echo $_productNameStripped ?>" title="<?php echo $_productNameStripped ?>" /></figure></div>
+                    <figure id="photo_1" class="zoomer">
+                    	<img itemprop="image" id="productImgDefault" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($largewidth, $largeheight); ?>" alt="<?php echo $_productNameStripped ?>" title="<?php echo $_productNameStripped ?>" />
+                    </figure>
+                		
                 <?php else: ?>
-                    <div id="photo_1" class="zoomer"><figure><img id="productImgDefault" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($largewidth, $largeheight); ?>" alt="<?php echo $_productNameStripped ?>" title="<?php echo $_productNameStripped ?>" /></figure></div>
+                    <figure id="photo_1" class="zoomer">
+                    	<img id="productImgDefault" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($largewidth, $largeheight); ?>" alt="<?php echo $_productNameStripped ?>" title="<?php echo $_productNameStripped ?>" />
+                    </div>
                 <?php endif; ?>
 
                 <?php foreach ($this->getGalleryImages() as $_image): $panelId++; ?>
-                    <div id="photo_<?php echo $panelId; ?>" style="display:none;" class="zoomer"><figure><img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></figure></div>
+                    <figure id="photo_<?php echo $panelId; ?>" style="display:none;" class="zoomer">
+                    	<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($largewidth, $largeheight); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+                    </figure>
                 <?php endforeach;
                 $panelId++; ?>
 

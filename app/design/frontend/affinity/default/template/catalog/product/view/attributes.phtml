@@ -42,8 +42,34 @@
         <tbody>
         <?php foreach ($_additional as $_data): ?>
             <tr>
-                <th class="label"><?php echo $this->htmlEscape($this->__($_data['label'])) ?></th>
-                <td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+            	<?php
+            	SWITCH ($this->htmlEscape($this->__($_data['label']))){
+            		CASE 'Compatibilidade' :
+				?>
+					<th class="label"><?php echo $this->htmlEscape($this->__($_data['label'])); ?></th>
+                	<td class="data" itemprop="isAccessoryOrSparePartFor"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>	
+            	    
+            		
+            	<?php break;
+					CASE 'Cor' :
+				?>
+					<th class="label"><?php echo $this->htmlEscape($this->__($_data['label'])); ?></th>
+                	<td class="data" itemprop="color"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>	
+            	
+            	<?php	break;
+            		CASE 'Condição' :
+				?>
+					<th class="label"><?php echo $this->htmlEscape($this->__($_data['label'])); ?></th>
+                	<td class="data" itemprop="itemCondition"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>	
+            	
+				<?php break;
+					DEFAULT:
+				?>
+					<th class="label"><?php echo $this->htmlEscape($this->__($_data['label'])); ?></th>
+                	<td class="data" ><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>	
+            	<?php	
+				}?>
+            	                
             </tr>
         <?php endforeach; ?>
         </tbody>

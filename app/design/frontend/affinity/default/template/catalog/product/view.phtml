@@ -47,7 +47,7 @@
 		<header class="product-name">
                 <h1 itemprop="name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
             </header>
-		<p class="sku-display"><?php echo 'C&oacute;d. Produto: ' . $this->htmlEscape($_product->getSku()); ?></p>
+		<p class="sku-display"><?php echo 'C&oacute;d. Produto: <span itemprop="sku">' . $this->htmlEscape($_product->getSku()) . '</span>';  ?></p>
         <div class="product-shop2">
             
 			
