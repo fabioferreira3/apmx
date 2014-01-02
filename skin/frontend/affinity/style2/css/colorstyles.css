@@ -148,7 +148,7 @@ ul#magemenu-top li ul.popup a.level1:hover span, ul#magemenu-top li ul.popup a.l
 
 
 /* BreadCrumbs */
-.rok-breadcrumbs { background: url(../images/breadcrumb-bg.png) 50% 0 no-repeat; }
+.rok-breadcrumbs { background: #F0F0F0; }
 .rok-breadcrumbs ul li { background: url(../images/Chevron.png) no-repeat 100% 0; }
 .rok-breadcrumbs ul li a { color: #332F2A; }
 .rok-breadcrumbs ul li strong { color: #332F2A; }
