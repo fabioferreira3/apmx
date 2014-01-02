@@ -110,7 +110,7 @@ div.cart-scrollable div.items .productPrice { display:block; font-size:11px; fon
 
 /* BreadCrumbs */
 .breadcrumbs { display: none; }
-.rok-breadcrumbs { margin:0 0 12px; display: block; height: 21px; overflow: hidden; width: 932px; padding:7px 18px; }
+.rok-breadcrumbs { margin:0 0 12px; display: block; height: 21px; overflow: hidden; width: 932px; padding:7px 18px; background: none repeat scroll 0 0 #F0F0F0; border: 1px solid #C6C6C6; border-radius: 10px 10px 10px }
 .rok-breadcrumbs ul { margin: 0; padding: 0; height: 21px; display: block; }
 .rok-breadcrumbs ul li { display: block; float: left; position: relative; height: 22px; overflow: hidden; line-height: 22px; margin: 0px 6px 0px 0; padding: 0px 10px 0px 0; font-size: 1em; }
 .rok-breadcrumbs ul li div.chevronOverlay { position: absolute; right: 0; top: 0; z-index: 2; }
