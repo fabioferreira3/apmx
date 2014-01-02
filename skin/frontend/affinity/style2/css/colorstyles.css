@@ -54,7 +54,7 @@ a { color:#007399; }
 .header .rokmage-cart-box-L span.items-checkout { color: #666; }
 .header .rokmage-cart-box-L span.items-checkout a, .header .rokmage-cart-box-L span.items-checkout .inactive { color: #333; }
 .header .rokmage-cart-box-L span.items-checkout a:hover { color: #007399; }
-.fontResizer { background-color:#C4C4C2; }
+.fontResizer { background-color:#FBFBFB; }
 .smallFont { background: #C4C4C2 url(../images/font-resizer.png) 0% 0% no-repeat;}
 .largeFont { background: #C4C4C2 url(../images/font-resizer.png) -30px 0% no-repeat; }
 .rokmage-text-resize { color:#333; }
